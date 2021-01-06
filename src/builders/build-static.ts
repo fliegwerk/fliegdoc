@@ -18,9 +18,9 @@ const viewFolder = path.resolve(__dirname, '..', '..', 'views');
 
 async function render(view: string, data: any, outPath: string) {
 	fs.mkdirSync(path.dirname(outPath), { recursive: true });
-	// @ts-ignore
 	await fs.writeFileSync(
 		outPath,
+		// @ts-ignore
 		await ejs.renderFile(path.resolve(viewFolder, view + '.ejs'), data, {
 			root: viewFolder,
 			views: viewFolder
