@@ -1,48 +1,26 @@
-import { Project } from 'ts-morph';
-import { CONFIG } from './config';
-import { processNode } from './processors/init';
-import * as fs from 'fs';
-import { serveStatic } from './server';
-import { buildStatic } from './builders/build-static';
+import { buildModuleTree } from './buildModuleTree';
+import { DEFAULT_CONFIG, FliegdocConfig, Tree } from './model';
 
-const tree: any = {};
+export function buildTreeForConfig(
+	configOverrides?: Partial<FliegdocConfig>
+): Tree {
+	const finalConfig: FliegdocConfig = {
+		...DEFAULT_CONFIG,
+		...(configOverrides ?? {})
+	};
+	let tree: Tree = {};
 
-for (let module of CONFIG.modules) {
-	const project = new Project({
-		tsConfigFilePath: module.tsconfig
-	});
-
-	const { name: moduleName } = JSON.parse(
-		fs.readFileSync(module.package).toString()
-	);
-	console.info(
-		'Processing module',
-		moduleName,
-		'(',
-		CONFIG.modules.indexOf(module) + 1,
-		'/',
-		CONFIG.modules.length,
-		')'
-	);
-
-	tree[moduleName] = [];
-
-	const indexFile = project.getSourceFileOrThrow(module.mainFile);
-
-	const exportedDeclarations = indexFile.getExportedDeclarations();
-
-	for (const [name, declarations] of exportedDeclarations) {
-		tree[moduleName].push({
-			name: `${name}`,
-			declarations: declarations.map(processNode)
-		});
+	for (let module of finalConfig.modules) {
+		const [moduleName, moduleTree] = buildModuleTree(module);
+		tree = { ...tree };
+		tree[moduleName] = moduleTree;
 	}
+
+	return tree;
 }
 
-console.info('Done. Results:');
-
-console.log(tree);
-
-buildStatic(tree).then(() => {
-	serveStatic();
-});
+export * from './config';
+export * from './buildModuleTree';
+export * from './model';
+export * from './server';
+export * from './builders';

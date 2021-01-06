@@ -1,44 +1,28 @@
 import * as path from 'path';
-import { FliegdocConfig } from './model/fliegdoc-config';
+import { FliegdocConfig } from './model';
 
-export const CONFIG: FliegdocConfig = {
-	modules: [
-		{
-			package: path.resolve(
-				'C:\\Users\\pablo\\GitHub\\telestion-client\\packages\\telestion-client-core',
-				'package.json'
-			),
-			tsconfig: path.resolve(
-				'C:\\Users\\pablo\\GitHub\\telestion-client\\packages\\telestion-client-core',
-				'tsconfig.json'
-			),
-			mainFile: 'index.ts'
-		},
-		{
-			package: path.resolve(
-				'C:\\Users\\pablo\\GitHub\\telestion-client\\packages\\vertx-event-bus',
-				'package.json'
-			),
-			tsconfig: path.resolve(
-				'C:\\Users\\pablo\\GitHub\\telestion-client\\packages\\vertx-event-bus',
-				'tsconfig.json'
-			),
-			mainFile: 'index.ts'
-		},
-		{
-			package: path.resolve(
-				'C:\\Users\\pablo\\GitHub\\telestion-client\\packages\\telestion-client-types',
-				'package.json'
-			),
-			tsconfig: path.resolve(
-				'C:\\Users\\pablo\\GitHub\\telestion-client\\packages\\telestion-client-types',
-				'tsconfig.json'
-			),
-			mainFile: 'index.ts'
-		}
-	],
-	readme: path.resolve(
-		'C:\\Users\\pablo\\GitHub\\telestion-client',
-		'README.md'
-	)
-};
+/**
+ * Resolves relative paths for config overrides
+ * @param overrides
+ * @param basePath
+ */
+export function parseOverrides(
+	overrides: Partial<FliegdocConfig> = {},
+	basePath: string = process.cwd()
+): Partial<FliegdocConfig> {
+	const result: Partial<FliegdocConfig> = {};
+
+	if (overrides.outDir)
+		result.outDir = path.resolve(basePath, overrides.outDir);
+	if (overrides.readme)
+		result.readme = path.resolve(basePath, overrides.readme);
+
+	if (overrides.modules)
+		result.modules = overrides.modules.map(raw => ({
+			...raw,
+			tsconfig: path.resolve(basePath, raw.tsconfig),
+			package: path.resolve(basePath, raw.package)
+		}));
+
+	return result;
+}

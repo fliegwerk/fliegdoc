@@ -1,11 +1,8 @@
 import Express from 'express';
 import MarkdownIt from 'markdown-it';
 import * as fs from 'fs';
-import { CONFIG } from '../config';
-import path from 'path';
+import { DEFAULT_CONFIG, FliegdocConfig } from '../model';
 const origMd = new MarkdownIt({ linkify: true });
-
-const readmeContent = origMd.render(fs.readFileSync(CONFIG.readme).toString());
 
 const md = {
 	render: (md: string) => {
@@ -17,15 +14,24 @@ const md = {
  * Starts an http server on `port` and serves the generated documentation
  * @param tree the documentation tree
  * @param port the port on which the documentation gets served
+ * @param configOverrides
  */
-export function serveDynamic(tree: any, port = 3000) {
+export function serveDynamic(
+	tree: any,
+	port = 3000,
+	configOverrides?: Partial<FliegdocConfig>
+) {
+	const finalConfig: FliegdocConfig = {
+		...DEFAULT_CONFIG,
+		...(configOverrides ?? {})
+	};
 	const app = Express();
 
 	app.set('view engine', 'ejs');
 
 	app.get('/', (req, res) => {
 		res.render('plain', {
-			content: readmeContent,
+			content: md.render(fs.readFileSync(finalConfig.readme).toString()),
 			modules: Object.keys(tree)
 		});
 	});
@@ -49,11 +55,15 @@ export function serveDynamic(tree: any, port = 3000) {
 }
 
 export function serveStatic(
-	docDir: string = path.join(process.cwd(), 'docs'),
-	port: number = 3000
+	port: number = 3000,
+	configOverrides?: Partial<FliegdocConfig>
 ) {
+	const finalConfig: FliegdocConfig = {
+		...DEFAULT_CONFIG,
+		...(configOverrides ?? {})
+	};
 	const app = Express();
-	app.use(Express.static(docDir));
+	app.use(Express.static(finalConfig.outDir));
 
 	app.listen(port, () => {
 		console.log(`Listening on http://localhost:${port}`);

@@ -33,6 +33,10 @@ export interface FliegdocConfig {
 	 * Path to the root project's README.md
 	 */
 	readme: string;
+	/**
+	 * Path to the folder in which the documentation gets generated
+	 */
+	outDir: string;
 }
 
 /**
@@ -49,5 +53,6 @@ export const DEFAULT_CONFIG: FliegdocConfig = {
 			package: path.join(process.cwd(), 'package.json'),
 			tsconfig: path.join(process.cwd(), 'tsconfig.json')
 		}
-	]
+	],
+	outDir: path.resolve(process.cwd(), 'docs')
 };
