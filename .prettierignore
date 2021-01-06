@@ -1,0 +1,10 @@
+node_modules
+node_modules_overrides
+build
+packages/telestion-client-types/types
+coverage
+release
+docs
+.vscode
+.idea
+package-lock.json

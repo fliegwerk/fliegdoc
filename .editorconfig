@@ -1,0 +1,16 @@
+# root editor configuration file
+# https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# these configuration apply to all files in this project
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+charset = utf-8
+indent_style = tab
+
+[*.md]
+trim_trailing_whitespace = false

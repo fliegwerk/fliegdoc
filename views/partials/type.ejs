@@ -1,0 +1,25 @@
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type <%=declaration.name%>
+
+            <!-- Type Parameters -->
+            <%- include('type-params', {typeParameters: declaration.typeParameters})%>
+        </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            <%=declaration.type%>
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+<%-include('docs', {docs: declaration.docs, md})%>

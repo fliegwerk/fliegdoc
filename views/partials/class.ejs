@@ -1,0 +1,50 @@
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            <%= declaration.ctors ? 'class' : 'interface' %>
+
+            <!-- Name -->
+            <%= declaration.name %>
+
+            <!-- Type Parameters -->
+            <%- include('type-params', {typeParameters: declaration.typeParameters}) %>
+
+            <!-- Extends -->
+            <% if (declaration.extends && declaration.extends.length) { %>
+                extends <%= declaration.extends.join(', ') %>
+            <% } %>
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+<%- include('docs', {docs: declaration.docs, md}) %>
+
+<!-- Constructors -->
+<% if (declaration.ctors) { %>
+    <h4>Constructors</h4>
+    <% declaration.ctors.forEach((ctor) => { %>
+        <%- include('function', {declaration: ctor, md}) %>
+<% }) } %>
+
+<!-- Properties -->
+<h4>Properties</h4>
+<% declaration.properties.forEach((property) => { %>
+    <a id="<%= declaration.name %>.<%= property.name %>" href="#<%= declaration.name %>.<%= property.name %>">
+        <h5><code><%= declaration.name %>.<%= property.name %></code></h5>
+    </a>
+    <%- include('property', {declaration: property, md}) %>
+<% }) %>
+
+<!-- Methods -->
+<% if (declaration.methods.length) { %>
+    <h4>Methods</h4>
+    <% declaration.methods.forEach((method) => { %>
+        <a id="<%= declaration.name %>.<%= method.name %>" href="#<%= declaration.name %>.<%= method.name %>">
+            <h5><code><%= declaration.name %>.<%= method.name %></code></h5>
+        </a>
+        <%- include('function', {declaration: method, md}) %>
+    <% }) %>
+<% } %>

@@ -1,0 +1,28 @@
+<%
+if (docs.length > 0) {
+%>
+    <!-- Description -->
+    <%- md.render(docs[0].description) %>
+
+    <!-- Tags -->
+    <div class="row">
+        <% docs[0].tags.forEach(function (tag) { %>
+            <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag"><%- tag.tagName %>:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><%- md.render(tag.text) %></div>
+        <% }) %>
+    </div>
+<%
+} else {
+%>
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+<%
+}
+%>
