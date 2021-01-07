@@ -209,7 +209,7 @@ const tree = buildTreeForConfig(config);
             <div class="col-sm-10"><pre><code class="language-ts">import { parseOverrides } from 'fliegdoc';
 
 const config = JSON.parse(
-    fs.readFileSync(filepath).toString()
+	fs.readFileSync(filepath).toString()
 )
 
 const configOverrides = parseOverrides(config, path.dirname(filepath));
@@ -286,9 +286,9 @@ const configOverrides = parseOverrides(config, path.dirname(filepath));
             <div class="col-sm-10"><pre><code class="language-ts">import { buildModuleTree } from 'fliegdoc';
 
 buildModuleTree({
-    tsconfig,
-    package,
-    mainFile
+	tsconfig,
+	package,
+	mainFile
 });
 </code></pre>
 </div>
@@ -464,7 +464,7 @@ buildModuleTree({
 
 <!-- Docs -->
     <!-- Description -->
-    <p>Path to the root project's README.md</p>
+    <p>Path to the root project's <a href="http://README.md">README.md</a></p>
 
     <!-- Tags -->
     <div class="row">
