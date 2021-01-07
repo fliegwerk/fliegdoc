@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import { DEFAULT_CONFIG, FliegdocConfig, Tree } from '../model';
 import * as path from 'path';
 import { renderFile } from 'eta';
+import { getConfig } from '../model/config';
 const origMd = new MarkdownIt({ linkify: true });
 
 const md = {
@@ -24,8 +25,8 @@ const md = {
  * ```ts
  * import { buildTreeForConfig, serveDynamic } from 'fliegdoc';
  *
- * const tree = buildTreeForConfig(config);
- * serveDynamic(tree, port, configOverrides);
+ * const tree = buildTreeForConfig();
+ * serveDynamic(tree, port);
  * ```
  */
 export function serveDynamic(
@@ -74,28 +75,20 @@ export function serveDynamic(
  * Starts an HTTP server on `port` and serves the documentation in the config's `outDir`.
  *
  * @param port - the port on which the documentation gets served
- * @param configOverrides - overrides that get applied to the {@link DEFAULT_CONFIG}
  * @example
  * ```ts
  * import { buildTreeForConfig, serveDynamic, buildStatic } from 'fliegdoc';
  *
- * const tree = buildTreeForConfig(config);
- * await buildStatic(tree, config);
- * serveStatic(port, configOverrides);
+ * const tree = buildTreeForConfig();
+ * await buildStatic(tree);
+ * serveStatic(port);
  * ```
  */
-export function serveStatic(
-	port: number = 3000,
-	configOverrides?: Partial<FliegdocConfig>
-): void {
-	const finalConfig: FliegdocConfig = {
-		...DEFAULT_CONFIG,
-		...(configOverrides ?? {})
-	};
+export function serveStatic(port: number = 3000): void {
 	const app = Express();
-	app.use(finalConfig.baseUrl, Express.static(finalConfig.outDir));
+	app.use(getConfig().baseUrl, Express.static(getConfig().outDir));
 
 	app.listen(port, () => {
-		console.log(`Listening on http://localhost:${port}${finalConfig.baseUrl}`);
+		console.log(`Listening on http://localhost:${port}${getConfig().baseUrl}`);
 	});
 }

@@ -5,8 +5,8 @@
 const {
 	buildStatic,
 	buildTreeForConfig,
+	setConfig,
 	serveDynamic,
-	parseOverrides,
 	serveStatic
 } = require('../build');
 
@@ -18,7 +18,7 @@ const { cosmiconfigSync } = require('cosmiconfig');
 
 const { config, filepath } = cosmiconfigSync('fliegdoc').search();
 
-const overrides = parseOverrides(config, path.dirname(filepath));
+setConfig(config, path.dirname(filepath));
 
 process.on('unhandledRejection', err => {
 	console.error(err);
@@ -50,19 +50,19 @@ yargs
 		},
 		async args => {
 			console.info('Parsing source files');
-			const tree = buildTreeForConfig(overrides);
+			const tree = buildTreeForConfig();
 			console.info(
 				`${cl.green('Success!')} Source files have been parsed successfully.`
 			);
 			console.info('Converting trees to doc pages');
-			await buildStatic(tree, overrides);
+			await buildStatic(tree);
 			console.info(
 				`${cl.green('Success!')} Docs pages were created successfully.`
 			);
 
 			if (args['serve']) {
 				console.info('Serving the built documentation');
-				serveStatic(args['port'], overrides);
+				serveStatic(args['port']);
 			}
 		}
 	)
@@ -79,12 +79,12 @@ yargs
 		},
 		args => {
 			console.info('Parsing source files');
-			const tree = buildTreeForConfig(overrides);
+			const tree = buildTreeForConfig();
 			console.info(
 				`${cl.green('Success!')} Source files have been parsed successfully.`
 			);
 			console.info('Serving the built documentation');
-			serveDynamic(tree, args['port'], overrides);
+			serveDynamic(tree, args['port']);
 		}
 	)
 	.help()

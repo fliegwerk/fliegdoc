@@ -2,7 +2,8 @@ import MarkdownIt from 'markdown-it';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { renderFile } from 'eta';
-import { DEFAULT_CONFIG, FliegdocConfig, Tree } from '../model';
+import { Tree } from '../model';
+import { getConfig } from '../model/config';
 
 const origMd = new MarkdownIt({ linkify: true });
 const viewFolder = path.resolve(__dirname, '..', '..', 'views');
@@ -51,25 +52,17 @@ async function render(
  * Builds the static documentation from `tree` to the config's `outDir`.
  *
  * @param tree - the documentation tree
- * @param configOverrides - the overrides that get applied to the {@link DEFAULT_CONFIG}
  * @example
  * ```ts
  * import { buildTreeForConfig, buildStatic } from 'fliegdoc';
  *
- * const tree = buildTreeForConfig(config);
- * await buildStatic(tree, config);
+ * const tree = buildTreeForConfig();
+ * await buildStatic(tree);
  * ```
  */
-export async function buildStatic(
-	tree: Tree,
-	configOverrides?: Partial<FliegdocConfig>
-): Promise<void> {
-	const finalConfig: FliegdocConfig = {
-		...DEFAULT_CONFIG,
-		...(configOverrides ?? {})
-	};
+export async function buildStatic(tree: Tree): Promise<void> {
 	const readmeContent = origMd.render(
-		(await fs.readFile(finalConfig.readme)).toString()
+		(await fs.readFile(getConfig().readme)).toString()
 	);
 
 	await render(
@@ -77,9 +70,9 @@ export async function buildStatic(
 		{
 			content: readmeContent,
 			modules: Object.keys(tree),
-			config: finalConfig
+			config: getConfig()
 		},
-		path.join(finalConfig.outDir, 'index.html')
+		path.join(getConfig().outDir, 'index.html')
 	);
 
 	await Promise.all(
@@ -90,10 +83,10 @@ export async function buildStatic(
 					moduleName: packageName,
 					members: tree[packageName],
 					md: md,
-					config: finalConfig,
+					config: getConfig(),
 					modules: Object.keys(tree)
 				},
-				path.join(finalConfig.outDir, packageName, 'index.html')
+				path.join(getConfig().outDir, packageName, 'index.html')
 			)
 		)
 	);
