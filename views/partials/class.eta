@@ -27,8 +27,11 @@ const {declaration, md} = it;
 
 <!-- Constructors -->
 <% if (declaration.ctors) { %>
-    <h4>Constructors</h4>
+        <h4>Constructors</h4>
     <% declaration.ctors.forEach((ctor) => { %>
+        <a id="<%=declaration.name%>.constructor" href="#<%=declaration.name%>.constructor">
+            <h5><code>constructor</code></h5>
+        </a>
         <%~ includeFile('function', {declaration: ctor, md}) %>
     <% }) %>
 <% } %>
@@ -37,7 +40,14 @@ const {declaration, md} = it;
 <h4>Properties</h4>
 <% declaration.properties.forEach((property) => { %>
     <a id="<%= declaration.name %>.<%= property.name %>" href="#<%= declaration.name %>.<%= property.name %>">
-        <h5><code><%= declaration.name %>.<%= property.name %></code></h5>
+        <h5><code>
+                <%= property.scope ?? ''%>
+                <%= property.isStatic ? 'static' : ''%>
+                <%= property.isAbstract ? 'abstract' : ''%>
+                <%= property.isReadonly ? 'readonly' : ''%>
+                <%= property.name %>
+                <%= property.hasQuestionToken ? '?' : ''%>
+            </code></h5>
     </a>
     <%~ includeFile('property', {declaration: property, md}) %>
 <% }) %>
@@ -47,7 +57,16 @@ const {declaration, md} = it;
     <h4>Methods</h4>
     <% declaration.methods.forEach((method) => { %>
         <a id="<%= declaration.name %>.<%= method.name %>" href="#<%= declaration.name %>.<%= method.name %>">
-            <h5><code><%= declaration.name %>.<%= method.name %></code></h5>
+            <h5><code>
+                    <%= method.scope ?? ''%>
+                    <%= method.isStatic ? 'static' : ''%>
+                    <%= method.isAbstract ? 'abstract' : ''%>
+                    <%= method.isAsync ? 'async' : ''%>
+                    <%= method.name %>
+                    <%= method.isGenerator ? '*' : ''%>
+                    (...)
+                    <%= method.hasQuestionToken ? '?' : ''%>
+                </code></h5>
         </a>
         <%~ includeFile('function', {declaration: method, md}) %>
     <% }) %>
