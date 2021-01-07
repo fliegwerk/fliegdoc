@@ -6,7 +6,8 @@ const {
 	buildStatic,
 	buildTreeForConfig,
 	serveDynamic,
-	parseOverrides
+	parseOverrides,
+	serveStatic
 } = require('../build');
 
 const yargs = require('yargs');
@@ -32,6 +33,10 @@ yargs
 		async args => {
 			const tree = buildTreeForConfig(overrides);
 			await buildStatic(tree, overrides);
+
+			if (args['serve']) {
+				serveStatic(3000, overrides);
+			}
 		}
 	)
 	.command(
