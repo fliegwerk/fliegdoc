@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/fliegwerk/fliegdoc/compare/v0.1.5...v0.1.6) (2021-01-07)
+
+### Features
+
+- Type optimizations, ESLint ([aa60111](https://github.com/fliegwerk/fliegdoc/commit/aa60111f58aea9aa042027b409cba4f37e6751e2))
+
 ### [0.1.5](https://github.com/fliegwerk/fliegdoc/compare/v0.1.4...v0.1.5) (2021-01-07)
 
 ### [0.1.4](https://github.com/fliegwerk/fliegdoc/compare/v0.1.3...v0.1.4) (2021-01-07)
