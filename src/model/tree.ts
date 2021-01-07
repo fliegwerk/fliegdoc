@@ -1,5 +1,11 @@
+/**
+ * A documentation-ready tree for a single module
+ */
 export type ModuleTree = (Record<string, unknown> & { name: string })[];
 
-export interface Tree {
+/**
+ * A documentation-ready tree for multiple modules
+ */
+export type Tree = {
 	[moduleName: string]: ModuleTree;
-}
+};

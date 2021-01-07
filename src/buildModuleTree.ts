@@ -3,6 +3,22 @@ import { Project } from 'ts-morph';
 import fs from 'fs';
 import { processNode } from './processors/init';
 
+/**
+ * Generates a {@link ModuleTree} for the passed
+ *
+ * @param module - the module configuration for which the tree should get generated
+ * @returns module name and {@link ModuleTree}
+ * @example
+ * ```ts
+ * import { buildModuleTree } from 'fliegdoc';
+ *
+ * buildModuleTree({
+ * 	tsconfig,
+ * 	package,
+ * 	mainFile
+ * });
+ * ```
+ */
 export function buildModuleTree(
 	module: Module
 ): [moduleName: string, moduleTree: ModuleTree] {

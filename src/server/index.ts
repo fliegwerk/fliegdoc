@@ -12,13 +12,21 @@ const md = {
 
 /**
  * Starts an http server on `port` and serves the generated documentation
+ *
  * @param tree - the documentation tree
  * @param port - the port on which the documentation gets served
- * @param configOverrides -
+ * @param configOverrides - overrides that get applied to the {@link DEFAULT_CONFIG}
+ * @example
+ * ```ts
+ * import { buildTreeForConfig, serveDynamic } from 'fliegdoc';
+ *
+ * const tree = buildTreeForConfig(config);
+ * serveDynamic(tree, port, configOverrides);
+ * ```
  */
 export function serveDynamic(
 	tree: Tree,
-	port = 3000,
+	port: number = 3000,
 	configOverrides?: Partial<FliegdocConfig>
 ): void {
 	const finalConfig: FliegdocConfig = {
@@ -56,8 +64,22 @@ export function serveDynamic(
 	});
 }
 
+/**
+ * Starts an HTTP server on `port` and serves the documentation in the config's `outDir`.
+ *
+ * @param port - the port on which the documentation gets served
+ * @param configOverrides - overrides that get applied to the {@link DEFAULT_CONFIG}
+ * @example
+ * ```ts
+ * import { buildTreeForConfig, serveDynamic, buildStatic } from 'fliegdoc';
+ *
+ * const tree = buildTreeForConfig(config);
+ * await buildStatic(tree, config);
+ * serveStatic(port, configOverrides);
+ * ```
+ */
 export function serveStatic(
-	port = 3000,
+	port: number = 3000,
 	configOverrides?: Partial<FliegdocConfig>
 ): void {
 	const finalConfig: FliegdocConfig = {

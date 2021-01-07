@@ -18,8 +18,13 @@ import { processModule } from './module';
 
 /**
  * Processes a node for documentation-relevant values
+ *
  * @param node - the node that gets parsed for documentation data
  * @returns documentation tree for the node and its children, if applicable
+ * @example
+ * ```ts
+ * processNode(node);
+ * ```
  */
 export function processNode(node: Node): Record<string, unknown> {
 	switch (node.getKind()) {

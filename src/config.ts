@@ -3,8 +3,20 @@ import { FliegdocConfig } from './model';
 
 /**
  * Resolves relative paths for config overrides
- * @param overrides -
- * @param basePath -
+ *
+ * @param overrides - configuration overrides
+ * @param basePath - the base path of the config file, from which relative paths get resolved
+ * @returns `overrides` with converted relative paths
+ * @example
+ * ```ts
+ * import { parseOverrides } from 'fliegdoc';
+ *
+ * const config = JSON.parse(
+ * 	fs.readFileSync(filepath).toString()
+ * )
+ *
+ * const configOverrides = parseOverrides(config, path.dirname(filepath));
+ * ```
  */
 export function parseOverrides(
 	overrides: Partial<FliegdocConfig> = {},

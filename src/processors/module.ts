@@ -1,6 +1,16 @@
 import { NamespaceDeclaration } from 'ts-morph';
 import { processNode } from './init';
 
+/**
+ * Converts a `NamespaceDeclaration` to a documentation-ready representation.
+ *
+ * @param node - the namespace or module declaration
+ * @returns documentation-ready representation of the namespace or module
+ * @example
+ * ```ts
+ * processModule(node);
+ * ```
+ */
 export function processModule(
 	node: NamespaceDeclaration
 ): Record<string, unknown> {
@@ -18,5 +28,6 @@ export function processModule(
 		}
 		return res;
 	}
+	// TODO: Module type
 	return { type: 'module' };
 }

@@ -18,9 +18,18 @@ const md = {
 
 /**
  * Render a view to a target file (the `outPath`)
+ *
  * @param view - the view that should get rendered, without `.ejs` and relative to the `views` folder
  * @param data - the data passed to the view
  * @param outPath - the path to the file where the view gets rendered to
+ * @example
+ * ```ts
+ * render('plain', {
+ *  	content: '<h1>Test</h1>'
+ *		modules: modules,
+ *		config
+ * }, path.join(outDir, 'test.html'))
+ * ```
  */
 async function render(
 	view: string,
@@ -37,9 +46,17 @@ async function render(
 }
 
 /**
- * Starts an http server on `port` and serves the generated documentation
+ * Builds the static documentation from `tree` to the config's `outDir`.
+ *
  * @param tree - the documentation tree
- * @param configOverrides -
+ * @param configOverrides - the overrides that get applied to the {@link DEFAULT_CONFIG}
+ * @example
+ * ```ts
+ * import { buildTreeForConfig, buildStatic } from 'fliegdoc';
+ *
+ * const tree = buildTreeForConfig(config);
+ * await buildStatic(tree, config);
+ * ```
  */
 export async function buildStatic(
 	tree: Tree,
