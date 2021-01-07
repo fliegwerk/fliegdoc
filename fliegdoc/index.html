@@ -583,26 +583,6 @@ buildModuleTree({
     <!-- Tags -->
     <div class="row">
             </div>
-    <a id="FliegdocConfig.hidePrivateMembers" href="#FliegdocConfig.hidePrivateMembers">
-        <h5><code>FliegdocConfig.hidePrivateMembers</code></h5>
-    </a>
-    <!-- Signature -->
-<p>
-    <b>Type:
-        <code>
-            <!-- Type -->
-            boolean        </code>
-    </b>
-</p>
-
-<!-- Docs -->
-    <!-- Description -->
-    <p>Hide private class members in the documentation</p>
-<p><strong>Default value:</strong> <code>true</code></p>
-
-    <!-- Tags -->
-    <div class="row">
-            </div>
 
 <!-- Methods -->
                         </div>
@@ -739,6 +719,16 @@ in the <code>tsconfig.json</code></p>
                 <!-- TODO: Default value -->
 
                 <!-- Comma if not last -->
+                ,                             
+                <br>
+
+                <!-- parameter name -->
+                configOverrides
+                <!-- type -->
+                : Partial&lt;FliegdocConfig&gt;
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
                                         <br>
             )
 
@@ -772,6 +762,16 @@ in the <code>tsconfig.json</code></p>
 
             <!-- Tag content -->
             <div class="col-sm-10"><p>port - the port on which the documentation gets served</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>configOverrides - overrides that get applied to the <a href="#DEFAULT_CONFIG"><code>DEFAULT_CONFIG</code></a></p>
 </div>
                     <!-- Tag name -->
             <div class="col-sm-2">
