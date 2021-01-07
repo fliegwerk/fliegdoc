@@ -3,15 +3,20 @@ module.exports = {
 		es2021: true,
 		node: true
 	},
-	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+	extends: [
+		'prettier',
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended'
+	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaVersion: 12,
 		sourceType: 'module'
 	},
-	plugins: ['@typescript-eslint', 'eslint-plugin-tsdoc'],
+	plugins: ['prettier', '@typescript-eslint', 'eslint-plugin-tsdoc'],
 	rules: {
-		'tsdoc/syntax': 'warn'
+		'tsdoc/syntax': 'warn',
+		'prettier/prettier': 'warn'
 	},
 	ignorePatterns: ['node_modules', 'docs', 'build']
 };

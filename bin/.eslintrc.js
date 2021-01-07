@@ -5,9 +5,12 @@ module.exports = {
 		node: true
 	},
 	root: true,
-	extends: 'eslint:recommended',
+	extends: ['prettier', 'eslint:recommended'],
+	plugins: ['prettier'],
 	parserOptions: {
 		ecmaVersion: 12
 	},
-	rules: {}
+	rules: {
+		'prettier/prettier': 'warn'
+	}
 };
