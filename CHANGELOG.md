@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/fliegwerk/fliegdoc/compare/v0.1.7...v0.1.8) (2021-01-07)
+
+### Bug Fixes
+
+- Include Typescript Definitions in package ([ba75936](https://github.com/fliegwerk/fliegdoc/commit/ba759361168bf7144820cc4eda4788ae2ae9084c))
+
 ### [0.1.7](https://github.com/fliegwerk/fliegdoc/compare/v0.1.6...v0.1.7) (2021-01-07)
 
 ### Bug Fixes
