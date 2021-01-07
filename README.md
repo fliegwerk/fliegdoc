@@ -9,7 +9,7 @@
 
 > A documentation generator for Typescript-based libraries with good support for monorepos
 
-### 🏠 [Homepage & Demo](https://fliegwerk.github.io/fliegdoc)
+### 🏠 [Homepage, Demo & Docs](https://fliegwerk.github.io/fliegdoc)
 
 ## Prerequisites
 
