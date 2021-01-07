@@ -59,7 +59,9 @@ module.exports = {
 			tsconfig: './tsconfig.json',
 			mainFile: 'main.ts'
 		}
-	]
+	],
+	title: 'Documentation', // appears in the page title and header
+	externalLinks: {} // e.g.: { "GitHub": "https://github.com/fliegwerk/fliegdoc" }
 };
 ```
 
