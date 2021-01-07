@@ -10,6 +10,8 @@ const {
 	serveStatic
 } = require('../build');
 
+const ch = require('chalk');
+
 const yargs = require('yargs');
 const path = require('path');
 const { cosmiconfigSync } = require('cosmiconfig');
@@ -20,14 +22,16 @@ const overrides = parseOverrides(config, path.dirname(filepath));
 
 process.on('unhandledRejection', err => {
 	console.error(err);
-	throw err;
+	process.exit(1);
 });
 
 yargs
 	.scriptName('fliegdoc')
-	.usage('Usage: $0 [command] [options] [dir]')
+	.epilog('Get help for individual commands by running $0 <command> --help')
+	.alias('v', 'version')
+	.usage('Usage: $0 [command] [options]')
 	.command(
-		['$0 [options]', 'build [options]'],
+		['$0 [options]', 'build [options]', 'b [options]'],
 		'Build the documentation',
 		y => {
 			return y
@@ -41,21 +45,29 @@ yargs
 					implies: ['serve'],
 					alias: 'p',
 					type: 'number',
-					describe: 'The port on which the documentation gets hosted',
-					default: 3000
+					describe: 'The port on which the documentation gets hosted'
 				});
 		},
 		async args => {
+			console.info('Parsing source files');
 			const tree = buildTreeForConfig(overrides);
+			console.info(
+				`${ch.green('Success!')} Source files have been parsed successfully.`
+			);
+			console.info('Converting trees to doc pages');
 			await buildStatic(tree, overrides);
+			console.info(
+				`${ch.green('Success!')} Docs pages were created successfully.`
+			);
 
 			if (args['serve']) {
+				console.info('Serving the built documentation');
 				serveStatic(args['port'], overrides);
 			}
 		}
 	)
 	.command(
-		'serve [options]',
+		['serve [options]', 's [options]'],
 		'Preview the documentation in the browser',
 		y => {
 			return y.option('port', {
@@ -66,10 +78,16 @@ yargs
 			});
 		},
 		args => {
+			console.info('Parsing source files');
 			const tree = buildTreeForConfig(overrides);
+			console.info(
+				`${ch.green('Success!')} Source files have been parsed successfully.`
+			);
+			console.info('Serving the built documentation');
 			serveDynamic(tree, args['port'], overrides);
 		}
 	)
 	.help()
 	.demandCommand()
+	.completion()
 	.parse();
