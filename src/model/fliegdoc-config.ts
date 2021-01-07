@@ -52,6 +52,12 @@ export interface FliegdocConfig {
 	 * External navigation links for the header in a key-value-manner, where the key is the label and the value the link.
 	 */
 	externalLinks: Record<string, string>;
+	/**
+	 * Hide private class members in the documentation
+	 *
+	 * **Default value:** `true`
+	 */
+	hidePrivateMembers: boolean;
 }
 
 /**
@@ -72,5 +78,6 @@ export const DEFAULT_CONFIG: FliegdocConfig = {
 	outDir: path.resolve(process.cwd(), 'docs'),
 	baseUrl: '/',
 	title: 'Documentation',
-	externalLinks: {}
+	externalLinks: {},
+	hidePrivateMembers: true
 };

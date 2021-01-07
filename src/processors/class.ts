@@ -1,6 +1,7 @@
 import { ClassDeclaration } from 'ts-morph';
 import { processJsDocs } from './helpers/processJsDocs';
 import { extractPropertiesAndMethods } from './helpers/extractPropertiesAndMethods';
+import { getConfig } from '../model/config';
 
 /**
  * Converts a `ClassDeclaration` or `InterfaceDeclaration` to a documentation-ready representation.
@@ -17,6 +18,17 @@ export function processClassDeclaration(
 ): Record<string, unknown> {
 	const structure = node.getStructure();
 	extractPropertiesAndMethods(structure, node);
+
+	if (getConfig().hidePrivateMembers) {
+		if (structure.properties)
+			structure.properties = structure.properties.filter(
+				property => property.scope !== 'private'
+			);
+		if (structure.methods)
+			structure.methods = structure.methods.filter(
+				method => method.scope !== 'private'
+			);
+	}
 
 	if (structure.ctors) {
 		for (let i = 0; i < structure.ctors.length; i++) {

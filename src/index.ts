@@ -28,13 +28,6 @@ export function buildTreeForConfig(): Tree {
 	return tree;
 }
 
-// export class Test {
-// 	private static staticPrivate: string = 'sp';
-// 	public static staticPublic: string = 'sP';
-// 	private private: string = 'ip';
-// 	public public: string = 'iP';
-// }
-
 export * from './model/config';
 export * from './buildModuleTree';
 export * from './model';

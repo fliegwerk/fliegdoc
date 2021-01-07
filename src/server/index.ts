@@ -1,7 +1,7 @@
 import Express from 'express';
 import MarkdownIt from 'markdown-it';
 import * as fs from 'fs';
-import { DEFAULT_CONFIG, FliegdocConfig, Tree } from '../model';
+import { Tree } from '../model';
 import * as path from 'path';
 import { renderFile } from 'eta';
 import { getConfig } from '../model/config';
@@ -20,7 +20,6 @@ const md = {
  *
  * @param tree - the documentation tree
  * @param port - the port on which the documentation gets served
- * @param configOverrides - overrides that get applied to the {@link DEFAULT_CONFIG}
  * @example
  * ```ts
  * import { buildTreeForConfig, serveDynamic } from 'fliegdoc';
@@ -29,37 +28,29 @@ const md = {
  * serveDynamic(tree, port);
  * ```
  */
-export function serveDynamic(
-	tree: Tree,
-	port: number = 3000,
-	configOverrides?: Partial<FliegdocConfig>
-): void {
-	const finalConfig: FliegdocConfig = {
-		...DEFAULT_CONFIG,
-		...(configOverrides ?? {})
-	};
+export function serveDynamic(tree: Tree, port: number = 3000): void {
 	const app = Express();
 
 	app.engine('eta', renderFile);
 	app.set('view engine', 'eta');
 	app.set('views', path.join(__dirname, '..', '..', 'views'));
 
-	app.get(`${finalConfig.baseUrl}`, (req, res) => {
+	app.get(`${getConfig().baseUrl}`, (req, res) => {
 		res.render('plain', {
-			content: md.render(fs.readFileSync(finalConfig.readme).toString()),
-			config: finalConfig,
+			content: md.render(fs.readFileSync(getConfig().readme).toString()),
+			config: getConfig(),
 			modules: Object.keys(tree)
 		});
 	});
 
 	for (const packageName in tree) {
 		if (Object.prototype.hasOwnProperty.call(tree, packageName)) {
-			app.get(finalConfig.baseUrl + packageName, (req, res) => {
+			app.get(getConfig().baseUrl + packageName, (req, res) => {
 				res.render('module', {
 					moduleName: packageName,
 					members: tree[packageName],
 					md: md,
-					config: finalConfig,
+					config: getConfig(),
 					modules: Object.keys(tree)
 				});
 			});
@@ -67,7 +58,7 @@ export function serveDynamic(
 	}
 
 	app.listen(port, () => {
-		console.log(`Listening on http://localhost:${port}${finalConfig.baseUrl}`);
+		console.log(`Listening on http://localhost:${port}${getConfig().baseUrl}`);
 	});
 }
 
