@@ -1,22 +1,27 @@
+<%
+/**
+ * @name typeParameters
+ */
+%>
 <% if (typeParameters.length) {
 %>
     <!-- opening angle bracket -->
     &lt;
 
-    <% typeParameters.forEach(function (tparam, index) { %>
+    <% typeParameters.forEach(function (typeParam, index) { %>
         <% let last = index >= typeParameters.length - 1 %>
 
         <!-- Name -->
-        <%= tparam.name %>
+        <%= typeParam.name %>
 
         <!-- Constraints -->
-        <% if (tparam.constraint) { %>
-            : <%= tparam.constraint %>
+        <% if (typeParam.constraint) { %>
+            : <%= typeParam.constraint %>
         <% } %>
 
         <!-- Default -->
-        <% if (tparam.default) { %>
-            = <%= tparam.default %>
+        <% if (typeParam.default) { %>
+            = <%= typeParam.default %>
         <% } %>
 
         <!-- Comma if not last -->

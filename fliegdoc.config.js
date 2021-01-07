@@ -1,6 +1,3 @@
-/**
- * @type {Partial<FliegdocConfig>}
- */
 module.exports = {
 	outDir: './docs',
 	modules: [

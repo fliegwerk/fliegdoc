@@ -8,7 +8,7 @@ const origMd = new MarkdownIt({ linkify: true });
 const viewFolder = path.resolve(__dirname, '..', '..', 'views');
 
 /**
- * Custom Mardown-It implementation to replace {@\link something}
+ * Custom Markdown-It implementation to replace links
  */
 const md = {
 	render: (md: string) => {
@@ -18,26 +18,28 @@ const md = {
 
 /**
  * Render a view to a target file (the `outPath`)
- * @param view the view that should get rendered, without `.ejs` and relative to the `views` folder
- * @param data the data passed to the view
- * @param outPath the path to the file where the view gets rendered to
+ * @param view - the view that should get rendered, without `.ejs` and relative to the `views` folder
+ * @param data - the data passed to the view
+ * @param outPath - the path to the file where the view gets rendered to
  */
-async function render(view: string, data: any, outPath: string): Promise<void> {
+async function render(
+	view: string,
+	data: Record<string, unknown>,
+	outPath: string
+): Promise<void> {
 	await fs.mkdir(path.dirname(outPath), { recursive: true });
 	await fs.writeFile(
 		outPath,
-		// @ts-ignore
 		await ejs.renderFile(path.resolve(viewFolder, view + '.ejs'), data, {
-			root: viewFolder,
-			views: viewFolder
+			root: viewFolder
 		})
 	);
 }
 
 /**
  * Starts an http server on `port` and serves the generated documentation
- * @param tree the documentation tree
- * @param configOverrides
+ * @param tree - the documentation tree
+ * @param configOverrides -
  */
 export async function buildStatic(
 	tree: Tree,

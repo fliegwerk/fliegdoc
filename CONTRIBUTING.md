@@ -37,7 +37,7 @@ Don't have time to contribute? No worries, here are some other ways to show your
 
 Please only create issues for bug reports or feature requests. Issues discussing any other topics may be closed by the project's maintainers without further explanation.
 
-Do not create issues about bumping dependencies unless a bug has been identified and you can demonstrate that it effects this library.
+Do not create issues about bumping dependencies unless a bug has been identified, and you can demonstrate that it effects this library.
 
 **Help us to help you**
 
@@ -55,7 +55,7 @@ Please try to determine if the issue is caused by an underlying library, and if 
 Try to follow these guidelines:
 
 - **Avoid creating issues for implementation help** - It's much better for discoverability, SEO, and semantics - to keep the issue tracker focused on bugs and feature requests - to ask implementation-related questions on [stackoverflow.com][so]
-- **Investigate the issue** - Search for exising issues (open or closed) that address the issue, and might have even resolved it already.
+- **Investigate the issue** - Search for existing issues (open or closed) that address the issue, and might have even resolved it already.
 - **Check the readme** - oftentimes you will find notes about creating issues, and where to go depending on the type of issue.
 - Create the issue in the appropriate repository.
 
@@ -87,9 +87,9 @@ Spending just a little extra time to review best practices and brush up on your 
 The following resources were hand-picked to help you be the most effective contributor you can be:
 
 - The [Guide to Idiomatic Contributing](https://github.com/jonschlinkert/idiomatic-contributing) is a great place for newcomers to start, but there is also information for experienced contributors there.
-- Take some time to learn basic markdown. We can't stress this enough. Don't start pasting code into GitHub issues before you've taken a moment to review this [markdown cheatsheet](https://gist.github.com/jonschlinkert/5854601)
+- Take some time to learn some basic markdown. We can't stress this enough. Don't start pasting code into GitHub issues before you've taken a moment to review this [markdown cheatsheet](https://gist.github.com/jonschlinkert/5854601)
 - The GitHub guide to [basic markdown](https://help.github.com/articles/markdown-basics/) is another great markdown resource.
-- Learn about [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/). And if you want to really go above and beyond, read [mastering markdown](https://guides.github.com/features/mastering-markdown/).
+- Learn about [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/). If you want to really go above and beyond, read [mastering markdown](https://guides.github.com/features/mastering-markdown/).
 
 At the very least, please try to:
 

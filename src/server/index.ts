@@ -1,7 +1,7 @@
 import Express from 'express';
 import MarkdownIt from 'markdown-it';
 import * as fs from 'fs';
-import { DEFAULT_CONFIG, FliegdocConfig } from '../model';
+import { DEFAULT_CONFIG, FliegdocConfig, Tree } from '../model';
 const origMd = new MarkdownIt({ linkify: true });
 
 const md = {
@@ -12,15 +12,15 @@ const md = {
 
 /**
  * Starts an http server on `port` and serves the generated documentation
- * @param tree the documentation tree
- * @param port the port on which the documentation gets served
- * @param configOverrides
+ * @param tree - the documentation tree
+ * @param port - the port on which the documentation gets served
+ * @param configOverrides -
  */
 export function serveDynamic(
-	tree: any,
+	tree: Tree,
 	port = 3000,
 	configOverrides?: Partial<FliegdocConfig>
-) {
+): void {
 	const finalConfig: FliegdocConfig = {
 		...DEFAULT_CONFIG,
 		...(configOverrides ?? {})
@@ -38,7 +38,7 @@ export function serveDynamic(
 	});
 
 	for (const packageName in tree) {
-		if (tree.hasOwnProperty(packageName)) {
+		if (Object.prototype.hasOwnProperty.call(tree, packageName)) {
 			app.get(finalConfig.baseUrl + packageName, (req, res) => {
 				res.render('module', {
 					moduleName: packageName,
@@ -57,9 +57,9 @@ export function serveDynamic(
 }
 
 export function serveStatic(
-	port: number = 3000,
+	port = 3000,
 	configOverrides?: Partial<FliegdocConfig>
-) {
+): void {
 	const finalConfig: FliegdocConfig = {
 		...DEFAULT_CONFIG,
 		...(configOverrides ?? {})

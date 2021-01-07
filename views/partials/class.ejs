@@ -1,3 +1,8 @@
+<%
+/**
+ * @name declaration
+ */
+%>
 <!-- Signature -->
 <p>
     <b>
@@ -27,7 +32,8 @@
     <h4>Constructors</h4>
     <% declaration.ctors.forEach((ctor) => { %>
         <%- include('function', {declaration: ctor, md}) %>
-<% }) } %>
+    <% }) %>
+<% } %>
 
 <!-- Properties -->
 <h4>Properties</h4>

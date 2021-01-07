@@ -15,7 +15,7 @@ export interface Module {
 	 */
 	tsconfig: string;
 	/**
-	 * Relative path from the tsconfig's includes to the module's main file, exporting all members
+	 * Relative path from the tsconfig `includes` to the module's main file, exporting all members
 	 * @example `main.ts`
 	 */
 	mainFile: string;
@@ -39,7 +39,7 @@ export interface FliegdocConfig {
 	outDir: string;
 	/**
 	 * Base url of the domain to which the docs get deployed, including a trailing `/`
-	 * @default "/"
+	 * @defaultValue "/"
 	 */
 	baseUrl: string;
 }

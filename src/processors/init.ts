@@ -18,10 +18,10 @@ import { processModule } from './module';
 
 /**
  * Processes a node for documentation-relevant values
- * @param node the node that gets parsed for documentation data
- * @return documentation tree for the node and its children, if applicable
+ * @param node - the node that gets parsed for documentation data
+ * @returns documentation tree for the node and its children, if applicable
  */
-export function processNode(node: Node) {
+export function processNode(node: Node): Record<string, unknown> {
 	switch (node.getKind()) {
 		case SyntaxKind.FunctionDeclaration:
 			return processFunctionDeclaration(node as FunctionDeclaration);
@@ -37,5 +37,7 @@ export function processNode(node: Node) {
 			return processIdentifier(node as Identifier);
 		case SyntaxKind.ModuleDeclaration:
 			return processModule(node as NamespaceDeclaration);
+		default:
+			return { type: 'unknown', kind: node.getKindName() };
 	}
 }

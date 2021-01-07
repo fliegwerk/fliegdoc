@@ -1,6 +1,8 @@
 import { FunctionDeclaration } from 'ts-morph';
 
-export function processFunctionDeclaration(node: FunctionDeclaration) {
+export function processFunctionDeclaration(
+	node: FunctionDeclaration
+): Record<string, unknown> {
 	// return signature.getDocumentationComments()
 	return {
 		type: 'function',

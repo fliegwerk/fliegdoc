@@ -3,8 +3,8 @@ import { FliegdocConfig } from './model';
 
 /**
  * Resolves relative paths for config overrides
- * @param overrides
- * @param basePath
+ * @param overrides -
+ * @param basePath -
  */
 export function parseOverrides(
 	overrides: Partial<FliegdocConfig> = {},

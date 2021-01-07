@@ -10,7 +10,7 @@ export function buildTreeForConfig(
 	};
 	let tree: Tree = {};
 
-	for (let module of finalConfig.modules) {
+	for (const module of finalConfig.modules) {
 		const [moduleName, moduleTree] = buildModuleTree(module);
 		tree = { ...tree };
 		tree[moduleName] = moduleTree;
