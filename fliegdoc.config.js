@@ -8,5 +8,9 @@ module.exports = {
 		}
 	],
 	baseUrl: '/fliegdoc/',
-	title: 'fliegdoc Documentation'
+	title: 'fliegdoc Documentation',
+	externalLinks: {
+		GitHub: 'https://github.com/fliegwerk/fliegdoc',
+		npm: 'https://www.npmjs.com/package/fliegdoc'
+	}
 };

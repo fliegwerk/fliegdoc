@@ -72,8 +72,5 @@ export const DEFAULT_CONFIG: FliegdocConfig = {
 	outDir: path.resolve(process.cwd(), 'docs'),
 	baseUrl: '/',
 	title: 'Documentation',
-	externalLinks: {
-		GitHub: 'https://github.com/fliegwerk/fliegdoc',
-		npm: 'https://www.npmjs.com/package/fliegdoc'
-	}
+	externalLinks: {}
 };
