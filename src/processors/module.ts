@@ -1,6 +1,6 @@
 import { NamespaceDeclaration } from 'ts-morph';
 import { processNode } from './init';
-import { processJsDocs } from './processJsDocs';
+import { processJsDocs } from './helpers/processJsDocs';
 
 /**
  * Converts a `NamespaceDeclaration` to a documentation-ready representation.

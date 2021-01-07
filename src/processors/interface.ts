@@ -1,5 +1,4 @@
-import { ClassDeclaration } from 'ts-morph';
-import { processJsDocs } from './helpers/processJsDocs';
+import { InterfaceDeclaration } from 'ts-morph';
 import { extractPropertiesAndMethods } from './helpers/extractPropertiesAndMethods';
 
 /**
@@ -12,22 +11,13 @@ import { extractPropertiesAndMethods } from './helpers/extractPropertiesAndMetho
  * processClassDeclaration(node);
  * ```
  */
-export function processClassDeclaration(
-	node: ClassDeclaration
+export function processInterfaceDeclaration(
+	node: InterfaceDeclaration
 ): Record<string, unknown> {
 	const structure = node.getStructure();
 	extractPropertiesAndMethods(structure, node);
-
-	if (structure.ctors) {
-		for (let i = 0; i < structure.ctors.length; i++) {
-			structure.ctors[i].docs = processJsDocs(
-				node.getConstructors()[i].getJsDocs()
-			);
-		}
-	}
-
 	return {
-		type: 'class',
+		type: 'interface',
 		name: node.getName(),
 		declarations: [structure]
 	};

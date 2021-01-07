@@ -26,7 +26,9 @@
         <% member.declarations.forEach(function(declaration) { %>
             <% if (declaration.type === 'function') { %>
                 <%~ includeFile('partials/function', {...it, declaration: declaration.declarations[0]}) %>
-            <% } else if (declaration.type === 'class-interface') { %>
+            <% } else if (declaration.type === 'interface') { %>
+                <%~ includeFile('partials/class', {...it, declaration: declaration.declarations[0]}) %>
+            <% } else if (declaration.type === 'class') { %>
                 <%~ includeFile('partials/class', {...it, declaration: declaration.declarations[0]}) %>
             <% } else if (declaration.type === 'variable') { %>
                 <%~ includeFile('partials/variable', {...it, declaration: declaration.declarations[0]}) %>

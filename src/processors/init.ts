@@ -15,6 +15,7 @@ import { processType } from './type';
 import { processVariableDeclaration } from './variable';
 import { processIdentifier } from './identifier';
 import { processModule } from './module';
+import { processInterfaceDeclaration } from './interface';
 
 /**
  * Processes a node for documentation-relevant values
@@ -33,7 +34,7 @@ export function processNode(node: Node): Record<string, unknown> {
 		case SyntaxKind.ClassDeclaration:
 			return processClassDeclaration(node as ClassDeclaration);
 		case SyntaxKind.InterfaceDeclaration:
-			return processClassDeclaration(node as InterfaceDeclaration);
+			return processInterfaceDeclaration(node as InterfaceDeclaration);
 		case SyntaxKind.TypeAliasDeclaration:
 			return processType(node as TypeAliasDeclaration);
 		case SyntaxKind.VariableDeclaration:

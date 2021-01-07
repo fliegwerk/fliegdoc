@@ -1,5 +1,5 @@
 import { VariableDeclaration } from 'ts-morph';
-import { processJsDocs } from './processJsDocs';
+import { processJsDocs } from './helpers/processJsDocs';
 
 /**
  * Converts a `VariableDeclaration` to a documentation-ready representation.

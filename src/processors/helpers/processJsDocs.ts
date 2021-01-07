@@ -1,4 +1,9 @@
-import { JSDoc, JSDocTagStructure } from 'ts-morph';
+import {
+	JSDoc,
+	JSDocStructure,
+	JSDocTagStructure,
+	OptionalKind
+} from 'ts-morph';
 
 /**
  * Extracts tags from JSDocs array
@@ -12,7 +17,7 @@ import { JSDoc, JSDocTagStructure } from 'ts-morph';
  */
 export function processJsDocs(
 	docs: JSDoc[]
-): { description: string; tags: Partial<JSDocTagStructure>[] }[] {
+): (OptionalKind<JSDocStructure> | string)[] {
 	return docs.map(d => {
 		const lines = d.getInnerText().split('\n');
 		let inCode = false;
@@ -23,7 +28,6 @@ export function processJsDocs(
 
 		for (let line of lines) {
 			if (!inCode && line.startsWith('@')) {
-				console.log({ line, currentTag, inCode });
 				tags.push(currentTag);
 				currentTag = {
 					text: '',
@@ -43,7 +47,7 @@ export function processJsDocs(
 
 		return {
 			description: d.getDescription(),
-			tags: tags.filter(t => t) as Partial<JSDocTagStructure>[]
+			tags: tags.filter(t => t) as JSDocTagStructure[]
 		};
 	});
 }
