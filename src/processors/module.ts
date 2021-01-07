@@ -1,5 +1,6 @@
 import { NamespaceDeclaration } from 'ts-morph';
 import { processNode } from './init';
+import { processJsDocs } from './processJsDocs';
 
 /**
  * Converts a `NamespaceDeclaration` to a documentation-ready representation.
@@ -17,6 +18,7 @@ export function processModule(
 	if (node.hasNamespaceKeyword()) {
 		const res: Record<string, unknown> & { exportedMembers: unknown[] } = {
 			name: node.getName(),
+			docs: processJsDocs(node.getJsDocs()),
 			type: 'namespace',
 			exportedMembers: []
 		};

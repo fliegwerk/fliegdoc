@@ -1,4 +1,5 @@
 import { TypeAliasDeclaration } from 'ts-morph';
+import { processJsDocs } from './processJsDocs';
 
 /**
  * Converts a `TypeAleasDeclaration` to a documentation-ready representation.
@@ -16,6 +17,8 @@ export function processType(
 	return {
 		type: 'type',
 		name: node.getName(),
-		declarations: [node.getStructure()]
+		declarations: [
+			{ ...node.getStructure(), docs: processJsDocs(node.getJsDocs()) }
+		]
 	};
 }

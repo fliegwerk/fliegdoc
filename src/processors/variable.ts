@@ -1,4 +1,5 @@
 import { VariableDeclaration } from 'ts-morph';
+import { processJsDocs } from './processJsDocs';
 
 /**
  * Converts a `VariableDeclaration` to a documentation-ready representation.
@@ -16,6 +17,11 @@ export function processVariableDeclaration(
 	return {
 		type: 'variable',
 		name: node.getName(),
-		declarations: [node.getVariableStatement()?.getStructure()]
+		declarations: [
+			{
+				...node.getVariableStatement()?.getStructure(),
+				docs: processJsDocs(node.getVariableStatement()?.getJsDocs() ?? [])
+			}
+		]
 	};
 }

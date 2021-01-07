@@ -11,8 +11,10 @@ const viewFolder = path.resolve(__dirname, '..', '..', 'views');
  * Custom Markdown-It implementation to replace links
  */
 const md = {
-	render: (md: string) => {
-		return origMd.render(md.replaceAll(/{@link (.*?)}/g, '[`$1`](#$1)'));
+	render: (md?: string) => {
+		return origMd.render(
+			(md ?? '').replaceAll(/{@link (.*?)}/g, '[`$1`](#$1)')
+		);
 	}
 };
 

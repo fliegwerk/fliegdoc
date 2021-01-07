@@ -1,4 +1,5 @@
 import { ClassDeclaration, InterfaceDeclaration } from 'ts-morph';
+import { processJsDocs } from './processJsDocs';
 
 /**
  * Converts a `ClassDeclaration` or `InterfaceDeclaration` to a documentation-ready representation.
@@ -16,6 +17,11 @@ export function processClassDeclaration(
 	return {
 		type: 'class-interface',
 		name: node.getName(),
-		declarations: [node.getStructure()]
+		declarations: [
+			{
+				...node.getStructure(),
+				docs: processJsDocs(node.getJsDocs())
+			}
+		]
 	};
 }

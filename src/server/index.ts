@@ -7,8 +7,10 @@ import { renderFile } from 'eta';
 const origMd = new MarkdownIt({ linkify: true });
 
 const md = {
-	render: (md: string) => {
-		return origMd.render(md.replaceAll(/{@link (.*?)}/g, '[`$1`](#$1)'));
+	render: (md?: string) => {
+		return origMd.render(
+			(md ?? '').replaceAll(/{@link (.*?)}/g, '[`$1`](#$1)')
+		);
 	}
 };
 
