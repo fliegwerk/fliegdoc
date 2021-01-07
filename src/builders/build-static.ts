@@ -41,7 +41,6 @@ async function render(
 	await fs.writeFile(
 		outPath,
 		await (renderFile(path.resolve(viewFolder, view + '.eta'), data, {
-			root: viewFolder,
 			views: viewFolder
 		}) || Promise.reject('Error rendering view ' + view))
 	);
