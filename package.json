@@ -1,7 +1,23 @@
 {
 	"name": "fliegdoc",
-	"version": "1.0.0",
-	"description": "",
+	"version": "0.1.0",
+	"description": "A documentation generator for Typescript-based libraries with good support for monorepos",
+	"repository": {
+		"url": "git+https://github.com/fliegwerk/fliegdoc.git",
+		"type": "git"
+	},
+	"author": "Pablo Klaschka",
+	"homepage": "https://fliegwerk.github.io/fliegdoc",
+	"bugs": {
+		"url": "https://github.com/fliegwerk/fliegdoc/issues"
+	},
+	"contributors": [
+		{
+			"email": "contact@pabloklaschka.de",
+			"name": "Pablo Klaschka",
+			"url": "https://github.com/pklaschka"
+		}
+	],
 	"main": "build/index.js",
 	"bin": {
 		"fliegdoc": "bin/fliegdoc.js"
@@ -16,7 +32,7 @@
 	},
 	"keywords": [],
 	"engines": {
-		"node": ">15.0"
+		"node": ">15.0.0"
 	},
 	"files": [
 		"bin",
@@ -29,8 +45,7 @@
 			"pre-commit": "pretty-quick --staged"
 		}
 	},
-	"author": "",
-	"license": "ISC",
+	"license": "MIT",
 	"devDependencies": {
 		"@types/chalk": "^2.2.0",
 		"@types/cosmiconfig": "^6.0.0",
