@@ -1,7 +1,6 @@
 <html lang="en">
 <head>
     <title>fliegdoc Documentation</title>
-    <base href="/fliegdoc">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
     <style>
         h5 {
@@ -20,16 +19,16 @@
 </head>
 <body>
 <header>
-    <a href="/" class="logo">fliegdoc Documentation</a>
+    <a href="/fliegdoc/" class="logo">fliegdoc Documentation</a>
 </header>
 <div class="container">
     <div class="row">
         <aside class="col-sm-12 col-md-4 col-lg-3">
             <nav class="fixed">
-                <a href="/">Project README</a>
+                <a href="/fliegdoc/">Project README</a>
                 <span>Modules</span>
                 
-                    <a href="/fliegdoc">
+                    <a href="/fliegdoc/fliegdoc">
                         <code>
                             fliegdoc
                         </code>
@@ -79,6 +78,7 @@ Get help for individual commands by running fliegdoc &lt;command&gt; --help
 <h4>Example <code>fliegdoc.config.js</code> with default options</h4>
 <pre><code class="language-js">// fliegdoc.config.js
 module.exports = {
+	baseUrl: '/',
 	outDir: './docs',
 	readme: './README.md',
 	modules: [
