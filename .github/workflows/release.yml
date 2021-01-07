@@ -1,0 +1,16 @@
+name: Releases
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: ${{format("cf. [CHANGELOG.md](https://github.com/fliegwerk/fliegdoc/blob/{1}/CHANGELOG.md)", github.sha)}}
