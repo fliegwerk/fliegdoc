@@ -1,10 +1,10 @@
 # Welcome to fliegdoc 👋
 
-![Version](https://img.shields.io/npm/v/fliegdoc)
+[![Version](https://img.shields.io/npm/v/fliegdoc)](https://www.npmjs.com/package/fliegdoc)
 ![Prerequisite](https://img.shields.io/badge/node-%3E15.0.0-blue.svg)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://fliegwerk.github.io/fliegdoc)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/fliegwerk/fliegdoc/graphs/commit-activity)
-[![License: MIT](https://img.shields.io/github/license/pklaschka/fliegdoc)](https://github.com/fliegwerk/fliegdoc/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/github/license/fliegwerk/fliegdoc)](https://github.com/fliegwerk/fliegdoc/blob/master/LICENSE)
 [![Twitter: pklaschka2000](https://img.shields.io/twitter/follow/pklaschka2000.svg?style=social)](https://twitter.com/pklaschka2000)
 
 > A documentation generator for Typescript-based libraries with good support for monorepos
