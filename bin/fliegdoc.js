@@ -25,17 +25,32 @@ process.on('unhandledRejection', err => {
 
 yargs
 	.scriptName('fliegdoc')
-	.usage('Usage: $0 <command> [options]')
+	.usage('Usage: $0 [command] [options] [dir]')
 	.command(
-		['$0', 'build'],
+		['$0 [options]', 'build [options]'],
 		'Build the documentation',
-		() => {},
+		y => {
+			return y
+				.option('serve', {
+					alias: 's',
+					type: 'boolean',
+					describe: 'Serve the static files after build',
+					default: false
+				})
+				.option('port', {
+					implies: ['serve'],
+					alias: 'p',
+					type: 'number',
+					describe: 'The port on which the documentation gets hosted',
+					default: 3000
+				});
+		},
 		async args => {
 			const tree = buildTreeForConfig(overrides);
 			await buildStatic(tree, overrides);
 
 			if (args['serve']) {
-				serveStatic(3000, overrides);
+				serveStatic(args['port'], overrides);
 			}
 		}
 	)
@@ -43,11 +58,16 @@ yargs
 		'serve [options]',
 		'Preview the documentation in the browser',
 		y => {
-			return y.alias('a', 'abort');
+			return y.option('port', {
+				alias: 'p',
+				type: 'number',
+				describe: 'The port on which the documentation gets hosted',
+				default: 3000
+			});
 		},
 		args => {
 			const tree = buildTreeForConfig(overrides);
-			serveDynamic(tree, 3000, overrides);
+			serveDynamic(tree, args['port'], overrides);
 		}
 	)
 	.help()
