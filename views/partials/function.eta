@@ -1,13 +1,19 @@
 <%
- const {declaration, md} = it
- %>
+const {declaration, md} = it
+%>
+
 <!-- Signature -->
 <p>
     <b>
         <code>
-            <!-- Type Parameters -->
-            <%~ includeFile('type-params', {typeParameters: declaration.typeParameters}) %>
+            <%= declaration.isAsync ? 'async' : '' %>
 
+            function <%= declaration.name %>
+
+            <!-- Type Parameters -->
+            <% ~ includeFile('type-params', {typeParameters: declaration.typeParameters}) %>
+
+            <%= declaration.isGenerator ? '*' : '' %>
             <!-- Parameters -->
             (
             <%
@@ -15,26 +21,39 @@
                 <% let last = !(index < declaration.parameters.length - 1) %>
 
                 <br>
+                &nbsp;&nbsp;
+
+                <%= param.isReadonly ? 'readonly' : '' %>
+                <%= param.isRestParameter ? '...' : '' %>
 
                 <!-- parameter name -->
                 <%= param.name %>
 
+                <%= param.hasQuestionToken ? '?' : '' %>
+
                 <!-- type -->
-                : <%= param.type %>
+                :
+                <%= param.type %>
 
                 <!-- TODO: Default value -->
+                <% if (param.initializer) { %>
+                = <%= param.initializer %>
+                <% } %>
 
                 <!-- Comma if not last -->
-                <%~ !last ? ', ' : '' %>
+                <% ~ !last ? ', ' : '' %>
             <% }) %>
-            <br>
+            <% if (declaration.parameters.length > 0) { %>
+                <br>
+            <% } %>
             )
 
             <!-- Return type -->
-            &DoubleLongRightArrow; <%= declaration.returnType ?? 'any' %>
+            :
+            <%= declaration.returnType ?? 'any' %>
         </code>
     </b>
 </p>
 
 <!-- Docs -->
-<%~ includeFile('docs', {docs: declaration.docs, md}) %>
+<% ~ includeFile('docs', {docs: declaration.docs, md}) %>
