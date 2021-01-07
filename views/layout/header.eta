@@ -1,10 +1,5 @@
 <%
-/**
- * @name config
- */
-/**
- * @name modules
- */
+const {config, modules} = it;
 %>
 <html lang="en">
 <head>
@@ -15,6 +10,7 @@
             font-size: 1.2rem;
             font-weight: bold;
         }
+
         code {
             line-height: inherit;
         }
@@ -27,23 +23,23 @@
 </head>
 <body>
 <header>
-    <a href="<%=config.baseUrl %>" class="logo">fliegdoc Documentation</a>
+    <a href="<%= config.baseUrl %>" class="logo">fliegdoc Documentation</a>
 </header>
 <div class="container">
     <div class="row">
         <aside class="col-sm-12 col-md-4 col-lg-3">
             <nav class="fixed">
-                <a href="<%=config.baseUrl %>">Project README</a>
+                <a href="<%= config.baseUrl %>">Project README</a>
                 <span>Modules</span>
-                <%modules.forEach(function(module) {
-                    %>
-                    <a href="<%=config.baseUrl %><%=module%>">
-                        <code>
-                            <%=module%>
-                        </code>
-                    </a>
+                <% modules.forEach(function(module) {
+                %>
+                <a href="<%= config.baseUrl %><%= module %>">
+                    <code>
+                        <%= module %>
+                    </code>
+                </a>
                 <%
-                })%>
+                }) %>
             </nav>
         </aside>
         <div class="col-sm-12 col-md-8 col-lg-6">

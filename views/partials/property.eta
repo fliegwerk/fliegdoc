@@ -1,0 +1,15 @@
+<%
+const {declaration, md} = it
+%>
+<!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            <%= declaration.type %>
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+<%~ includeFile('docs', {docs: declaration.docs, md}) %>

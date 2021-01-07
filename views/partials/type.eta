@@ -1,0 +1,28 @@
+<%
+const {declaration, md} = it
+%>
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type <%=declaration.name%>
+
+            <!-- Type Parameters -->
+            <%~ includeFile('type-params', {typeParameters: declaration.typeParameters})%>
+        </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            <%=declaration.type%>
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+<%~ includeFile('docs', {docs: declaration.docs, md})%>

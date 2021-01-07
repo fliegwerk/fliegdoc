@@ -1,16 +1,11 @@
 <%
-/**
- * @name docs
- */
-/**
- * @name md
- */
+    const {docs, md} = it
 %>
 <%
 if (docs.length > 0) {
 %>
     <!-- Description -->
-    <%- md.render(docs[0].description) %>
+    <%~ md.render(docs[0].description) %>
 
     <!-- Tags -->
     <div class="row">
@@ -18,12 +13,12 @@ if (docs.length > 0) {
             <!-- Tag name -->
             <div class="col-sm-2">
                 <p>
-                    <mark class="tag"><%- tag.tagName %>:</mark>
+                    <mark class="tag"><%~ tag.tagName %>:</mark>
                 </p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><%- md.render(tag.text) %></div>
+            <div class="col-sm-10"><%~ md.render(tag.text) %></div>
         <% }) %>
     </div>
 <%

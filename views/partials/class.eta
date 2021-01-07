@@ -1,7 +1,5 @@
 <%
-/**
- * @name declaration
- */
+const {declaration, md} = it;
 %>
 <!-- Signature -->
 <p>
@@ -14,7 +12,7 @@
             <%= declaration.name %>
 
             <!-- Type Parameters -->
-            <%- include('type-params', {typeParameters: declaration.typeParameters}) %>
+            <%~ includeFile('partials/type-params', {typeParameters: declaration.typeParameters}) %>
 
             <!-- Extends -->
             <% if (declaration.extends && declaration.extends.length) { %>
@@ -25,13 +23,13 @@
 </p>
 
 <!-- Docs -->
-<%- include('docs', {docs: declaration.docs, md}) %>
+<%~ includeFile('docs', {docs: declaration.docs, md}) %>
 
 <!-- Constructors -->
 <% if (declaration.ctors) { %>
     <h4>Constructors</h4>
     <% declaration.ctors.forEach((ctor) => { %>
-        <%- include('function', {declaration: ctor, md}) %>
+        <%~ includeFile('function', {declaration: ctor, md}) %>
     <% }) %>
 <% } %>
 
@@ -41,7 +39,7 @@
     <a id="<%= declaration.name %>.<%= property.name %>" href="#<%= declaration.name %>.<%= property.name %>">
         <h5><code><%= declaration.name %>.<%= property.name %></code></h5>
     </a>
-    <%- include('property', {declaration: property, md}) %>
+    <%~ includeFile('property', {declaration: property, md}) %>
 <% }) %>
 
 <!-- Methods -->
@@ -51,6 +49,6 @@
         <a id="<%= declaration.name %>.<%= method.name %>" href="#<%= declaration.name %>.<%= method.name %>">
             <h5><code><%= declaration.name %>.<%= method.name %></code></h5>
         </a>
-        <%- include('function', {declaration: method, md}) %>
+        <%~ includeFile('function', {declaration: method, md}) %>
     <% }) %>
 <% } %>

@@ -3,6 +3,7 @@ import MarkdownIt from 'markdown-it';
 import * as fs from 'fs';
 import { DEFAULT_CONFIG, FliegdocConfig, Tree } from '../model';
 import * as path from 'path';
+import { renderFile } from 'eta';
 const origMd = new MarkdownIt({ linkify: true });
 
 const md = {
@@ -36,8 +37,9 @@ export function serveDynamic(
 	};
 	const app = Express();
 
+	app.engine('eta', renderFile);
+	app.set('view engine', 'eta');
 	app.set('views', path.join(__dirname, '..', '..', 'views'));
-	app.set('view engine', 'ejs');
 
 	app.get(`${finalConfig.baseUrl}`, (req, res) => {
 		res.render('plain', {

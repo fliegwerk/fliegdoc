@@ -1,0 +1,40 @@
+<%
+/**
+ * @name it
+ */
+%>
+<%~ includeFile('layout/header', it) %>
+<h1><code><%~ it.moduleName %></code></h1>
+
+<p>
+    Install using
+</p>
+<pre><code>npm install <%~ it.moduleName %></code></pre>
+
+<h2>Exported Members</h2>
+<p>You can access these members by importing the module:</p>
+<pre><code>import { <i>member</i> } from '<%~ it.moduleName %>';</code></pre>
+
+<!-- Members -->
+<% it.members.forEach(function(member) { %>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="<%= member.name %>" href="#<%= member.name %>">
+            <h3><code><%~ member.name %></code></h3></a>
+
+        <!-- Description, based on type -->
+        <% member.declarations.forEach(function(declaration) { %>
+            <% if (declaration.type === 'function') { %>
+                <%~ includeFile('partials/function', {...it, declaration: declaration.declarations[0]}) %>
+            <% } else if (declaration.type === 'class-interface') { %>
+                <%~ includeFile('partials/class', {...it, declaration: declaration.declarations[0]}) %>
+            <% } else if (declaration.type === 'variable') { %>
+                <%~ includeFile('partials/variable', {...it, declaration: declaration.declarations[0]}) %>
+            <% } else if (declaration.type === 'type') { %>
+                <%~ includeFile('partials/type', {...it, declaration: declaration.declarations[0]}) %>
+            <% } else { %>
+            <!-- UNRESOLVED TYPE: <%~ declaration.type %> with <%~ JSON.stringify(declaration) %>-->
+            <% } %>
+        <% }) %>
+    </div>
+<% }) %>

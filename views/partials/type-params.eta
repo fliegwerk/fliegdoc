@@ -1,7 +1,5 @@
 <%
-/**
- * @name typeParameters
- */
+const {typeParameters, md} = it
 %>
 <% if (typeParameters.length) {
 %>
@@ -25,7 +23,7 @@
         <% } %>
 
         <!-- Comma if not last -->
-        <%- !last ? ', ' : '' %>
+        <%~ !last ? ', ' : '' %>
     <% }) %>
 
     <!-- Closing angle bracket -->

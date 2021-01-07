@@ -1,0 +1,8 @@
+<%
+/**
+ * @name it
+ */
+%>
+<%~includeFile('layout/header', it) %>
+<%~it.content %>
+<%~includeFile('./layout/footer', it) %>

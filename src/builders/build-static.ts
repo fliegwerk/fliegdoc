@@ -1,7 +1,7 @@
 import MarkdownIt from 'markdown-it';
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import ejs from 'ejs';
+import { renderFile } from 'eta';
 import { DEFAULT_CONFIG, FliegdocConfig, Tree } from '../model';
 
 const origMd = new MarkdownIt({ linkify: true });
@@ -39,9 +39,10 @@ async function render(
 	await fs.mkdir(path.dirname(outPath), { recursive: true });
 	await fs.writeFile(
 		outPath,
-		await ejs.renderFile(path.resolve(viewFolder, view + '.ejs'), data, {
-			root: viewFolder
-		})
+		await (renderFile(path.resolve(viewFolder, view + '.eta'), data, {
+			root: viewFolder,
+			views: viewFolder
+		}) || Promise.reject('Error rendering view ' + view))
 	);
 }
 
