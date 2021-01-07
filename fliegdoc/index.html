@@ -1,3 +1,5 @@
+
+
 <html lang="en">
 <head>
     <title>fliegdoc Documentation</title>
@@ -67,6 +69,7 @@
             
 
 
+
             <!-- Parameters -->
             (
             
@@ -96,6 +99,7 @@
 
 <!-- Docs -->
 
+
     <!-- no docs :( -->
     <p><small>No docs provided</small></p>
 
@@ -118,6 +122,7 @@
         <code>
             <!-- Type Parameters -->
             
+
 
 
             <!-- Parameters -->
@@ -164,6 +169,7 @@
 
 <!-- Docs -->
 
+
     <!-- Description -->
     <p>Resolves relative paths for config overrides</p>
 
@@ -179,7 +185,7 @@
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p>overrides</p>
+            <div class="col-sm-10"><p>overrides -</p>
 </div>
         
             <!-- Tag name -->
@@ -190,7 +196,7 @@
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p>basePath</p>
+            <div class="col-sm-10"><p>basePath -</p>
 </div>
         
     </div>
@@ -214,6 +220,7 @@
         <code>
             <!-- Type Parameters -->
             
+
 
 
             <!-- Parameters -->
@@ -245,6 +252,7 @@
 
 <!-- Docs -->
 
+
     <!-- no docs :( -->
     <p><small>No docs provided</small></p>
 
@@ -261,7 +269,8 @@
         <!-- Description, based on type -->
         
             
-                <!-- Signature -->
+                
+<!-- Signature -->
 <p>
     <b>
         <code>
@@ -275,6 +284,7 @@
             
 
 
+
             <!-- Extends -->
             
         </code>
@@ -282,6 +292,7 @@
 </p>
 
 <!-- Docs -->
+
 
     <!-- Description -->
     <p>A module/npm package</p>
@@ -316,6 +327,7 @@
 
 <!-- Docs -->
 
+
     <!-- Description -->
     <p>Absolute path to the module's package.json</p>
 
@@ -342,6 +354,7 @@
 </p>
 
 <!-- Docs -->
+
 
     <!-- Description -->
     <p>Absolute path to the tsconfig.json</p>
@@ -370,8 +383,9 @@
 
 <!-- Docs -->
 
+
     <!-- Description -->
-    <p>Relative path from the tsconfig's includes to the module's main file, exporting all members</p>
+    <p>Relative path from the tsconfig <code>includes</code> to the module's main file, exporting all members</p>
 
 
     <!-- Tags -->
@@ -408,7 +422,8 @@
         <!-- Description, based on type -->
         
             
-                <!-- Signature -->
+                
+<!-- Signature -->
 <p>
     <b>
         <code>
@@ -422,6 +437,7 @@
             
 
 
+
             <!-- Extends -->
             
         </code>
@@ -429,6 +445,7 @@
 </p>
 
 <!-- Docs -->
+
 
     <!-- Description -->
     <p>The configuration for running fliegdoc</p>
@@ -462,6 +479,7 @@
 
 <!-- Docs -->
 
+
     <!-- Description -->
     <p>Project modules</p>
 
@@ -488,6 +506,7 @@
 </p>
 
 <!-- Docs -->
+
 
     <!-- Description -->
     <p>Path to the root project's <a href="http://README.md">README.md</a></p>
@@ -516,6 +535,7 @@
 
 <!-- Docs -->
 
+
     <!-- Description -->
     <p>Path to the folder in which the documentation gets generated</p>
 
@@ -543,6 +563,7 @@
 
 <!-- Docs -->
 
+
     <!-- Description -->
     <p>Base url of the domain to which the docs get deployed, including a trailing <code>/</code></p>
 
@@ -553,7 +574,7 @@
             <!-- Tag name -->
             <div class="col-sm-2">
                 <p>
-                    <mark class="tag">default:</mark>
+                    <mark class="tag">defaultValue:</mark>
                 </p>
             </div>
 
@@ -598,6 +619,7 @@
 
 <!-- Docs -->
 
+
     <!-- Description -->
     <p>The default config parameters.</p>
 <p>Uses a <code>README.md</code>, <code>package.json</code>, and <code>tsconfig.json</code> file in the cwd and <code>main.ts</code> in the sources configured
@@ -632,6 +654,7 @@ in the <code>tsconfig.json</code></p>
             <!-- Type Parameters -->
             
 
+
         </code>
     </b>
 </p>
@@ -641,12 +664,13 @@ in the <code>tsconfig.json</code></p>
     <b>
         Alias for:
         <code>
-            { name: string; [key: string]: any }[]
+            (Record&lt;string, unknown&gt; &amp; { name: string })[]
         </code>
     </b>
 </p>
 
 <!-- Docs -->
+
 
     <!-- no docs :( -->
     <p><small>No docs provided</small></p>
@@ -664,7 +688,8 @@ in the <code>tsconfig.json</code></p>
         <!-- Description, based on type -->
         
             
-                <!-- Signature -->
+                
+<!-- Signature -->
 <p>
     <b>
         <code>
@@ -678,6 +703,7 @@ in the <code>tsconfig.json</code></p>
             
 
 
+
             <!-- Extends -->
             
         </code>
@@ -685,6 +711,7 @@ in the <code>tsconfig.json</code></p>
 </p>
 
 <!-- Docs -->
+
 
     <!-- no docs :( -->
     <p><small>No docs provided</small></p>
@@ -720,6 +747,7 @@ in the <code>tsconfig.json</code></p>
             
 
 
+
             <!-- Parameters -->
             (
             
@@ -731,7 +759,7 @@ in the <code>tsconfig.json</code></p>
                 tree
 
                 <!-- type -->
-                : any
+                : Tree
 
                 <!-- TODO: Default value -->
 
@@ -772,12 +800,13 @@ in the <code>tsconfig.json</code></p>
             )
 
             <!-- Return type -->
-            &DoubleLongRightArrow; any
+            &DoubleLongRightArrow; void
         </code>
     </b>
 </p>
 
 <!-- Docs -->
+
 
     <!-- Description -->
     <p>Starts an http server on <code>port</code> and serves the generated documentation</p>
@@ -794,7 +823,7 @@ in the <code>tsconfig.json</code></p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p>tree the documentation tree</p>
+            <div class="col-sm-10"><p>tree - the documentation tree</p>
 </div>
         
             <!-- Tag name -->
@@ -805,7 +834,7 @@ in the <code>tsconfig.json</code></p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p>port the port on which the documentation gets served</p>
+            <div class="col-sm-10"><p>port - the port on which the documentation gets served</p>
 </div>
         
             <!-- Tag name -->
@@ -816,7 +845,7 @@ in the <code>tsconfig.json</code></p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p>configOverrides</p>
+            <div class="col-sm-10"><p>configOverrides -</p>
 </div>
         
     </div>
@@ -842,6 +871,7 @@ in the <code>tsconfig.json</code></p>
             
 
 
+
             <!-- Parameters -->
             (
             
@@ -853,7 +883,7 @@ in the <code>tsconfig.json</code></p>
                 port
 
                 <!-- type -->
-                : number
+                : 
 
                 <!-- TODO: Default value -->
 
@@ -879,12 +909,13 @@ in the <code>tsconfig.json</code></p>
             )
 
             <!-- Return type -->
-            &DoubleLongRightArrow; any
+            &DoubleLongRightArrow; void
         </code>
     </b>
 </p>
 
 <!-- Docs -->
+
 
     <!-- no docs :( -->
     <p><small>No docs provided</small></p>
@@ -908,6 +939,7 @@ in the <code>tsconfig.json</code></p>
         <code>
             <!-- Type Parameters -->
             
+
 
 
             <!-- Parameters -->
@@ -954,6 +986,7 @@ in the <code>tsconfig.json</code></p>
 
 <!-- Docs -->
 
+
     <!-- Description -->
     <p>Starts an http server on <code>port</code> and serves the generated documentation</p>
 
@@ -969,7 +1002,7 @@ in the <code>tsconfig.json</code></p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p>tree the documentation tree</p>
+            <div class="col-sm-10"><p>tree - the documentation tree</p>
 </div>
         
             <!-- Tag name -->
@@ -980,7 +1013,7 @@ in the <code>tsconfig.json</code></p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p>configOverrides</p>
+            <div class="col-sm-10"><p>configOverrides -</p>
 </div>
         
     </div>
