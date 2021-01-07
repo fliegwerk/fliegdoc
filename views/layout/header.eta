@@ -24,6 +24,9 @@ const {config, modules} = it;
 <body>
 <header>
     <a href="<%= config.baseUrl %>" class="logo"><%= config.title %></a>
+    <% Object.keys(config.externalLinks).forEach(function (name) { %>
+        <a class="button" href="<%=config.externalLinks[name] %>" target="_blank"><%=name%></a>
+    <% }) %>
 </header>
 <div class="container">
     <div class="row">

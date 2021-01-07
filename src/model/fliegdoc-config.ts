@@ -48,6 +48,10 @@ export interface FliegdocConfig {
 	 * Title of the project, that gets printed in the header
 	 */
 	title: string;
+	/**
+	 * External navigation links for the header in a key-value-manner, where the key is the label and the value the link.
+	 */
+	externalLinks: Record<string, string>;
 }
 
 /**
@@ -67,5 +71,9 @@ export const DEFAULT_CONFIG: FliegdocConfig = {
 	],
 	outDir: path.resolve(process.cwd(), 'docs'),
 	baseUrl: '/',
-	title: 'Documentation'
+	title: 'Documentation',
+	externalLinks: {
+		GitHub: 'https://github.com/fliegwerk/fliegdoc',
+		npm: 'https://www.npmjs.com/package/fliegdoc'
+	}
 };
