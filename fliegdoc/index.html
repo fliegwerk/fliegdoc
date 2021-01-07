@@ -55,19 +55,22 @@
             <h3><code>buildTreeForConfig</code></h3></a>
 
         <!-- Description, based on type -->
-                                    <!-- Signature -->
+                                    
+<!-- Signature -->
 <p>
     <b>
         <code>
+            
+            function buildTreeForConfig
             <!-- Type Parameters -->
             
-            <!-- Parameters -->
+                        <!-- Parameters -->
             (
-                        <br>
-            )
+                                    )
 
             <!-- Return type -->
-            &DoubleLongRightArrow; Tree        </code>
+            :
+            Tree        </code>
     </b>
 </p>
 
@@ -110,19 +113,22 @@ const tree = buildTreeForConfig();
             <h3><code>getConfig</code></h3></a>
 
         <!-- Description, based on type -->
-                                    <!-- Signature -->
+                                    
+<!-- Signature -->
 <p>
     <b>
         <code>
+            
+            function getConfig
             <!-- Type Parameters -->
             
-            <!-- Parameters -->
+                        <!-- Parameters -->
             (
-                        <br>
-            )
+                                    )
 
             <!-- Return type -->
-            &DoubleLongRightArrow; FliegdocConfig        </code>
+            :
+            FliegdocConfig        </code>
     </b>
 </p>
 
@@ -173,39 +179,51 @@ console.log('current config:', getConfig());
             <h3><code>setConfig</code></h3></a>
 
         <!-- Description, based on type -->
-                                    <!-- Signature -->
+                                    
+<!-- Signature -->
 <p>
     <b>
         <code>
+            
+            function setConfig
             <!-- Type Parameters -->
             
-            <!-- Parameters -->
+                        <!-- Parameters -->
             (
                             
                 <br>
+                &nbsp;&nbsp;
 
+                                
                 <!-- parameter name -->
                 config
+                
                 <!-- type -->
-                : Partial&lt;FliegdocConfig&gt;
+                :
+                Partial&lt;FliegdocConfig&gt;
                 <!-- TODO: Default value -->
-
+                
                 <!-- Comma if not last -->
                 ,                             
                 <br>
+                &nbsp;&nbsp;
 
+                                
                 <!-- parameter name -->
                 basePath
+                
                 <!-- type -->
-                : string
+                :
+                string
                 <!-- TODO: Default value -->
-
+                                = process.cwd()                
                 <!-- Comma if not last -->
-                                        <br>
-            )
+                                                        <br>
+                        )
 
             <!-- Return type -->
-            &DoubleLongRightArrow; void        </code>
+            :
+            void        </code>
     </b>
 </p>
 
@@ -260,29 +278,37 @@ setConfig(config, path.dirname(filepath));
             <h3><code>buildModuleTree</code></h3></a>
 
         <!-- Description, based on type -->
-                                    <!-- Signature -->
+                                    
+<!-- Signature -->
 <p>
     <b>
         <code>
+            
+            function buildModuleTree
             <!-- Type Parameters -->
             
-            <!-- Parameters -->
+                        <!-- Parameters -->
             (
                             
                 <br>
+                &nbsp;&nbsp;
 
+                                
                 <!-- parameter name -->
                 module
+                
                 <!-- type -->
-                : Module
+                :
+                Module
                 <!-- TODO: Default value -->
-
+                
                 <!-- Comma if not last -->
-                                        <br>
-            )
+                                                        <br>
+                        )
 
             <!-- Return type -->
-            &DoubleLongRightArrow; [moduleName: string, moduleTree: ModuleTree]        </code>
+            :
+            [moduleName: string, moduleTree: ModuleTree]        </code>
     </b>
 </p>
 
@@ -721,39 +747,51 @@ in the <code>tsconfig.json</code></p>
             <h3><code>serveDynamic</code></h3></a>
 
         <!-- Description, based on type -->
-                                    <!-- Signature -->
+                                    
+<!-- Signature -->
 <p>
     <b>
         <code>
+            
+            function serveDynamic
             <!-- Type Parameters -->
             
-            <!-- Parameters -->
+                        <!-- Parameters -->
             (
                             
                 <br>
+                &nbsp;&nbsp;
 
+                                
                 <!-- parameter name -->
                 tree
+                
                 <!-- type -->
-                : Tree
+                :
+                Tree
                 <!-- TODO: Default value -->
-
+                
                 <!-- Comma if not last -->
                 ,                             
                 <br>
+                &nbsp;&nbsp;
 
+                                
                 <!-- parameter name -->
                 port
+                
                 <!-- type -->
-                : number
+                :
+                number
                 <!-- TODO: Default value -->
-
+                                = 3000                
                 <!-- Comma if not last -->
-                                        <br>
-            )
+                                                        <br>
+                        )
 
             <!-- Return type -->
-            &DoubleLongRightArrow; void        </code>
+            :
+            void        </code>
     </b>
 </p>
 
@@ -805,29 +843,37 @@ serveDynamic(tree, port);
             <h3><code>serveStatic</code></h3></a>
 
         <!-- Description, based on type -->
-                                    <!-- Signature -->
+                                    
+<!-- Signature -->
 <p>
     <b>
         <code>
+            
+            function serveStatic
             <!-- Type Parameters -->
             
-            <!-- Parameters -->
+                        <!-- Parameters -->
             (
                             
                 <br>
+                &nbsp;&nbsp;
 
+                                
                 <!-- parameter name -->
                 port
+                
                 <!-- type -->
-                : number
+                :
+                number
                 <!-- TODO: Default value -->
-
+                                = 3000                
                 <!-- Comma if not last -->
-                                        <br>
-            )
+                                                        <br>
+                        )
 
             <!-- Return type -->
-            &DoubleLongRightArrow; void        </code>
+            :
+            void        </code>
     </b>
 </p>
 
@@ -870,29 +916,37 @@ serveStatic(port);
             <h3><code>buildStatic</code></h3></a>
 
         <!-- Description, based on type -->
-                                    <!-- Signature -->
+                                    
+<!-- Signature -->
 <p>
     <b>
         <code>
+            async
+            function buildStatic
             <!-- Type Parameters -->
             
-            <!-- Parameters -->
+                        <!-- Parameters -->
             (
                             
                 <br>
+                &nbsp;&nbsp;
 
+                                
                 <!-- parameter name -->
                 tree
+                
                 <!-- type -->
-                : Tree
+                :
+                Tree
                 <!-- TODO: Default value -->
-
+                
                 <!-- Comma if not last -->
-                                        <br>
-            )
+                                                        <br>
+                        )
 
             <!-- Return type -->
-            &DoubleLongRightArrow; Promise&lt;void&gt;        </code>
+            :
+            Promise&lt;void&gt;        </code>
     </b>
 </p>
 
