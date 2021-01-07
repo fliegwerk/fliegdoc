@@ -1,0 +1,119 @@
+<html lang="en">
+<head>
+    <title>Telestion Client Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <style>
+        h5 {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        code {
+            line-height: inherit;
+        }
+
+        :root {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+    <a href="/" class="logo">Telestion Client Documentation</a>
+</header>
+<div class="container">
+    <div class="row">
+        <aside class="col-sm-12 col-md-4 col-lg-3">
+            <nav class="fixed">
+                <a href="/">Project README</a>
+                <span>Modules</span>
+                
+                    <a href="/fliegdoc">
+                        <code>
+                            fliegdoc
+                        </code>
+                    </a>
+                
+            </nav>
+        </aside>
+        <div class="col-sm-12 col-md-8 col-lg-6">
+
+<h1>Welcome to fliegdoc 👋</h1>
+<p><img src="https://img.shields.io/npm/v/fliegdoc" alt="Version">
+<img src="https://img.shields.io/badge/node-%3E15.0.0-blue.svg" alt="Prerequisite">
+<a href="https://fliegwerk.github.io/fliegdoc"><img src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" alt="Documentation"></a>
+<a href="https://github.com/fliegwerk/fliegdoc/graphs/commit-activity"><img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="Maintenance"></a>
+<a href="https://github.com/fliegwerk/fliegdoc/blob/master/LICENSE"><img src="https://img.shields.io/github/license/pklaschka/fliegdoc" alt="License: MIT"></a>
+<a href="https://twitter.com/pklaschka2000"><img src="https://img.shields.io/twitter/follow/pklaschka2000.svg?style=social" alt="Twitter: pklaschka2000"></a></p>
+<blockquote>
+<p>A documentation generator for Typescript-based libraries with good support for monorepos</p>
+</blockquote>
+<h3>🏠 <a href="https://fliegwerk.github.io/fliegdoc">Homepage &amp; Demo</a></h3>
+<h2>Prerequisites</h2>
+<ul>
+<li>node &gt;15.0.0</li>
+</ul>
+<h2>Install</h2>
+<pre><code class="language-sh">npm install --global fliegdoc
+</code></pre>
+<h2>Usage</h2>
+<h3>CLI</h3>
+<pre><code class="language-sh">$ fliegdoc --help
+Usage: fliegdoc [command] [options]
+
+Commands:
+  fliegdoc build [options]  Build the documentation       [default] [aliases: b]
+  fliegdoc serve [options]  Preview the documentation in the browser[aliases: s]
+  fliegdoc completion       generate completion script
+
+Options:
+      --help     Show help                                             [boolean]
+  -s, --serve    Serve the static files after build   [boolean] [default: false]
+  -p, --port     The port on which the documentation gets hosted        [number]
+  -v, --version  Show version number                                   [boolean]
+
+Get help for individual commands by running fliegdoc &lt;command&gt; --help
+</code></pre>
+<p>The CLI searches for a <code>fliegdoc.config.js</code> file and applies its options on top of the default options.</p>
+<h4>Example <code>fliegdoc.config.js</code> with default options</h4>
+<pre><code class="language-js">// fliegdoc.config.js
+module.exports = {
+	outDir: './docs',
+	readme: './README.md',
+	modules: [
+		{
+			package: './package.json',
+			tsconfig: './tsconfig.json',
+			mainFile: 'main.ts'
+		}
+	]
+};
+</code></pre>
+<h3>API</h3>
+<pre><code class="language-ts">import {} from 'fliegdoc';
+</code></pre>
+<p>(cf. <a href="https://fliegwerk.github.io/fliegdoc">docs</a> for a list of exported members)</p>
+<h2>Author</h2>
+<p>👤 <strong>Pablo Klaschka</strong></p>
+<ul>
+<li>Twitter: <a href="https://twitter.com/pklaschka2000">@pklaschka2000</a></li>
+<li>Github: <a href="https://github.com/pklaschka">@pklaschka</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/pklaschka">@pklaschka</a></li>
+</ul>
+<h2>🤝 Contributing</h2>
+<p>Contributions, issues and feature requests are welcome!</p>
+<p>Feel free to check <a href="https://github.com/fliegwerk/fliegdoc/issues">issues page</a>. You can also take a look at the <a href="https://github.com/fliegwerk/fliegdoc/blob/master/CONTRIBUTING.md">contributing guide</a>.</p>
+<h2>Show your support</h2>
+<p>Give a ⭐️ if this project helped you!</p>
+<h2>📝 License</h2>
+<p>Copyright © 2021 <a href="https://github.com/pklaschka">Pablo Klaschka</a>.</p>
+<p>This project is <a href="https://github.com/fliegwerk/fliegdoc/blob/master/LICENSE">MIT</a> licensed.</p>
+<hr>
+<p><em>This README was generated with ❤️ by <a href="https://github.com/kefranabg/readme-md-generator">readme-md-generator</a></em></p>
+
+</div>
+</div>
+</div>
+</body>
+</footer>
+

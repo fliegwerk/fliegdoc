@@ -1,0 +1,954 @@
+<html lang="en">
+<head>
+    <title>Telestion Client Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <style>
+        h5 {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        code {
+            line-height: inherit;
+        }
+
+        :root {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+    <a href="/" class="logo">Telestion Client Documentation</a>
+</header>
+<div class="container">
+    <div class="row">
+        <aside class="col-sm-12 col-md-4 col-lg-3">
+            <nav class="fixed">
+                <a href="/">Project README</a>
+                <span>Modules</span>
+                
+                    <a href="/fliegdoc">
+                        <code>
+                            fliegdoc
+                        </code>
+                    </a>
+                
+            </nav>
+        </aside>
+        <div class="col-sm-12 col-md-8 col-lg-6">
+
+<h1><code>fliegdoc</code></h1>
+
+<p>
+    Install using
+</p>
+<pre><code>npm install fliegdoc</code></pre>
+
+<h2>Exported Members</h2>
+<p>You can access these members by importing the module:</p>
+<pre><code>import { <i>member</i> } from 'fliegdoc';</code></pre>
+
+<!-- Members -->
+
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="buildTreeForConfig" href="#buildTreeForConfig">
+            <h3><code>buildTreeForConfig</code></h3></a>
+
+        <!-- Description, based on type -->
+        
+            
+                <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type Parameters -->
+            
+
+
+            <!-- Parameters -->
+            (
+            
+                
+
+                <br>
+
+                <!-- parameter name -->
+                configOverrides
+
+                <!-- type -->
+                : Partial&lt;FliegdocConfig&gt;
+
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
+                
+            
+            <br>
+            )
+
+            <!-- Return type -->
+            &DoubleLongRightArrow; Tree
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+
+            
+        
+    </div>
+
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="parseOverrides" href="#parseOverrides">
+            <h3><code>parseOverrides</code></h3></a>
+
+        <!-- Description, based on type -->
+        
+            
+                <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type Parameters -->
+            
+
+
+            <!-- Parameters -->
+            (
+            
+                
+
+                <br>
+
+                <!-- parameter name -->
+                overrides
+
+                <!-- type -->
+                : Partial&lt;FliegdocConfig&gt;
+
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
+                , 
+            
+                
+
+                <br>
+
+                <!-- parameter name -->
+                basePath
+
+                <!-- type -->
+                : string
+
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
+                
+            
+            <br>
+            )
+
+            <!-- Return type -->
+            &DoubleLongRightArrow; Partial&lt;FliegdocConfig&gt;
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>Resolves relative paths for config overrides</p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+            <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>overrides</p>
+</div>
+        
+            <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>basePath</p>
+</div>
+        
+    </div>
+
+
+            
+        
+    </div>
+
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="buildModuleTree" href="#buildModuleTree">
+            <h3><code>buildModuleTree</code></h3></a>
+
+        <!-- Description, based on type -->
+        
+            
+                <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type Parameters -->
+            
+
+
+            <!-- Parameters -->
+            (
+            
+                
+
+                <br>
+
+                <!-- parameter name -->
+                module
+
+                <!-- type -->
+                : Module
+
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
+                
+            
+            <br>
+            )
+
+            <!-- Return type -->
+            &DoubleLongRightArrow; [moduleName: string, moduleTree: ModuleTree]
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+
+            
+        
+    </div>
+
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Module" href="#Module">
+            <h3><code>Module</code></h3></a>
+
+        <!-- Description, based on type -->
+        
+            
+                <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+
+            <!-- Name -->
+            Module
+
+            <!-- Type Parameters -->
+            
+
+
+            <!-- Extends -->
+            
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>A module/npm package</p>
+<p>Must include a package.json file with a unique <code>name</code></p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+    </div>
+
+
+
+<!-- Constructors -->
+
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+    <a id="Module.package" href="#Module.package">
+        <h5><code>Module.package</code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>Absolute path to the module's package.json</p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+    </div>
+
+
+
+
+    <a id="Module.tsconfig" href="#Module.tsconfig">
+        <h5><code>Module.tsconfig</code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>Absolute path to the tsconfig.json</p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+    </div>
+
+
+
+
+    <a id="Module.mainFile" href="#Module.mainFile">
+        <h5><code>Module.mainFile</code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>Relative path from the tsconfig's includes to the module's main file, exporting all members</p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+            <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><code>main.ts</code></p>
+</div>
+        
+    </div>
+
+
+
+
+
+<!-- Methods -->
+
+            
+        
+    </div>
+
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="FliegdocConfig" href="#FliegdocConfig">
+            <h3><code>FliegdocConfig</code></h3></a>
+
+        <!-- Description, based on type -->
+        
+            
+                <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+
+            <!-- Name -->
+            FliegdocConfig
+
+            <!-- Type Parameters -->
+            
+
+
+            <!-- Extends -->
+            
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>The configuration for running fliegdoc</p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+    </div>
+
+
+
+<!-- Constructors -->
+
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+    <a id="FliegdocConfig.modules" href="#FliegdocConfig.modules">
+        <h5><code>FliegdocConfig.modules</code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            Module[]
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>Project modules</p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+    </div>
+
+
+
+
+    <a id="FliegdocConfig.readme" href="#FliegdocConfig.readme">
+        <h5><code>FliegdocConfig.readme</code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>Path to the root project's <a href="http://README.md">README.md</a></p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+    </div>
+
+
+
+
+    <a id="FliegdocConfig.outDir" href="#FliegdocConfig.outDir">
+        <h5><code>FliegdocConfig.outDir</code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>Path to the folder in which the documentation gets generated</p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+    </div>
+
+
+
+
+
+<!-- Methods -->
+
+            
+        
+    </div>
+
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="DEFAULT_CONFIG" href="#DEFAULT_CONFIG">
+            <h3><code>DEFAULT_CONFIG</code></h3></a>
+
+        <!-- Description, based on type -->
+        
+            
+                <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Declaration Kind: const, let, or var -->
+            const
+
+            :
+
+            <!-- Variable type or any -->
+            FliegdocConfig
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>The default config parameters.</p>
+<p>Uses a <code>README.md</code>, <code>package.json</code>, and <code>tsconfig.json</code> file in the cwd and <code>main.ts</code> in the sources configured
+in the <code>tsconfig.json</code></p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+    </div>
+
+
+            
+        
+    </div>
+
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="ModuleTree" href="#ModuleTree">
+            <h3><code>ModuleTree</code></h3></a>
+
+        <!-- Description, based on type -->
+        
+            
+                <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type ModuleTree
+
+            <!-- Type Parameters -->
+            
+
+        </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            { name: string; [key: string]: any }[]
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+
+            
+        
+    </div>
+
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Tree" href="#Tree">
+            <h3><code>Tree</code></h3></a>
+
+        <!-- Description, based on type -->
+        
+            
+                <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+
+            <!-- Name -->
+            Tree
+
+            <!-- Type Parameters -->
+            
+
+
+            <!-- Extends -->
+            
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+
+
+<!-- Constructors -->
+
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+
+<!-- Methods -->
+
+            
+        
+    </div>
+
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="serveDynamic" href="#serveDynamic">
+            <h3><code>serveDynamic</code></h3></a>
+
+        <!-- Description, based on type -->
+        
+            
+                <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type Parameters -->
+            
+
+
+            <!-- Parameters -->
+            (
+            
+                
+
+                <br>
+
+                <!-- parameter name -->
+                tree
+
+                <!-- type -->
+                : any
+
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
+                , 
+            
+                
+
+                <br>
+
+                <!-- parameter name -->
+                port
+
+                <!-- type -->
+                : 
+
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
+                , 
+            
+                
+
+                <br>
+
+                <!-- parameter name -->
+                configOverrides
+
+                <!-- type -->
+                : Partial&lt;FliegdocConfig&gt;
+
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
+                
+            
+            <br>
+            )
+
+            <!-- Return type -->
+            &DoubleLongRightArrow; any
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>Starts an http server on <code>port</code> and serves the generated documentation</p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+            <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>tree the documentation tree</p>
+</div>
+        
+            <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>port the port on which the documentation gets served</p>
+</div>
+        
+            <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>configOverrides</p>
+</div>
+        
+    </div>
+
+
+            
+        
+    </div>
+
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="serveStatic" href="#serveStatic">
+            <h3><code>serveStatic</code></h3></a>
+
+        <!-- Description, based on type -->
+        
+            
+                <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type Parameters -->
+            
+
+
+            <!-- Parameters -->
+            (
+            
+                
+
+                <br>
+
+                <!-- parameter name -->
+                port
+
+                <!-- type -->
+                : number
+
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
+                , 
+            
+                
+
+                <br>
+
+                <!-- parameter name -->
+                configOverrides
+
+                <!-- type -->
+                : Partial&lt;FliegdocConfig&gt;
+
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
+                
+            
+            <br>
+            )
+
+            <!-- Return type -->
+            &DoubleLongRightArrow; any
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+
+            
+        
+    </div>
+
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="buildStatic" href="#buildStatic">
+            <h3><code>buildStatic</code></h3></a>
+
+        <!-- Description, based on type -->
+        
+            
+                <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type Parameters -->
+            
+
+
+            <!-- Parameters -->
+            (
+            
+                
+
+                <br>
+
+                <!-- parameter name -->
+                tree
+
+                <!-- type -->
+                : Tree
+
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
+                , 
+            
+                
+
+                <br>
+
+                <!-- parameter name -->
+                configOverrides
+
+                <!-- type -->
+                : Partial&lt;FliegdocConfig&gt;
+
+                <!-- TODO: Default value -->
+
+                <!-- Comma if not last -->
+                
+            
+            <br>
+            )
+
+            <!-- Return type -->
+            &DoubleLongRightArrow; Promise&lt;void&gt;
+        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+
+    <!-- Description -->
+    <p>Starts an http server on <code>port</code> and serves the generated documentation</p>
+
+
+    <!-- Tags -->
+    <div class="row">
+        
+            <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>tree the documentation tree</p>
+</div>
+        
+            <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>configOverrides</p>
+</div>
+        
+    </div>
+
+
+            
+        
+    </div>
+
