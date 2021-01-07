@@ -3,7 +3,7 @@ const {config, modules} = it;
 %>
 <html lang="en">
 <head>
-    <title>fliegdoc Documentation</title>
+    <title><%= config.title %></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
     <style>
         h5 {
@@ -23,7 +23,7 @@ const {config, modules} = it;
 </head>
 <body>
 <header>
-    <a href="<%= config.baseUrl %>" class="logo">fliegdoc Documentation</a>
+    <a href="<%= config.baseUrl %>" class="logo"><%= config.title %></a>
 </header>
 <div class="container">
     <div class="row">
@@ -33,11 +33,11 @@ const {config, modules} = it;
                 <span>Modules</span>
                 <% modules.forEach(function(module) {
                 %>
-                <a href="<%= config.baseUrl %><%= module %>">
-                    <code>
-                        <%= module %>
-                    </code>
-                </a>
+                    <a href="<%= config.baseUrl %><%= module %>">
+                        <code>
+                            <%= module %>
+                        </code>
+                    </a>
                 <%
                 }) %>
             </nav>

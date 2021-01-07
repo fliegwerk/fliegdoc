@@ -22,13 +22,12 @@ export function parseOverrides(
 	overrides: Partial<FliegdocConfig> = {},
 	basePath: string = process.cwd()
 ): Partial<FliegdocConfig> {
-	const result: Partial<FliegdocConfig> = {};
+	const result: Partial<FliegdocConfig> = { ...overrides };
 
 	if (overrides.outDir)
 		result.outDir = path.resolve(basePath, overrides.outDir);
 	if (overrides.readme)
 		result.readme = path.resolve(basePath, overrides.readme);
-	if (overrides.baseUrl) result.baseUrl = overrides.baseUrl;
 
 	if (overrides.modules)
 		result.modules = overrides.modules.map(raw => ({

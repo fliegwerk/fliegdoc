@@ -7,5 +7,6 @@ module.exports = {
 			mainFile: 'index.ts'
 		}
 	],
-	baseUrl: '/fliegdoc/'
+	baseUrl: '/fliegdoc/',
+	title: 'fliegdoc Documentation'
 };

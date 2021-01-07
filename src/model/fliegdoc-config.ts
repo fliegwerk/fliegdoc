@@ -44,6 +44,10 @@ export interface FliegdocConfig {
 	 * **Default value:** `'/'`
 	 */
 	baseUrl: string;
+	/**
+	 * Title of the project, that gets printed in the header
+	 */
+	title: string;
 }
 
 /**
@@ -62,5 +66,6 @@ export const DEFAULT_CONFIG: FliegdocConfig = {
 		}
 	],
 	outDir: path.resolve(process.cwd(), 'docs'),
-	baseUrl: '/'
+	baseUrl: '/',
+	title: 'Documentation'
 };
