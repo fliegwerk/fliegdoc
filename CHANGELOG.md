@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/fliegwerk/fliegdoc/compare/v0.2.0...v0.3.0) (2021-01-07)
+
+### ⚠ BREAKING CHANGES
+
+- Tags in TSDoc comments (@example, @returns, etc.) have to be the first element in the line, now. The only exeception to this is `{@link ABC}`, which works inline.
+
+### Features
+
+- "Better" TSDoc parser ([d5bca40](https://github.com/fliegwerk/fliegdoc/commit/d5bca40938542486c011b19e55418db36c350e84))
+
 ## [0.2.0](https://github.com/fliegwerk/fliegdoc/compare/v0.1.8...v0.2.0) (2021-01-07)
 
 ### ⚠ BREAKING CHANGES
