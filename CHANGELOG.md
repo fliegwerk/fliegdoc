@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/fliegwerk/fliegdoc/compare/v0.1.6...v0.1.7) (2021-01-07)
+
+### Bug Fixes
+
+- View folder location for `serveDynamic()` ([8c0cdde](https://github.com/fliegwerk/fliegdoc/commit/8c0cdde7eb0788e56c53eee2472a78b5e07c6073))
+
 ### [0.1.6](https://github.com/fliegwerk/fliegdoc/compare/v0.1.5...v0.1.6) (2021-01-07)
 
 ### Features
