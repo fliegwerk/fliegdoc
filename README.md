@@ -69,7 +69,7 @@ module.exports = {
 import {} from 'fliegdoc';
 ```
 
-(cf. [docs](https://fliegwerk.github.io/fliegdoc) for a list of exported members)
+(cf. [docs](https://fliegwerk.github.io/fliegdoc/fliegdoc) for a list of exported members)
 
 ## Author
 
