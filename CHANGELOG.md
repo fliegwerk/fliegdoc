@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/fliegwerk/fliegdoc/compare/v0.1.8...v0.2.0) (2021-01-07)
+
+### ⚠ BREAKING CHANGES
+
+- **dependencies:** Views now have to be written using `eta`
+
+### Features
+
+- Add `externalLinks` config parameter to add external links to the page ([1d7a8ef](https://github.com/fliegwerk/fliegdoc/commit/1d7a8ef5b8c6ced1ed1e5fd221c03945bab0bfc7))
+- Add `title` config parameter to adjust the doc page title ([32d876b](https://github.com/fliegwerk/fliegdoc/commit/32d876b1e769006f4f059c8c5af401a17db2c682))
+- **dependencies:** Replaced `chalk` with more lightweight `colorette` ([ec219b2](https://github.com/fliegwerk/fliegdoc/commit/ec219b2f58c30070786aa034f436da4312645a92))
+- **dependencies:** replaced `ejs` with more light-weight and faster `eta` ([cbd5ea1](https://github.com/fliegwerk/fliegdoc/commit/cbd5ea1d7e7501c3472c542086933941cd8e1ee7))
+- **dependencies:** replaced `markdown-it` with more light-weight and faster `remarkable` ([fc858a4](https://github.com/fliegwerk/fliegdoc/commit/fc858a4d71774497338d43872ef933cfd86af8ab))
+
+### Bug Fixes
+
+- Eta build on UNIX ([8e8821c](https://github.com/fliegwerk/fliegdoc/commit/8e8821c86194f6e27905c4cd244614e812222899))
+
 ### [0.1.8](https://github.com/fliegwerk/fliegdoc/compare/v0.1.7...v0.1.8) (2021-01-07)
 
 ### Bug Fixes
