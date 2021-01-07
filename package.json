@@ -21,7 +21,8 @@
 	"files": [
 		"bin",
 		"build",
-		"views"
+		"views",
+		"README.md"
 	],
 	"husky": {
 		"hooks": {
