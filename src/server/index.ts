@@ -1,10 +1,11 @@
 import Express from 'express';
-import MarkdownIt from 'markdown-it';
+import { Remarkable } from 'remarkable';
+import { linkify } from 'remarkable/linkify';
 import * as fs from 'fs';
 import { DEFAULT_CONFIG, FliegdocConfig, Tree } from '../model';
 import * as path from 'path';
 import { renderFile } from 'eta';
-const origMd = new MarkdownIt({ linkify: true });
+const origMd = new Remarkable().use(linkify);
 
 const md = {
 	render: (md: string) => {

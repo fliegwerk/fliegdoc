@@ -1,10 +1,11 @@
-import MarkdownIt from 'markdown-it';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { renderFile } from 'eta';
 import { DEFAULT_CONFIG, FliegdocConfig, Tree } from '../model';
+import { Remarkable } from 'remarkable';
+import { linkify } from 'remarkable/linkify';
 
-const origMd = new MarkdownIt({ linkify: true });
+const origMd = new Remarkable().use(linkify);
 const viewFolder = path.resolve(__dirname, '..', '..', 'views');
 
 /**
