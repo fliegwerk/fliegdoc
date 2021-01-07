@@ -2,6 +2,7 @@ import Express from 'express';
 import MarkdownIt from 'markdown-it';
 import * as fs from 'fs';
 import { DEFAULT_CONFIG, FliegdocConfig, Tree } from '../model';
+import * as path from 'path';
 const origMd = new MarkdownIt({ linkify: true });
 
 const md = {
@@ -35,6 +36,7 @@ export function serveDynamic(
 	};
 	const app = Express();
 
+	app.set('views', path.join(__dirname, '..', '..', 'views'));
 	app.set('view engine', 'ejs');
 
 	app.get(`${finalConfig.baseUrl}`, (req, res) => {
