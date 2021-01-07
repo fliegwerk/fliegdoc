@@ -10,7 +10,7 @@ const {
 	serveStatic
 } = require('../build');
 
-const ch = require('chalk');
+const cl = require('colorette');
 
 const yargs = require('yargs');
 const path = require('path');
@@ -52,12 +52,12 @@ yargs
 			console.info('Parsing source files');
 			const tree = buildTreeForConfig(overrides);
 			console.info(
-				`${ch.green('Success!')} Source files have been parsed successfully.`
+				`${cl.green('Success!')} Source files have been parsed successfully.`
 			);
 			console.info('Converting trees to doc pages');
 			await buildStatic(tree, overrides);
 			console.info(
-				`${ch.green('Success!')} Docs pages were created successfully.`
+				`${cl.green('Success!')} Docs pages were created successfully.`
 			);
 
 			if (args['serve']) {
@@ -81,7 +81,7 @@ yargs
 			console.info('Parsing source files');
 			const tree = buildTreeForConfig(overrides);
 			console.info(
-				`${ch.green('Success!')} Source files have been parsed successfully.`
+				`${cl.green('Success!')} Source files have been parsed successfully.`
 			);
 			console.info('Serving the built documentation');
 			serveDynamic(tree, args['port'], overrides);
