@@ -37,6 +37,11 @@ export interface FliegdocConfig {
 	 * Path to the folder in which the documentation gets generated
 	 */
 	outDir: string;
+	/**
+	 * Base url of the domain to which the docs get deployed, including a trailing `/`
+	 * @default "/"
+	 */
+	baseUrl: string;
 }
 
 /**
@@ -54,5 +59,6 @@ export const DEFAULT_CONFIG: FliegdocConfig = {
 			tsconfig: path.join(process.cwd(), 'tsconfig.json')
 		}
 	],
-	outDir: path.resolve(process.cwd(), 'docs')
+	outDir: path.resolve(process.cwd(), 'docs'),
+	baseUrl: '/'
 };

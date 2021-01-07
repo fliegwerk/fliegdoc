@@ -16,6 +16,7 @@ export function parseOverrides(
 		result.outDir = path.resolve(basePath, overrides.outDir);
 	if (overrides.readme)
 		result.readme = path.resolve(basePath, overrides.readme);
+	if (overrides.baseUrl) result.baseUrl = overrides.baseUrl;
 
 	if (overrides.modules)
 		result.modules = overrides.modules.map(raw => ({

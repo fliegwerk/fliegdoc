@@ -9,5 +9,6 @@ module.exports = {
 			tsconfig: './tsconfig.json',
 			mainFile: 'index.ts'
 		}
-	]
+	],
+	baseUrl: '/fliegdoc/'
 };

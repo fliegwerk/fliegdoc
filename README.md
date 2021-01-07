@@ -50,6 +50,7 @@ The CLI searches for a `fliegdoc.config.js` file and applies its options on top 
 ```js
 // fliegdoc.config.js
 module.exports = {
+	baseUrl: '/',
 	outDir: './docs',
 	readme: './README.md',
 	modules: [

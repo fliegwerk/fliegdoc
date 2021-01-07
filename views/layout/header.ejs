@@ -1,7 +1,6 @@
 <html lang="en">
 <head>
     <title>fliegdoc Documentation</title>
-    <base href="/fliegdoc">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
     <style>
         h5 {
@@ -20,17 +19,17 @@
 </head>
 <body>
 <header>
-    <a href="/" class="logo">fliegdoc Documentation</a>
+    <a href="<%=config.baseUrl %>" class="logo">fliegdoc Documentation</a>
 </header>
 <div class="container">
     <div class="row">
         <aside class="col-sm-12 col-md-4 col-lg-3">
             <nav class="fixed">
-                <a href="/">Project README</a>
+                <a href="<%=config.baseUrl %>">Project README</a>
                 <span>Modules</span>
                 <%modules.forEach(function(module) {
                     %>
-                    <a href="/<%=module%>">
+                    <a href="<%=config.baseUrl %><%=module%>">
                         <code>
                             <%=module%>
                         </code>

@@ -29,20 +29,22 @@ export function serveDynamic(
 
 	app.set('view engine', 'ejs');
 
-	app.get('/', (req, res) => {
+	app.get(`${finalConfig.baseUrl}`, (req, res) => {
 		res.render('plain', {
 			content: md.render(fs.readFileSync(finalConfig.readme).toString()),
+			config: finalConfig,
 			modules: Object.keys(tree)
 		});
 	});
 
 	for (const packageName in tree) {
 		if (tree.hasOwnProperty(packageName)) {
-			app.get('/' + packageName, (req, res) => {
+			app.get(finalConfig.baseUrl + packageName, (req, res) => {
 				res.render('module', {
 					moduleName: packageName,
 					members: tree[packageName],
 					md: md,
+					config: finalConfig,
 					modules: Object.keys(tree)
 				});
 			});
@@ -50,7 +52,7 @@ export function serveDynamic(
 	}
 
 	app.listen(port, () => {
-		console.log(`Listening on http://localhost:${port}`);
+		console.log(`Listening on http://localhost:${port}${finalConfig.baseUrl}`);
 	});
 }
 
@@ -63,9 +65,9 @@ export function serveStatic(
 		...(configOverrides ?? {})
 	};
 	const app = Express();
-	app.use(Express.static(finalConfig.outDir));
+	app.use(finalConfig.baseUrl, Express.static(finalConfig.outDir));
 
 	app.listen(port, () => {
-		console.log(`Listening on http://localhost:${port}`);
+		console.log(`Listening on http://localhost:${port}${finalConfig.baseUrl}`);
 	});
 }

@@ -55,7 +55,8 @@ export async function buildStatic(
 		'plain',
 		{
 			content: readmeContent,
-			modules: Object.keys(tree)
+			modules: Object.keys(tree),
+			config: finalConfig
 		},
 		path.join(finalConfig.outDir, 'index.html')
 	);
@@ -68,6 +69,7 @@ export async function buildStatic(
 					moduleName: packageName,
 					members: tree[packageName],
 					md: md,
+					config: finalConfig,
 					modules: Object.keys(tree)
 				},
 				path.join(finalConfig.outDir, packageName, 'index.html')
