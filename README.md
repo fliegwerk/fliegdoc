@@ -43,12 +43,14 @@ Options:
 Get help for individual commands by running fliegdoc <command> --help
 ```
 
-The CLI searches for a `fliegdoc.config.js` file and applies its options on top of the default options.
+The CLI searches for a `fliegdoc.config.js` file and applies its options **on top of the default options**.
 
 #### Example `fliegdoc.config.js` with default options
 
 ```js
 // fliegdoc.config.js
+const { HTMLTheme } = require('fliegdoc');
+
 module.exports = {
 	baseUrl: '/',
 	outDir: './docs',
@@ -62,7 +64,8 @@ module.exports = {
 	],
 	title: 'Documentation', // appears in the page title and header
 	externalLinks: {}, // e.g.: { "GitHub": "https://github.com/fliegwerk/fliegdoc" }
-	hidePrivateMembers: true
+	hidePrivateMembers: true,
+	theme: HTMLTheme
 };
 ```
 
