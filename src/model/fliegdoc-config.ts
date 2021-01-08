@@ -1,4 +1,6 @@
 import * as path from 'path';
+import { HTMLTheme } from '../themes';
+import { Theme } from './theme';
 
 /**
  * A module/npm package
@@ -58,6 +60,13 @@ export interface FliegdocConfig {
 	 * **Default value:** `true`
 	 */
 	hidePrivateMembers: boolean;
+
+	/**
+	 * The theme that gets used.
+	 *
+	 * **Default value:** {@link HTMLTheme}
+	 */
+	theme: Theme;
 }
 
 /**
@@ -79,5 +88,6 @@ export const DEFAULT_CONFIG: FliegdocConfig = {
 	baseUrl: '/',
 	title: 'Documentation',
 	externalLinks: {},
-	hidePrivateMembers: true
+	hidePrivateMembers: true,
+	theme: HTMLTheme
 };

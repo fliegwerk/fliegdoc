@@ -1,2 +1,8 @@
 # don't use CRLF line endings
 * text oel=lf
+
+# binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary

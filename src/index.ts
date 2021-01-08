@@ -33,3 +33,4 @@ export * from './buildModuleTree';
 export * from './model';
 export * from './server';
 export * from './builders';
+export * from './themes';
