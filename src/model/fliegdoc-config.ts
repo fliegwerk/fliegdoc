@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { DefaultHTMLTheme } from '../themes/default-html';
+import { HTMLTheme } from '../themes/default-html';
 import { Theme } from './theme';
 
 /**
@@ -87,5 +87,5 @@ export const DEFAULT_CONFIG: FliegdocConfig = {
 	title: 'Documentation',
 	externalLinks: {},
 	hidePrivateMembers: true,
-	theme: DefaultHTMLTheme
+	theme: HTMLTheme
 };

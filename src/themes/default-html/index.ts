@@ -19,7 +19,7 @@ const md = {
 	}
 };
 
-export const DefaultHTMLTheme: Theme = {
+export const HTMLTheme: Theme = {
 	isBrowserViewable: true,
 	async onBuild(tree, config, createFile) {
 		/**
