@@ -77,6 +77,14 @@ import {} from 'fliegdoc';
 
 (cf. [docs](https://fliegwerk.github.io/fliegdoc/fliegdoc) for a list of exported members)
 
+### Themes
+
+![Theme Overview](./assets/drawio/core-theme-relationship.drawio.png)
+
+Themes take the doc-ready AST and configuration and write a resulting file structure.
+
+Detailed guides on creating themes will follow soon.
+
 ## Author
 
 👤 **Pablo Klaschka**
