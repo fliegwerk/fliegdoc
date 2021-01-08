@@ -35,7 +35,7 @@ const {declaration, md} = it
                 :
                 <%= param.type %>
 
-                <!-- TODO: Default value -->
+                <!-- Default value -->
                 <% if (param.initializer) { %>
                 = <%= param.initializer %>
                 <% } %>
