@@ -1,4 +1,5 @@
-import * as fs from 'fs/promises';
+import * as fs from 'fs';
+import * as fsp from 'fs/promises';
 import * as path from 'path';
 import { Tree } from '../model';
 import { getConfig } from '../model/config';
@@ -19,9 +20,9 @@ export async function buildStatic(tree: Tree): Promise<void> {
 	const config = getConfig();
 
 	await config.theme.onBuild(tree, config, async (name, content) => {
-		if (!(await fs.lstat(path.dirname(name))).isDirectory()) {
-			await fs.mkdir(path.dirname(name), { recursive: true });
+		if (!fs.existsSync(path.dirname(name))) {
+			await fsp.mkdir(path.dirname(name), { recursive: true });
 		}
-		await fs.writeFile(name, Buffer.from(new Uint8Array(await content)));
+		await fsp.writeFile(name, Buffer.from(new Uint8Array(await content)));
 	});
 }
