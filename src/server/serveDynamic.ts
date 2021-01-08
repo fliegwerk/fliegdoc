@@ -37,7 +37,7 @@ export async function serveDynamic(
 			const url =
 				config.baseUrl +
 				path.relative(config.outDir, absolutePath).replace(/\\/g, '/');
-			console.log(url);
+
 			const handler: RequestHandler = (req, res) => {
 				res.type(mimetype);
 				res.send(content);
