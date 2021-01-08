@@ -1,6 +1,7 @@
 import { Theme } from '../../model';
 import MarkdownIt from 'markdown-it';
-import * as fs from 'fs/promises';
+import * as fsp from 'fs/promises';
+import * as fs from 'fs';
 import * as path from 'path';
 import { renderFile } from 'eta';
 import { getConfig } from '../../model/config';
@@ -49,7 +50,7 @@ export const HTMLTheme: Theme = {
 			data: Record<string, unknown>,
 			outPath: string
 		): Promise<void> {
-			await fs.mkdir(path.dirname(outPath), { recursive: true });
+			await fsp.mkdir(path.dirname(outPath), { recursive: true });
 			await createFile(
 				outPath,
 				Buffer.from(
@@ -63,10 +64,51 @@ export const HTMLTheme: Theme = {
 				'text/html'
 			);
 		}
+
+		/**
+		 * Static files that need to get copied to the `outDir`, e.g., for local images
+		 */
+		const staticFiles: Record<string, string> = {};
+
+		/**
+		 * Detects image tags in Markdown
+		 */
+		const regex = /!\[(.*?)]\((.*?)\)/g;
+
+		/**
+		 * Readme content as HTML
+		 */
 		const readmeContent = origMd.render(
-			(await fs.readFile(getConfig().readme)).toString()
+			(await fsp.readFile(getConfig().readme))
+				.toString()
+				// Handle local image files
+				.replace(regex, (orig, altText, link) => {
+					// handle images
+					if (link.startsWith('http://') || link.startsWith('https://')) {
+						// global link => can stay as it is
+						return orig;
+					} else {
+						// image exists and should get copied to the output
+						const origPath = path.resolve(path.dirname(config.readme), link);
+						if (fs.existsSync(origPath)) {
+							staticFiles[origPath] = `./assets/${Date.now()}.${path.extname(
+								origPath
+							)}`;
+							return `![${altText}](${staticFiles[origPath]})`;
+						} else {
+							// Image file was not found in the file system => remove in output
+							console.warn(
+								'Static file ' +
+									link +
+									' from README does not exist, removing image in output.'
+							);
+							return '';
+						}
+					}
+				})
 		);
 
+		// render readme content to index.html
 		await render(
 			'plain',
 			{
@@ -77,12 +119,18 @@ export const HTMLTheme: Theme = {
 			path.join(getConfig().outDir, 'index.html')
 		);
 
-		await createFile(
-			path.join(config.outDir, 'test.txt'),
-			Buffer.from('Hello World'),
-			'text/plain'
-		);
+		// Copy static files to the output
+		for (const origPath in staticFiles) {
+			if (Object.prototype.hasOwnProperty.call(staticFiles, origPath)) {
+				await createFile(
+					path.join(config.outDir, staticFiles[origPath]),
+					await fsp.readFile(origPath),
+					path.extname(origPath)
+				);
+			}
+		}
 
+		// Create module doc files
 		await Promise.all(
 			Object.keys(tree).map(packageName =>
 				render(
