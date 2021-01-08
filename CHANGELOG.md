@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/fliegwerk/fliegdoc/compare/v0.4.0...v0.4.1) (2021-01-08)
+
+### Features
+
+- Add fliegdoc [i|init] to generate a fliegdoc.config.js ([044319e](https://github.com/fliegwerk/fliegdoc/commit/044319efff558ca6ade85a231c7e4ea6c315c802))
+
 ## [0.4.0](https://github.com/fliegwerk/fliegdoc/compare/v0.3.2...v0.4.0) (2021-01-08)
 
 ### ⚠ BREAKING CHANGES
