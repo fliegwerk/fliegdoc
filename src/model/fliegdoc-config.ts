@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { HTMLTheme } from '../themes/default-html';
+import { HTMLTheme } from '../themes';
 import { Theme } from './theme';
 
 /**
@@ -63,6 +63,8 @@ export interface FliegdocConfig {
 
 	/**
 	 * The theme that gets used.
+	 *
+	 * **Default value:** {@link HTMLTheme}
 	 */
 	theme: Theme;
 }
