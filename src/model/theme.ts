@@ -14,7 +14,9 @@ export interface Theme {
 	isBrowserViewable: boolean;
 
 	/**
-	 * Builds the theme
+	 * Builds the theme, by generating its output files.
+	 *
+	 * This must only use the `createFile` function to interact with the file system for {@link serveDynamic} to work.
 	 *
 	 * @param tree - the documentation-ready AST
 	 * @param config - the config used for the build
@@ -28,7 +30,7 @@ export interface Theme {
 }
 
 /**
- * Write to a file inside the `config.outDir`
+ * Write to a file inside the `config.outDir`, creating any parent directories, if necessary.
  *
  * @param path - the absolute path to the output file, must be inside the `config.outDir`.
  * @param content - the file's content

@@ -2,7 +2,7 @@ import Express from 'express';
 import { getConfig } from '../model/config';
 
 /**
- * Starts an HTTP server on `port` and serves the documentation in the config's `outDir`.
+ * Starts an HTTP server on `port` and statically serves the documentation in the config's `outDir`.
  *
  * @param port - the port on which the documentation gets served
  *
