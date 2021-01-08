@@ -73,9 +73,11 @@ Options:
 
 Get help for individual commands by running fliegdoc &lt;command&gt; --help
 </code></pre>
-<p>The CLI searches for a <code>fliegdoc.config.js</code> file and applies its options on top of the default options.</p>
+<p>The CLI searches for a <code>fliegdoc.config.js</code> file and applies its options <strong>on top of the default options</strong>.</p>
 <h4>Example <code>fliegdoc.config.js</code> with default options</h4>
 <pre><code class="language-js">// fliegdoc.config.js
+const { HTMLTheme } = require('fliegdoc');
+
 module.exports = {
 	baseUrl: '/',
 	outDir: './docs',
@@ -89,13 +91,18 @@ module.exports = {
 	],
 	title: 'Documentation', // appears in the page title and header
 	externalLinks: {}, // e.g.: { &quot;GitHub&quot;: &quot;https://github.com/fliegwerk/fliegdoc&quot; }
-	hidePrivateMembers: true
+	hidePrivateMembers: true,
+	theme: HTMLTheme
 };
 </code></pre>
 <h3>API</h3>
 <pre><code class="language-ts">import {} from 'fliegdoc';
 </code></pre>
 <p>(cf. <a href="https://fliegwerk.github.io/fliegdoc/fliegdoc">docs</a> for a list of exported members)</p>
+<h3>Themes</h3>
+<p><img src="./assets/1610136800354..png" alt="Theme Overview"></p>
+<p>Themes take the doc-ready AST and configuration and write a resulting file structure.</p>
+<p>Detailed guides on creating themes will follow soon.</p>
 <h2>Author</h2>
 <p>👤 <strong>Pablo Klaschka</strong></p>
 <ul>

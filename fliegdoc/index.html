@@ -201,7 +201,7 @@ console.log('current config:', getConfig());
                 <!-- type -->
                 :
                 Partial&lt;FliegdocConfig&gt;
-                <!-- TODO: Default value -->
+                <!-- Default value -->
                 
                 <!-- Comma if not last -->
                 ,                             
@@ -215,7 +215,7 @@ console.log('current config:', getConfig());
                 <!-- type -->
                 :
                 string
-                <!-- TODO: Default value -->
+                <!-- Default value -->
                                 = process.cwd()                
                 <!-- Comma if not last -->
                                                         <br>
@@ -300,7 +300,7 @@ setConfig(config, path.dirname(filepath));
                 <!-- type -->
                 :
                 Module
-                <!-- TODO: Default value -->
+                <!-- Default value -->
                 
                 <!-- Comma if not last -->
                                                         <br>
@@ -639,6 +639,27 @@ buildModuleTree({
     <!-- Tags -->
     <div class="row">
             </div>
+    <a id="FliegdocConfig.theme" href="#FliegdocConfig.theme">
+        <h5><code>
+                                                                                theme                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            Theme        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The theme that gets used.</p>
+<p><strong>Default value:</strong> <a href="#HTMLTheme"><code>HTMLTheme</code></a></p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
 
 <!-- Methods -->
                         </div>
@@ -743,17 +764,74 @@ in the <code>tsconfig.json</code></p>
                         </div>
     <div class="card fluid">
         <!-- Name with anchor link -->
-        <a id="serveDynamic" href="#serveDynamic">
-            <h3><code>serveDynamic</code></h3></a>
+        <a id="Theme" href="#Theme">
+            <h3><code>Theme</code></h3></a>
 
         <!-- Description, based on type -->
-                                    
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            Theme
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A theme configuration usable with fliegdoc.</p>
+<p>An object implementing this interface gets passed to <a href="#setConfig"><code>setConfig</code></a> in the <code>theme</code> of the <a href="#FliegdocConfig"><code>FliegdocConfig</code></a>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="Theme.isBrowserViewable" href="#Theme.isBrowserViewable">
+        <h5><code>
+                                                                                isBrowserViewable                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            boolean        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Whether this theme is viewable in the browser.</p>
+<p>E.g., an HTML-theme would be browser-viewable, while a LaTeX theme wouldn't.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+    <h4>Methods</h4>
+            <a id="Theme.onBuild" href="#Theme.onBuild">
+            <h5><code>
+                                                                                                    onBuild                                        (...)
+                                    </code></h5>
+        </a>
+        
 <!-- Signature -->
 <p>
     <b>
         <code>
             
-            function serveDynamic
+            function onBuild
             <!-- Type Parameters -->
             
                         <!-- Parameters -->
@@ -769,7 +847,7 @@ in the <code>tsconfig.json</code></p>
                 <!-- type -->
                 :
                 Tree
-                <!-- TODO: Default value -->
+                <!-- Default value -->
                 
                 <!-- Comma if not last -->
                 ,                             
@@ -778,26 +856,41 @@ in the <code>tsconfig.json</code></p>
 
                                 
                 <!-- parameter name -->
-                port
+                config
                 
                 <!-- type -->
                 :
-                number
-                <!-- TODO: Default value -->
-                                = 3000                
+                FliegdocConfig
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                createFile
+                
+                <!-- type -->
+                :
+                CreateFileFunction
+                <!-- Default value -->
+                
                 <!-- Comma if not last -->
                                                         <br>
                         )
 
             <!-- Return type -->
             :
-            void        </code>
+            Promise&lt;void&gt;        </code>
     </b>
 </p>
 
 <!-- Docs -->
     <!-- Description -->
-    <p>Starts an http server on <code>port</code> and serves the generated documentation</p>
+    <p>Builds the theme, by generating its output files.</p>
+<p>This must only use the <code>createFile</code> function to interact with the file system for <a href="#serveDynamic"><code>serveDynamic</code></a> to work.</p>
 
     <!-- Tags -->
     <div class="row">
@@ -809,7 +902,7 @@ in the <code>tsconfig.json</code></p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p>tree - the documentation tree</p>
+            <div class="col-sm-10"><p>tree - the documentation-ready AST</p>
 </div>
                     <!-- Tag name -->
             <div class="col-sm-2">
@@ -819,7 +912,85 @@ in the <code>tsconfig.json</code></p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p>port - the port on which the documentation gets served</p>
+            <div class="col-sm-10"><p>config - the config used for the build</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>createFile - a function to create a file in the output folder</p>
+</div>
+            </div>
+                            </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="CreateFileFunction" href="#CreateFileFunction">
+            <h3><code>CreateFileFunction</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type CreateFileFunction
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            (
+	path: string,
+	content: Buffer,
+	mimetype: string
+) =&gt; Promise&lt;void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Write to a file inside the <code>config.outDir</code>, creating any parent directories, if necessary.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>path - the absolute path to the output file, must be inside the <code>config.outDir</code>.</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>content - the file's content</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>mimetype - the file's mime type</p>
 </div>
                     <!-- Tag name -->
             <div class="col-sm-2">
@@ -829,10 +1000,7 @@ in the <code>tsconfig.json</code></p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><pre><code class="language-ts">import { buildTreeForConfig, serveDynamic } from 'fliegdoc';
-
-const tree = buildTreeForConfig();
-serveDynamic(tree, port);
+            <div class="col-sm-10"><pre><code class="language-ts">createFile('index.html', 'content', 'text/html')
 </code></pre>
 </div>
             </div>
@@ -865,7 +1033,7 @@ serveDynamic(tree, port);
                 <!-- type -->
                 :
                 number
-                <!-- TODO: Default value -->
+                <!-- Default value -->
                                 = 3000                
                 <!-- Comma if not last -->
                                                         <br>
@@ -879,7 +1047,7 @@ serveDynamic(tree, port);
 
 <!-- Docs -->
     <!-- Description -->
-    <p>Starts an HTTP server on <code>port</code> and serves the documentation in the config's <code>outDir</code>.</p>
+    <p>Starts an HTTP server on <code>port</code> and statically serves the documentation in the config's <code>outDir</code>.</p>
 
     <!-- Tags -->
     <div class="row">
@@ -896,6 +1064,16 @@ serveDynamic(tree, port);
                     <!-- Tag name -->
             <div class="col-sm-2">
                 <p>
+                    <mark class="tag">@throws:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Error - if the theme isn't browser-viewable, i.e., if <a href="#Theme.isBrowserViewable"><code>Theme.isBrowserViewable</code></a> is <code>false</code></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
                     <mark class="tag">@example:</mark>
                 </p>
             </div>
@@ -906,6 +1084,115 @@ serveDynamic(tree, port);
 const tree = buildTreeForConfig();
 await buildStatic(tree);
 serveStatic(port);
+</code></pre>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="serveDynamic" href="#serveDynamic">
+            <h3><code>serveDynamic</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function serveDynamic
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                tree
+                
+                <!-- type -->
+                :
+                Tree
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                port
+                
+                <!-- type -->
+                :
+                number
+                <!-- Default value -->
+                                = 3000                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Starts an http server on <code>port</code> and serves the documentation.</p>
+<p>Instead of writing the docs to the actual file system, this just generates them into a &quot;virtual&quot; file system.</p>
+<p><strong>NOTE:</strong> This is great for quickly reviewing the docs, but please keep in mind that all files get saved in-memory.
+If a theme outputs a lot of images or other bigger files, this might pose a problem.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>tree - the documentation tree</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>port - the port on which the documentation gets served</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@throws:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Error - if the theme isn't browser-viewable, i.e., if <a href="#Theme.isBrowserViewable"><code>Theme.isBrowserViewable</code></a> is <code>false</code></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">import { buildTreeForConfig, serveDynamic } from 'fliegdoc';
+
+const tree = buildTreeForConfig();
+serveDynamic(tree, port);
 </code></pre>
 </div>
             </div>
@@ -938,7 +1225,7 @@ serveStatic(port);
                 <!-- type -->
                 :
                 Tree
-                <!-- TODO: Default value -->
+                <!-- Default value -->
                 
                 <!-- Comma if not last -->
                                                         <br>
@@ -980,5 +1267,34 @@ const tree = buildTreeForConfig();
 await buildStatic(tree);
 </code></pre>
 </div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="HTMLTheme" href="#HTMLTheme">
+            <h3><code>HTMLTheme</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Declaration Kind: const, let, or var -->
+            const
+            :
+
+            <!-- Variable type or any -->
+            Theme        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The default HTML theme.</p>
+<p>Generates individual pages, per module, and uses all configuration parameters like <code>config.title</code>.</p>
+<p>Rendering gets done using templates written in ETA.</p>
+
+    <!-- Tags -->
+    <div class="row">
             </div>
                         </div>
