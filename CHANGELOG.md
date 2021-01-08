@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/fliegwerk/fliegdoc/compare/v0.3.2...v0.4.0) (2021-01-08)
+
+### ⚠ BREAKING CHANGES
+
+- serveDynamic no longer renders the templates "on request", but instead once when called
+- Private class members are now hidden by default. To re-enable them, you must set `hidePrivateMembers: false` in your config
+- Instead of passing the configuration overrides as parameters to the individual functions, you now have to call `require('fliegdoc').setConfig(config, configBasePath)` to set a configuration
+
+### Features
+
+- **theme:** Add local image handling for README.md in HTML Theme ([ecff4fd](https://github.com/fliegwerk/fliegdoc/commit/ecff4fd63c489c0ea70cd5c8ed1253c5998a286c))
+- Add option to hide private class members ([0dffeb8](https://github.com/fliegwerk/fliegdoc/commit/0dffeb855cc042d7eb3bec659337a83c54f1f648)), closes [#6](https://github.com/fliegwerk/fliegdoc/issues/6)
+- Export `HTMLTheme` in `index.ts` ([b6eb166](https://github.com/fliegwerk/fliegdoc/commit/b6eb166b2650aab9f63ef9286bb6e97da1cefbe0))
+- Extract theme into an object passable to the config as `theme` ([dc21697](https://github.com/fliegwerk/fliegdoc/commit/dc216979284a8103da740f03731870ad4b1ce228)), closes [#7](https://github.com/fliegwerk/fliegdoc/issues/7)
+- Improve class documentation template ([f4600d9](https://github.com/fliegwerk/fliegdoc/commit/f4600d96405bc33ea25a05a34e53c48e37825f8c))
+- Improve function documentation template ([b506770](https://github.com/fliegwerk/fliegdoc/commit/b506770b1cbd2b8d1ba15ec3cfc5f4745ac78ed1))
+- Move `default-html` to `html` ([be4423c](https://github.com/fliegwerk/fliegdoc/commit/be4423c19c1272da1af6672a7d60a1b612147fd3))
+- Rename `DefaultHTMLTheme` to `HTMLTheme` ([ec30134](https://github.com/fliegwerk/fliegdoc/commit/ec30134af1b7a2db8bf7a915c10a24bab17c5538))
+- Revamp API configuration system ([c69493e](https://github.com/fliegwerk/fliegdoc/commit/c69493e316a667f73e4805fe1a26c93d84f4d714)), closes [#5](https://github.com/fliegwerk/fliegdoc/issues/5)
+
+### Bug Fixes
+
+- Fix creating directories in buildStatic ([9d66ebd](https://github.com/fliegwerk/fliegdoc/commit/9d66ebd74ac1d24e6c78d4bc831e2caa9727e32b))
+- Remove console.log statement in `serveDynamic` ([c87a4a1](https://github.com/fliegwerk/fliegdoc/commit/c87a4a161f9858b50c807b750b2dee9e1c8dc18d))
+
 ### [0.3.2](https://github.com/fliegwerk/fliegdoc/compare/v0.3.1...v0.3.2) (2021-01-07)
 
 ### Bug Fixes
