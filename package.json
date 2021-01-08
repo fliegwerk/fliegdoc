@@ -72,6 +72,7 @@
 	"dependencies": {
 		"colorette": "^1.2.1",
 		"cosmiconfig": "^7.0.0",
+		"enquirer": "^2.3.6",
 		"eta": "^1.12.1",
 		"express": "^4.17.1",
 		"markdown-it": "^12.0.4",
