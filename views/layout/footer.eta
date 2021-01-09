@@ -1,5 +1,7 @@
 </div>
 </div>
 </div>
+<search-popup />
+<%~includeFile('layout/scripts')%>
 </body>
-</footer>
+</html>
