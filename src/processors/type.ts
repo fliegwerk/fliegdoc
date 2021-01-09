@@ -1,5 +1,6 @@
 import { TypeAliasDeclaration } from 'ts-morph';
 import { processJsDocs } from './helpers/processJsDocs';
+import { ModuleTreeNode } from '../model';
 
 /**
  * Converts a `TypeAleasDeclaration` to a documentation-ready representation.
@@ -11,9 +12,7 @@ import { processJsDocs } from './helpers/processJsDocs';
  * processType(node);
  * ```
  */
-export function processType(
-	node: TypeAliasDeclaration
-): Record<string, unknown> {
+export function processType(node: TypeAliasDeclaration): ModuleTreeNode {
 	return {
 		type: 'type',
 		name: node.getName(),

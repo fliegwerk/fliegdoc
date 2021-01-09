@@ -16,6 +16,7 @@ import { processVariableDeclaration } from './variable';
 import { processIdentifier } from './identifier';
 import { processModule } from './module';
 import { processInterfaceDeclaration } from './interface';
+import { ModuleTreeNode } from '../model';
 
 /**
  * Processes a node for documentation-relevant values
@@ -27,7 +28,7 @@ import { processInterfaceDeclaration } from './interface';
  * processNode(node);
  * ```
  */
-export function processNode(node: Node): Record<string, unknown> {
+export function processNode(node: Node): ModuleTreeNode<unknown> {
 	switch (node.getKind()) {
 		case SyntaxKind.FunctionDeclaration:
 			return processFunctionDeclaration(node as FunctionDeclaration);
@@ -44,6 +45,10 @@ export function processNode(node: Node): Record<string, unknown> {
 		case SyntaxKind.ModuleDeclaration:
 			return processModule(node as NamespaceDeclaration);
 		default:
-			return { type: 'unknown', kind: node.getKindName() };
+			return {
+				type: 'unknown::' + node.getKindName(),
+				declarations: [],
+				name: node.getSymbol()?.getName() ?? 'unknown'
+			};
 	}
 }

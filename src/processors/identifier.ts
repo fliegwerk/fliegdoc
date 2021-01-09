@@ -1,5 +1,6 @@
 import { Identifier } from 'ts-morph';
 import { processNode } from './init';
+import { ModuleTreeNode } from '../model';
 
 /**
  * Converts an `Identifier` to a documentation-ready representation.
@@ -11,10 +12,12 @@ import { processNode } from './init';
  * processIdentifier(node);
  * ```
  */
-export function processIdentifier(node: Identifier): Record<string, unknown> {
+export function processIdentifier(
+	node: Identifier
+): ModuleTreeNode<ModuleTreeNode<unknown>> {
 	return {
 		type: 'identifier',
 		name: node.getText(),
-		implementations: node.getDefinitionNodes().map(processNode)
+		declarations: node.getDefinitionNodes().map(processNode)
 	};
 }

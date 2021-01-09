@@ -40,4 +40,4 @@
         <% }) %>
     </div>
 <% }) %>
-<%~includeFile('layout/footer')%>
+<%~includeFile('layout/footer', it)%>

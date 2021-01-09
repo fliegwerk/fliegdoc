@@ -5,6 +5,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { renderFile } from 'eta';
 import { getConfig } from '../../model/config';
+import { getSearchIndex } from './serach-index';
 
 const origMd = new MarkdownIt({ linkify: true });
 const viewFolder = path.resolve(__dirname, '..', '..', '..', 'views');
@@ -106,6 +107,13 @@ export const HTMLTheme: Theme = {
 						}
 					}
 				})
+		);
+
+		const searchIndex = getSearchIndex(tree, getConfig());
+		await createFile(
+			path.join(getConfig().outDir, 'search-index.json'),
+			Buffer.from(JSON.stringify(searchIndex)),
+			'.json'
 		);
 
 		// render readme content to index.html

@@ -1,6 +1,7 @@
 import { NamespaceDeclaration } from 'ts-morph';
 import { processNode } from './init';
 import { processJsDocs } from './helpers/processJsDocs';
+import { ModuleTreeNode } from '../model';
 
 /**
  * Converts a `NamespaceDeclaration` to a documentation-ready representation.
@@ -14,22 +15,19 @@ import { processJsDocs } from './helpers/processJsDocs';
  */
 export function processModule(
 	node: NamespaceDeclaration
-): Record<string, unknown> {
+): ModuleTreeNode<ModuleTreeNode<unknown>> {
 	if (node.hasNamespaceKeyword()) {
-		const res: Record<string, unknown> & { exportedMembers: unknown[] } = {
+		const res: ModuleTreeNode<ModuleTreeNode<unknown>> = {
 			name: node.getName(),
 			docs: processJsDocs(node.getJsDocs()),
 			type: 'namespace',
-			exportedMembers: []
+			declarations: []
 		};
-		for (const [name, declarations] of node.getExportedDeclarations()) {
-			res.exportedMembers.push({
-				name,
-				declarations: declarations.map(processNode)
-			});
+		for (const [, declarations] of node.getExportedDeclarations()) {
+			res.declarations.push(...declarations.map(processNode));
 		}
 		return res;
 	}
 	// TODO: Module type
-	return { type: 'module' };
+	return { type: 'module', name: node.getName(), declarations: [] };
 }

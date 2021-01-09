@@ -1,7 +1,6 @@
 </div>
 </div>
 </div>
-<search-popup />
-<%~includeFile('layout/scripts')%>
+<%~includeFile('layout/scripts', it)%>
 </body>
 </html>
