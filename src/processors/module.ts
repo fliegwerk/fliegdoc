@@ -15,7 +15,7 @@ import { ModuleTreeNode } from '../model';
  */
 export function processModule(
 	node: NamespaceDeclaration
-): ModuleTreeNode<ModuleTreeNode<unknown>> {
+): ModuleTreeNode<ModuleTreeNode> {
 	if (node.hasNamespaceKeyword()) {
 		const res: ModuleTreeNode<ModuleTreeNode<unknown>> = {
 			name: node.getName(),
