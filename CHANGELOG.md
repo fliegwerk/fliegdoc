@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/fliegwerk/fliegdoc/compare/v0.4.1...v0.4.2) (2021-01-11)
+
+### Features
+
+- Search ([#10](https://github.com/fliegwerk/fliegdoc/issues/10)) ([0a3c342](https://github.com/fliegwerk/fliegdoc/commit/0a3c342f81bcc36743cec13708ae538ba6301d13))
+
 ### [0.4.1](https://github.com/fliegwerk/fliegdoc/compare/v0.4.0...v0.4.1) (2021-01-08)
 
 ### Features
