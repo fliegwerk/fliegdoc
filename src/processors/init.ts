@@ -28,7 +28,7 @@ import { ModuleTreeNode } from '../model';
  * processNode(node);
  * ```
  */
-export function processNode(node: Node): ModuleTreeNode<unknown> {
+export function processNode(node: Node): ModuleTreeNode {
 	switch (node.getKind()) {
 		case SyntaxKind.FunctionDeclaration:
 			return processFunctionDeclaration(node as FunctionDeclaration);
