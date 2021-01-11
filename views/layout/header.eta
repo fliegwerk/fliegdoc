@@ -18,6 +18,15 @@ const {config, modules} = it;
         :root {
             scroll-behavior: smooth;
         }
+
+        header {
+            display: flex;
+            align-items: center;
+        }
+
+        .spacer {
+            flex-grow: 1;
+        }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -27,6 +36,8 @@ const {config, modules} = it;
     <% Object.keys(config.externalLinks).forEach(function (name) { %>
         <a class="button" href="<%=config.externalLinks[name] %>" target="_blank"><%=name%></a>
     <% }) %>
+    <div class="spacer"></div>
+    <button onclick="openSearch()"><span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
 </header>
 <div class="container">
     <div class="row">

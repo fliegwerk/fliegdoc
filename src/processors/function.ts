@@ -1,5 +1,6 @@
 import { FunctionDeclaration } from 'ts-morph';
 import { processJsDocs } from './helpers/processJsDocs';
+import { ModuleTreeNode } from '../model';
 
 /**
  * Converts a `FunctionDeclaration` to a documentation-ready representation.
@@ -13,11 +14,11 @@ import { processJsDocs } from './helpers/processJsDocs';
  */
 export function processFunctionDeclaration(
 	node: FunctionDeclaration
-): Record<string, unknown> {
+): ModuleTreeNode {
 	// return signature.getDocumentationComments()
 	return {
 		type: 'function',
-		name: node.getName(),
+		name: node.getName() || '[[unnamedFunction]]',
 		declarations: [
 			{
 				...node.getStructure(),

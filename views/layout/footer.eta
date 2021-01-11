@@ -1,5 +1,6 @@
 </div>
 </div>
 </div>
+<%~includeFile('layout/scripts', it)%>
 </body>
-</footer>
+</html>

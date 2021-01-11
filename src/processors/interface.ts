@@ -1,5 +1,6 @@
-import { InterfaceDeclaration } from 'ts-morph';
+import { InterfaceDeclaration, InterfaceDeclarationStructure } from 'ts-morph';
 import { extractPropertiesAndMethods } from './helpers/extractPropertiesAndMethods';
+import { ModuleTreeNode } from '../model';
 
 /**
  * Converts a `ClassDeclaration` or `InterfaceDeclaration` to a documentation-ready representation.
@@ -13,7 +14,7 @@ import { extractPropertiesAndMethods } from './helpers/extractPropertiesAndMetho
  */
 export function processInterfaceDeclaration(
 	node: InterfaceDeclaration
-): Record<string, unknown> {
+): ModuleTreeNode<InterfaceDeclarationStructure> {
 	const structure = node.getStructure();
 	extractPropertiesAndMethods(structure, node);
 	return {

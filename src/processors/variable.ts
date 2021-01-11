@@ -1,5 +1,6 @@
 import { VariableDeclaration } from 'ts-morph';
 import { processJsDocs } from './helpers/processJsDocs';
+import { ModuleTreeNode } from '../model';
 
 /**
  * Converts a `VariableDeclaration` to a documentation-ready representation.
@@ -13,7 +14,7 @@ import { processJsDocs } from './helpers/processJsDocs';
  */
 export function processVariableDeclaration(
 	node: VariableDeclaration
-): Record<string, unknown> {
+): ModuleTreeNode {
 	return {
 		type: 'variable',
 		name: node.getName(),

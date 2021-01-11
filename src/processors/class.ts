@@ -1,7 +1,8 @@
-import { ClassDeclaration } from 'ts-morph';
+import { ClassDeclaration, ClassDeclarationStructure } from 'ts-morph';
 import { processJsDocs } from './helpers/processJsDocs';
 import { extractPropertiesAndMethods } from './helpers/extractPropertiesAndMethods';
 import { getConfig } from '../model/config';
+import { ModuleTreeNode } from '../model';
 
 /**
  * Converts a `ClassDeclaration` or `InterfaceDeclaration` to a documentation-ready representation.
@@ -15,7 +16,7 @@ import { getConfig } from '../model/config';
  */
 export function processClassDeclaration(
 	node: ClassDeclaration
-): Record<string, unknown> {
+): ModuleTreeNode<ClassDeclarationStructure> {
 	const structure = node.getStructure();
 	extractPropertiesAndMethods(structure, node);
 
@@ -40,7 +41,7 @@ export function processClassDeclaration(
 
 	return {
 		type: 'class',
-		name: node.getName(),
+		name: node.getName() ?? '[[UnnamedClass]]',
 		declarations: [structure]
 	};
 }
