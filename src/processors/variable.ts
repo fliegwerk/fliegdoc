@@ -14,7 +14,7 @@ import { ModuleTreeNode } from '../model';
  */
 export function processVariableDeclaration(
 	node: VariableDeclaration
-): ModuleTreeNode<unknown> {
+): ModuleTreeNode {
 	return {
 		type: 'variable',
 		name: node.getName(),
