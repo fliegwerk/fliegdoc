@@ -15,6 +15,15 @@
         :root {
             scroll-behavior: smooth;
         }
+
+        header {
+            display: flex;
+            align-items: center;
+        }
+
+        .spacer {
+            flex-grow: 1;
+        }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -23,7 +32,9 @@
     <a href="/fliegdoc/" class="logo">fliegdoc Documentation</a>
             <a class="button" href="https://github.com/fliegwerk/fliegdoc" target="_blank">GitHub</a>
             <a class="button" href="https://www.npmjs.com/package/fliegdoc" target="_blank">npm</a>
-    </header>
+        <div class="spacer"></div>
+    <button onclick="openSearch()"><span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
+</header>
 <div class="container">
     <div class="row">
         <aside class="col-sm-12 col-md-4 col-lg-3">
@@ -100,7 +111,7 @@ module.exports = {
 </code></pre>
 <p>(cf. <a href="https://fliegwerk.github.io/fliegdoc/fliegdoc">docs</a> for a list of exported members)</p>
 <h3>Themes</h3>
-<p><img src="./assets/1610386082184..png" alt="Theme Overview"></p>
+<p><img src="./assets/1610386158972..png" alt="Theme Overview"></p>
 <p>Themes take the doc-ready AST and configuration and write a resulting file structure.</p>
 <p>Detailed guides on creating themes will follow soon.</p>
 <h2>Author</h2>
@@ -123,5 +134,34 @@ module.exports = {
 </div>
 </div>
 </div>
+<script src="https://rawcdn.githack.com/nextapps-de/flexsearch/master/dist/flexsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fliegwerk/search-popup/dist/bundle.js"></script>
+<script>
+    const searchIndex = new FlexSearch({
+        encode: q => (q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase() + ' ' + q.toLowerCase(),
+        // encode: q => (q.replace(/(.*)[\W.](.*)/g, "$1$2")).toLowerCase(),
+        tokenize: "full",
+        threshold: 0,
+        resolution: 9,
+        depth: 3,
+        doc: {
+            id: 'url',
+            field: ['name', 'text']
+        }
+    });
+
+    function search(q) {
+        q = q || '';
+        return searchIndex.search((q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase(), 5)
+    }
+
+    fetch('/fliegdoc/search-index.json').then(r => r.json()).then(index => {
+        searchIndex.add(index)
+
+        const searchPopup = document.createElement('search-popup');
+        searchPopup.setAttribute('search', 'search')
+        document.body.appendChild(searchPopup);
+    });
+</script>
 </body>
-</footer>
+</html>

@@ -15,6 +15,15 @@
         :root {
             scroll-behavior: smooth;
         }
+
+        header {
+            display: flex;
+            align-items: center;
+        }
+
+        .spacer {
+            flex-grow: 1;
+        }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -23,7 +32,9 @@
     <a href="/fliegdoc/" class="logo">fliegdoc Documentation</a>
             <a class="button" href="https://github.com/fliegwerk/fliegdoc" target="_blank">GitHub</a>
             <a class="button" href="https://www.npmjs.com/package/fliegdoc" target="_blank">npm</a>
-    </header>
+        <div class="spacer"></div>
+    <button onclick="openSearch()"><span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
+</header>
 <div class="container">
     <div class="row">
         <aside class="col-sm-12 col-md-4 col-lg-3">
@@ -714,13 +725,69 @@ in the <code>tsconfig.json</code></p>
     <b>
         Alias for:
         <code>
-            (Record&lt;string, unknown&gt; &amp; { name: string })[]        </code>
+            (Record&lt;string, unknown&gt; &amp; {
+	name: string;
+	declarations: ModuleTreeNode[];
+})[]        </code>
     </b>
 </p>
 
 <!-- Docs -->
     <!-- Description -->
     <p>A documentation-ready tree for a single module</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="ModuleTreeNode" href="#ModuleTreeNode">
+            <h3><code>ModuleTreeNode</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type ModuleTreeNode
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        T
+        <!-- Constraints -->
+        
+        <!-- Default -->
+                    = unknown        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+        </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            {
+	type: string;
+	name: string;
+	declarations: Array&lt;T&gt;;
+	[key: string]: unknown;
+}        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A node in a <a href="#ModuleTree"><code>ModuleTree</code></a></p>
 
     <!-- Tags -->
     <div class="row">
@@ -1298,3 +1365,37 @@ await buildStatic(tree);
     <div class="row">
             </div>
                         </div>
+</div>
+</div>
+</div>
+<script src="https://rawcdn.githack.com/nextapps-de/flexsearch/master/dist/flexsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fliegwerk/search-popup/dist/bundle.js"></script>
+<script>
+    const searchIndex = new FlexSearch({
+        encode: q => (q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase() + ' ' + q.toLowerCase(),
+        // encode: q => (q.replace(/(.*)[\W.](.*)/g, "$1$2")).toLowerCase(),
+        tokenize: "full",
+        threshold: 0,
+        resolution: 9,
+        depth: 3,
+        doc: {
+            id: 'url',
+            field: ['name', 'text']
+        }
+    });
+
+    function search(q) {
+        q = q || '';
+        return searchIndex.search((q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase(), 5)
+    }
+
+    fetch('/fliegdoc/search-index.json').then(r => r.json()).then(index => {
+        searchIndex.add(index)
+
+        const searchPopup = document.createElement('search-popup');
+        searchPopup.setAttribute('search', 'search')
+        document.body.appendChild(searchPopup);
+    });
+</script>
+</body>
+</html>
