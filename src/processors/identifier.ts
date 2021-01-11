@@ -14,7 +14,7 @@ import { ModuleTreeNode } from '../model';
  */
 export function processIdentifier(
 	node: Identifier
-): ModuleTreeNode<ModuleTreeNode<unknown>> {
+): ModuleTreeNode<ModuleTreeNode> {
 	return {
 		type: 'identifier',
 		name: node.getText(),
