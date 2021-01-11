@@ -17,7 +17,7 @@ export function processModule(
 	node: NamespaceDeclaration
 ): ModuleTreeNode<ModuleTreeNode> {
 	if (node.hasNamespaceKeyword()) {
-		const res: ModuleTreeNode<ModuleTreeNode<unknown>> = {
+		const res: ModuleTreeNode<ModuleTreeNode> = {
 			name: node.getName(),
 			docs: processJsDocs(node.getJsDocs()),
 			type: 'namespace',
