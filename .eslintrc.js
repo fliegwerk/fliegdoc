@@ -37,7 +37,8 @@ module.exports = {
 		'jsdoc/require-param-type': 0,
 		'jsdoc/require-property-type': 0,
 		'jsdoc/require-returns-type': 0,
-		'jsdoc/require-example': 2
+		'jsdoc/require-example': 2,
+		'@typescript-eslint/no-explicit-any': 0
 	},
 	ignorePatterns: ['node_modules', 'docs', 'build']
 };

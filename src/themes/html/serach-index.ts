@@ -107,10 +107,10 @@ function getSearchIndexForModuleMemberChildren(
 	const res: SearchResult[] = [];
 
 	for (const node of declarations) {
-		if (isClassDeclaration(node)) {
-			res.push(...getSearchResultsForClassMembers(node, prefix, config));
-		} else if (isInterfaceDeclaration(node)) {
-			res.push(...getSearchResultsForInterfaceMembers(node, prefix, config));
+		if (isClassDeclaration(node) || isInterfaceDeclaration(node)) {
+			res.push(
+				...getSearchResultsForInterfaceAndClassMembers(node, prefix, config)
+			);
 		}
 	}
 
@@ -118,52 +118,7 @@ function getSearchIndexForModuleMemberChildren(
 }
 
 /**
- * Creates a search index for all members of the passed class declaration node
- *
- * @param node - the class declaration node
- * @param prefix - the module for the absolute name
- * @param config - the current config with which the search index gets created
- * @returns the search index of the class members
- *
- * @example
- * ```ts
- * const searchIndex = []
- * if (isClass(classNode))
- * 	searchIndex.push(...getSearchResultsForClassMembers(
- * 		classNode,
- * 		`${moduleName}.${$moduleMember.name}`,
- * 		config
- * 	));
- * ```
- */
-function getSearchResultsForClassMembers(
-	node: ModuleTreeNode<ClassDeclarationStructure>,
-	prefix: string,
-	config: FliegdocConfig
-): SearchResult[] {
-	const res: SearchResult[] = [];
-
-	const classDeclaration = node.declarations[0];
-	classDeclaration.properties?.forEach(property => {
-		res.push({
-			name: property.name,
-			text: `${prefix}.${property.name}`,
-			url: `${config.baseUrl}${prefix}.${property.name}`
-		});
-	});
-	classDeclaration.methods?.forEach(method => {
-		res.push({
-			name: method.name,
-			text: `${prefix}.${method.name}`,
-			url: `${config.baseUrl}${prefix}.${method.name}`
-		});
-	});
-
-	return res;
-}
-
-/**
- * Creates a search index for all members of the passed interface declaration node
+ * Creates a search index for all members of the passed interface or class declaration node
  *
  * @param node - the interface declaration node
  * @param prefix - the module for the absolute name
@@ -173,30 +128,32 @@ function getSearchResultsForClassMembers(
  * @example
  * ```ts
  * const searchIndex = []
- * if (isInterface(interfaceNode))
- * 	searchIndex.push(...getSearchResultsForInterfaceMembers(
+ * if (isInterfaceDeclaration(interfaceNode) || isClassDeclaration(InterfaceNode))
+ * 	searchIndex.push(...getSearchResultsForInterfaceAndClassMembers(
  * 		interfaceNode,
  * 		`${moduleName}.${$moduleMember.name}`,
  * 		config
  * 	));
  * ```
  */
-function getSearchResultsForInterfaceMembers(
-	node: ModuleTreeNode<InterfaceDeclarationStructure>,
+function getSearchResultsForInterfaceAndClassMembers(
+	node: ModuleTreeNode<
+		InterfaceDeclarationStructure | ClassDeclarationStructure
+	>,
 	prefix: string,
 	config: FliegdocConfig
-) {
+): SearchResult[] {
 	const res: SearchResult[] = [];
 
 	const interfaceDeclaration = node.declarations[0];
-	interfaceDeclaration.properties?.forEach(property => {
+	interfaceDeclaration.properties?.forEach((property: any) => {
 		res.push({
 			name: property.name,
 			text: `${prefix}.${property.name}`,
 			url: `${config.baseUrl}${prefix}.${property.name}`
 		});
 	});
-	interfaceDeclaration.methods?.forEach(method => {
+	interfaceDeclaration.methods?.forEach((method: any) => {
 		res.push({
 			name: method.name,
 			text: `${prefix}.${method.name}`,
