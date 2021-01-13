@@ -29,49 +29,155 @@ export function getSearchIndex(
 			url: `${config.baseUrl}${moduleName}`
 		});
 		const moduleTree = tree[moduleName];
-		// noinspection DuplicatedCode
-		moduleTree.forEach(moduleMember => {
-			res.push({
-				name: moduleMember.name,
-				text: moduleName + '.' + moduleMember.name,
-				url: `${config.baseUrl}${moduleName}#${moduleMember.name}`
-			});
+		res.push(...getSearchIndexForModuleMembers(moduleTree, moduleName, config));
+	});
 
-			for (const node of moduleMember.declarations) {
-				if (isClass(node)) {
-					const classDeclaration = node.declarations[0];
-					classDeclaration.properties?.forEach(property => {
-						res.push({
-							name: property.name,
-							text: `${moduleName}.${moduleMember.name}.${property.name}`,
-							url: `${config.baseUrl}${moduleName}#${moduleMember.name}.${property.name}`
-						});
-					});
-					classDeclaration.methods?.forEach(method => {
-						res.push({
-							name: method.name,
-							text: `${moduleName}.${moduleMember.name}.${method.name}`,
-							url: `${config.baseUrl}${moduleName}#${moduleMember.name}.${method.name}`
-						});
-					});
-				} else if (isInterface(node)) {
-					const interfaceDeclaration = node.declarations[0];
-					interfaceDeclaration.properties?.forEach(property => {
-						res.push({
-							name: property.name,
-							text: `${moduleName}.${moduleMember.name}.${property.name}`,
-							url: `${config.baseUrl}${moduleName}#${moduleMember.name}.${property.name}`
-						});
-					});
-					interfaceDeclaration.methods?.forEach(method => {
-						res.push({
-							name: method.name,
-							text: `${moduleName}.${moduleMember.name}.${method.name}`,
-							url: `${config.baseUrl}${moduleName}#${moduleMember.name}.${method.name}`
-						});
-					});
-				}
+	return res;
+}
+
+/**
+ * Creates a search index for all members of the passed module node
+ *
+ * @param moduleTree - the module tree node
+ * @param moduleName - the module's name
+ * @param config - the current config with which the search index gets created
+ * @returns the search index of the class members
+ *
+ * @example
+ * ```ts
+ * const searchIndex = []
+ * searchIndex.push(...getSearchIndexForModuleMembers(
+ * 	moduleTree,
+ * 	`${moduleName}`
+ * 	config
+ * ));
+ * ```
+ */
+function getSearchIndexForModuleMembers(
+	moduleTree: (Record<string, unknown> & {
+		name: string;
+		declarations: ModuleTreeNode[];
+	})[],
+	moduleName: string,
+	config: FliegdocConfig
+): SearchResult[] {
+	const res: SearchResult[] = [];
+
+	moduleTree.forEach(moduleMember => {
+		res.push({
+			name: moduleMember.name,
+			text: moduleName + '.' + moduleMember.name,
+			url: `${config.baseUrl}${moduleName}#${moduleMember.name}`
+		});
+
+		for (const node of moduleMember.declarations) {
+			if (isClassDeclaration(node)) {
+				res.push(
+					...getSearchResultsForClassMembers(
+						node,
+						moduleName + '.' + moduleMember.name,
+						config
+					)
+				);
+			} else if (isInterfaceDeclaration(node)) {
+				res.push(
+					...getSearchResultsForInterfaceMembers(
+						node,
+						moduleName + '.' + moduleMember.name,
+						config
+					)
+				);
 			}
+		}
+	});
+
+	return res;
+}
+
+/**
+ * Creates a search index for all members of the passed class declaration node
+ *
+ * @param node - the class declaration node
+ * @param prefix - the module for the absolute name
+ * @param config - the current config with which the search index gets created
+ * @returns the search index of the class members
+ *
+ * @example
+ * ```ts
+ * const searchIndex = []
+ * if (isClass(classNode))
+ * 	searchIndex.push(...getSearchResultsForClassMembers(
+ * 		classNode,
+ * 		`${moduleName}.${$moduleMember.name}`,
+ * 		config
+ * 	));
+ * ```
+ */
+function getSearchResultsForClassMembers(
+	node: ModuleTreeNode<ClassDeclarationStructure>,
+	prefix: string,
+	config: FliegdocConfig
+): SearchResult[] {
+	const res: SearchResult[] = [];
+
+	const classDeclaration = node.declarations[0];
+	classDeclaration.properties?.forEach(property => {
+		res.push({
+			name: property.name,
+			text: `${prefix}.${property.name}`,
+			url: `${config.baseUrl}${prefix}.${property.name}`
+		});
+	});
+	classDeclaration.methods?.forEach(method => {
+		res.push({
+			name: method.name,
+			text: `${prefix}.${method.name}`,
+			url: `${config.baseUrl}${prefix}.${method.name}`
+		});
+	});
+
+	return res;
+}
+
+/**
+ * Creates a search index for all members of the passed interface declaration node
+ *
+ * @param node - the interface declaration node
+ * @param prefix - the module for the absolute name
+ * @param config - the current config with which the search index gets created
+ * @returns the search index of the interface members
+ *
+ * @example
+ * ```ts
+ * const searchIndex = []
+ * if (isInterface(interfaceNode))
+ * 	searchIndex.push(...getSearchResultsForInterfaceMembers(
+ * 		interfaceNode,
+ * 		`${moduleName}.${$moduleMember.name}`,
+ * 		config
+ * 	));
+ * ```
+ */
+function getSearchResultsForInterfaceMembers(
+	node: ModuleTreeNode<InterfaceDeclarationStructure>,
+	prefix: string,
+	config: FliegdocConfig
+) {
+	const res: SearchResult[] = [];
+
+	const interfaceDeclaration = node.declarations[0];
+	interfaceDeclaration.properties?.forEach(property => {
+		res.push({
+			name: property.name,
+			text: `${prefix}.${property.name}`,
+			url: `${config.baseUrl}${prefix}.${property.name}`
+		});
+	});
+	interfaceDeclaration.methods?.forEach(method => {
+		res.push({
+			name: method.name,
+			text: `${prefix}.${method.name}`,
+			url: `${config.baseUrl}${prefix}.${method.name}`
 		});
 	});
 
@@ -86,12 +192,12 @@ export function getSearchIndex(
  *
  * @example
  * ```ts
- * if (isClass(node)) {
+ * if (isClassDeclaration(node)) {
  *     // node.declarations[0] is a ClassDeclarationStructure
  * }
  * ```
  */
-function isClass(
+function isClassDeclaration(
 	node: ModuleTreeNode
 ): node is ModuleTreeNode<ClassDeclarationStructure> {
 	return node.type === 'class';
@@ -105,12 +211,12 @@ function isClass(
  *
  * @example
  * ```ts
- * if (isInterface(node)) {
+ * if (isInterfaceDeclaration(node)) {
  *     // node.declarations[0] is an InterfaceDeclarationStructure
  * }
  * ```
  */
-function isInterface(
+function isInterfaceDeclaration(
 	node: ModuleTreeNode
 ): node is ModuleTreeNode<InterfaceDeclarationStructure> {
 	return node.type === 'interface';
