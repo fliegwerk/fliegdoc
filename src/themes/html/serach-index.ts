@@ -69,27 +69,50 @@ function getSearchIndexForModuleMembers(
 			text: moduleName + '.' + moduleMember.name,
 			url: `${config.baseUrl}${moduleName}#${moduleMember.name}`
 		});
-
-		for (const node of moduleMember.declarations) {
-			if (isClassDeclaration(node)) {
-				res.push(
-					...getSearchResultsForClassMembers(
-						node,
-						moduleName + '.' + moduleMember.name,
-						config
-					)
-				);
-			} else if (isInterfaceDeclaration(node)) {
-				res.push(
-					...getSearchResultsForInterfaceMembers(
-						node,
-						moduleName + '.' + moduleMember.name,
-						config
-					)
-				);
-			}
-		}
+		res.push(
+			...getSearchIndexForModuleMemberChildren(
+				moduleMember.declarations,
+				moduleName + '.' + moduleMember.name,
+				config
+			)
+		);
 	});
+
+	return res;
+}
+
+/**
+ * Creates a search index for all children of a module member's declarations.
+ *
+ * @param declarations - the declarations of the module member
+ * @param prefix - the prefix of the module, e.g., `[module-name].[member-name]`
+ * @param config - the current config with which the search index gets created
+ * @returns the search index for all children of the `declarations`
+ *
+ * @example
+ * ```ts
+ * index.push(
+ * 	..getSearchIndexForModuleMemberChildren(
+ * 	moduleMember.declarations,
+ * 	moduleName + '.' + moduleMember.name,
+ * 	config
+ * );
+ * ```
+ */
+function getSearchIndexForModuleMemberChildren(
+	declarations: ModuleTreeNode[],
+	prefix: string,
+	config: FliegdocConfig
+) {
+	const res: SearchResult[] = [];
+
+	for (const node of declarations) {
+		if (isClassDeclaration(node)) {
+			res.push(...getSearchResultsForClassMembers(node, prefix, config));
+		} else if (isInterfaceDeclaration(node)) {
+			res.push(...getSearchResultsForInterfaceMembers(node, prefix, config));
+		}
+	}
 
 	return res;
 }
