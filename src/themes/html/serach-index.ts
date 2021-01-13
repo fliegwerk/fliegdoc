@@ -146,20 +146,15 @@ function getSearchResultsForInterfaceAndClassMembers(
 	const res: SearchResult[] = [];
 
 	const interfaceDeclaration = node.declarations[0];
-	interfaceDeclaration.properties?.forEach((property: any) => {
+	const memberToSearchResult = (property: any) => {
 		res.push({
 			name: property.name,
 			text: `${prefix}.${property.name}`,
 			url: `${config.baseUrl}${prefix}.${property.name}`
 		});
-	});
-	interfaceDeclaration.methods?.forEach((method: any) => {
-		res.push({
-			name: method.name,
-			text: `${prefix}.${method.name}`,
-			url: `${config.baseUrl}${prefix}.${method.name}`
-		});
-	});
+	};
+	interfaceDeclaration.properties?.forEach(memberToSearchResult);
+	interfaceDeclaration.methods?.forEach(memberToSearchResult);
 
 	return res;
 }
