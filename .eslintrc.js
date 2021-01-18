@@ -19,6 +19,7 @@ module.exports = {
 		'tsdoc/syntax': 'error',
 		'prettier/prettier': 'warn',
 		'@typescript-eslint/no-inferrable-types': 0,
+		'jsdoc/check-tag-names': 0, // done by tsdoc checker
 		'jsdoc/require-jsdoc': [
 			'error',
 			{

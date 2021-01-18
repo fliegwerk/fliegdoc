@@ -107,7 +107,10 @@ function getSearchIndexForModuleMemberChildren(
 	const res: SearchResult[] = [];
 
 	for (const node of declarations) {
-		if (isClassDeclaration(node) || isInterfaceDeclaration(node)) {
+		if (
+			isType<ClassDeclarationStructure>(node, 'class') ||
+			isType<InterfaceDeclarationStructure>(node, 'interface')
+		) {
 			res.push(
 				...getSearchResultsForInterfaceAndClassMembers(node, prefix, config)
 			);
@@ -163,38 +166,24 @@ function getSearchResultsForInterfaceAndClassMembers(
  * Checks if the given node is a {@link ModuleTreeNode} contains a class declaration
  *
  * @param node - the node
+ * @param typeName - the `node.type` for the type T
+ * @typeparam T - the type of `node.declarations[0]`, if `node.type === typeName`
  * @returns does `node.declarations` contain a class declaration?
  *
  * @example
  * ```ts
- * if (isClassDeclaration(node)) {
+ * if (isType<ClassDeclarationStructure>(node, 'class')) {
  *     // node.declarations[0] is a ClassDeclarationStructure
+ * } else if (isType<InterfaceDeclarationStructure>(node, 'Interface')) {
+ *     // node.declarations[0] is a InterfaceDeclarationStructure
  * }
  * ```
  */
-function isClassDeclaration(
-	node: ModuleTreeNode
-): node is ModuleTreeNode<ClassDeclarationStructure> {
-	return node.type === 'class';
-}
-
-/**
- * Checks if the given node is a {@link ModuleTreeNode} contains an interface declaration
- *
- * @param node - the node
- * @returns does `node.declarations` contain an interface declaration?
- *
- * @example
- * ```ts
- * if (isInterfaceDeclaration(node)) {
- *     // node.declarations[0] is an InterfaceDeclarationStructure
- * }
- * ```
- */
-function isInterfaceDeclaration(
-	node: ModuleTreeNode
-): node is ModuleTreeNode<InterfaceDeclarationStructure> {
-	return node.type === 'interface';
+function isType<T>(
+	node: ModuleTreeNode,
+	typeName: string
+): node is ModuleTreeNode<T> {
+	return node.type === typeName;
 }
 
 /**
