@@ -15,9 +15,7 @@ const viewFolder = path.resolve(__dirname, '..', '..', '..', 'views');
  */
 const md = {
 	render: (md?: string) => {
-		return origMd.render(
-			(md ?? '').replaceAll(/{@link (.*?)}/g, '[`$1`](#$1)')
-		);
+		return origMd.render((md ?? '').replace(/{@link (.*?)}/g, '[`$1`](#$1)'));
 	}
 };
 
