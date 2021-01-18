@@ -66,13 +66,13 @@ function getSearchIndexForModuleMembers(
 	moduleTree.forEach(moduleMember => {
 		res.push({
 			name: moduleMember.name,
-			text: moduleName + '.' + moduleMember.name,
+			text: moduleName + '#' + moduleMember.name,
 			url: `${config.baseUrl}${moduleName}#${moduleMember.name}`
 		});
 		res.push(
 			...getSearchIndexForModuleMemberChildren(
 				moduleMember.declarations,
-				moduleName + '.' + moduleMember.name,
+				moduleName + '#' + moduleMember.name,
 				config
 			)
 		);
