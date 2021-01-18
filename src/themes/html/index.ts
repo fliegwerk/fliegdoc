@@ -1,6 +1,6 @@
 import { Theme } from '../../model';
 import MarkdownIt from 'markdown-it';
-import * as fsp from 'fs/promises';
+import * as fsp from 'fs-extra';
 import * as fs from 'fs';
 import * as path from 'path';
 import { renderFile } from 'eta';
@@ -15,9 +15,7 @@ const viewFolder = path.resolve(__dirname, '..', '..', '..', 'views');
  */
 const md = {
 	render: (md?: string) => {
-		return origMd.render(
-			(md ?? '').replaceAll(/{@link (.*?)}/g, '[`$1`](#$1)')
-		);
+		return origMd.render((md ?? '').replace(/{@link (.*?)}/g, '[`$1`](#$1)'));
 	}
 };
 
