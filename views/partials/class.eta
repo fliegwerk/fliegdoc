@@ -41,7 +41,7 @@ const {declaration, md} = it;
 <% declaration.properties.forEach((property) => { %>
     <a id="<%= declaration.name %>.<%= property.name %>" href="#<%= declaration.name %>.<%= property.name %>">
         <h5><code>
-                <%= property.scope ?? ''%>
+                <%= property.scope || ''%>
                 <%= property.isStatic ? 'static' : ''%>
                 <%= property.isAbstract ? 'abstract' : ''%>
                 <%= property.isReadonly ? 'readonly' : ''%>
@@ -58,7 +58,7 @@ const {declaration, md} = it;
     <% declaration.methods.forEach((method) => { %>
         <a id="<%= declaration.name %>.<%= method.name %>" href="#<%= declaration.name %>.<%= method.name %>">
             <h5><code>
-                    <%= method.scope ?? ''%>
+                    <%= method.scope || ''%>
                     <%= method.isStatic ? 'static' : ''%>
                     <%= method.isAbstract ? 'abstract' : ''%>
                     <%= method.isAsync ? 'async' : ''%>

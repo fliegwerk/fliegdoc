@@ -50,7 +50,7 @@ const {declaration, md} = it
 
             <!-- Return type -->
             :
-            <%= declaration.returnType ?? 'any' %>
+            <%= declaration.returnType || 'any' %>
         </code>
     </b>
 </p>

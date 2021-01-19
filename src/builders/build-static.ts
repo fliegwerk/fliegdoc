@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import * as fsp from 'fs/promises';
+import * as fsp from 'fs-extra';
 import * as path from 'path';
 import { Tree } from '../model';
 import { getConfig } from '../model/config';
