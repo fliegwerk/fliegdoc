@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.3](https://github.com/fliegwerk/fliegdoc/compare/v0.4.2...v0.4.3) (2021-01-19)
+
+### Features
+
+- Replace `string.replaceAll` call with `string.replace` ([e970fb1](https://github.com/fliegwerk/fliegdoc/commit/e970fb1c975dc0d0245acbaa82622ebb5fda743e)), closes [#20](https://github.com/fliegwerk/fliegdoc/issues/20)
+- Support NodeJS 10+ ([#28](https://github.com/fliegwerk/fliegdoc/issues/28)) ([622d6ca](https://github.com/fliegwerk/fliegdoc/commit/622d6cab65894f017f265c50b7332885beff2a27)), closes [#20](https://github.com/fliegwerk/fliegdoc/issues/20)
+
+### Bug Fixes
+
+- **html-theme:** Fix broken links in search index introduced in be6baffca4bf663c9f6664397f319c659e162059 ([4041fc0](https://github.com/fliegwerk/fliegdoc/commit/4041fc02a29eda29a4df7258a7448c294d524ce2))
+
 ### [0.4.2](https://github.com/fliegwerk/fliegdoc/compare/v0.4.1...v0.4.2) (2021-01-11)
 
 ### Features
