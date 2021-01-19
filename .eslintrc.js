@@ -19,6 +19,7 @@ module.exports = {
 		'tsdoc/syntax': 'error',
 		'prettier/prettier': 'warn',
 		'@typescript-eslint/no-inferrable-types': 0,
+		'jsdoc/check-tag-names': 0, // done by tsdoc checker
 		'jsdoc/require-jsdoc': [
 			'error',
 			{
@@ -37,7 +38,8 @@ module.exports = {
 		'jsdoc/require-param-type': 0,
 		'jsdoc/require-property-type': 0,
 		'jsdoc/require-returns-type': 0,
-		'jsdoc/require-example': 2
+		'jsdoc/require-example': 2,
+		'@typescript-eslint/no-explicit-any': 0
 	},
 	ignorePatterns: ['node_modules', 'docs', 'build']
 };

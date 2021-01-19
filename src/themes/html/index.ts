@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { renderFile } from 'eta';
 import { getConfig } from '../../model/config';
-import { getSearchIndex } from './serach-index';
+import { getSearchIndex } from './search-index';
 
 const origMd = new MarkdownIt({ linkify: true });
 const viewFolder = path.resolve(__dirname, '..', '..', '..', 'views');
