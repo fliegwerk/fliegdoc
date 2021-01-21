@@ -1,6 +1,6 @@
 {
 	"name": "fliegdoc",
-	"version": "0.4.3",
+	"version": "0.4.4",
 	"description": "A documentation generator for Typescript-based libraries with good support for monorepos",
 	"repository": {
 		"url": "git+https://github.com/fliegwerk/fliegdoc.git",

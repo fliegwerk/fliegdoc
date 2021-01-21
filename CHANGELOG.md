@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.4](https://github.com/fliegwerk/fliegdoc/compare/v0.4.3...v0.4.4) (2021-01-21)
+
+### Bug Fixes
+
+- **html-theme:** Fix extends declaration implementation for classes ([2c2e159](https://github.com/fliegwerk/fliegdoc/commit/2c2e1596372fea26543583e5c35dda2528f094f2))
+
 ### [0.4.3](https://github.com/fliegwerk/fliegdoc/compare/v0.4.2...v0.4.3) (2021-01-19)
 
 ### Features
