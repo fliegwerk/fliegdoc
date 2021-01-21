@@ -16,7 +16,7 @@ const {declaration, md} = it;
 
             <!-- Extends -->
             <% if (declaration.extends && declaration.extends.length) { %>
-                extends <%= declaration.extends.join(', ') %>
+                extends <%= declaration.extends %>
             <% } %>
         </code>
     </b>
