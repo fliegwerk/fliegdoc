@@ -1,6 +1,5 @@
 import { FliegdocConfig } from '../../model';
-import path from 'path';
-import fs from 'fs';
+import { handleLocalImageLink } from './handleLocalImageLink';
 
 /**
  * Gets a static file record as well as a utility function for replacing images, i.e., static files
@@ -37,21 +36,7 @@ export function getStaticFileHandler(
 			return orig;
 		} else {
 			// image exists and should get copied to the output
-			const origPath = path.resolve(path.dirname(config.readme), link);
-			if (fs.existsSync(origPath)) {
-				staticFiles[origPath] = `./assets/${Date.now()}.${path.extname(
-					origPath
-				)}`;
-				return `![${altText}](${staticFiles[origPath]})`;
-			} else {
-				// Image file was not found in the file system => remove in output
-				console.warn(
-					'Static file ' +
-						link +
-						' from README does not exist, removing image in output.'
-				);
-				return '';
-			}
+			return handleLocalImageLink(altText, link, staticFiles, config);
 		}
 	};
 	return { staticFiles, readmeImageReplacer };
