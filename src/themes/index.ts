@@ -1,1 +1,10 @@
 export * from './html';
+export { getStaticFileHandler } from './html/getStaticFileHandler';
+export { createSearchIndexJSON } from './html/createSearchIndexJSON';
+export { writeStaticFiles } from './html/writeStaticFiles';
+export { render } from './html/render';
+export { writeModuleFiles } from './html/render';
+export { writeIndexFileFromREADME } from './html/render';
+export { md } from './html/render';
+export { viewFolder } from './html/render';
+export { origMd } from './html/render';
