@@ -1,8 +1,8 @@
 import { ClassDeclaration, ClassDeclarationStructure } from 'ts-morph';
-import { processJsDocs } from './helpers/processJsDocs';
 import { extractPropertiesAndMethods } from './helpers/extractPropertiesAndMethods';
 import { getConfig } from '../model/config';
 import { ModuleTreeNode } from '../model';
+import { updateJSDocsForStructure } from './helpers/updateJSDocsForStructure';
 
 /**
  * Converts a `ClassDeclaration` or `InterfaceDeclaration` to a documentation-ready representation.
@@ -31,13 +31,7 @@ export function processClassDeclaration(
 			);
 	}
 
-	if (structure.ctors) {
-		for (let i = 0; i < structure.ctors.length; i++) {
-			structure.ctors[i].docs = processJsDocs(
-				node.getConstructors()[i].getJsDocs()
-			);
-		}
-	}
+	updateJSDocsForStructure(structure, node, 'ctors', 'getConstructors');
 
 	return {
 		type: 'class',
