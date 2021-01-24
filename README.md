@@ -1,7 +1,7 @@
 # Welcome to fliegdoc 👋
 
 [![Version](https://img.shields.io/npm/v/fliegdoc)](https://www.npmjs.com/package/fliegdoc)
-![Prerequisite](https://img.shields.io/badge/node-%3E15.0.0-blue.svg)
+![Prerequisite](https://img.shields.io/badge/node-%3E10.0.0-blue.svg)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://fliegwerk.github.io/fliegdoc)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/fliegwerk/fliegdoc/graphs/commit-activity)
 [![License: MIT](https://img.shields.io/github/license/fliegwerk/fliegdoc)](https://github.com/fliegwerk/fliegdoc/blob/master/LICENSE)
@@ -13,7 +13,7 @@
 
 ## Prerequisites
 
-- node >15.0.0
+- node >10.0.0
 
 ## Install
 
