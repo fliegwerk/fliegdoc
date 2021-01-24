@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.5](https://github.com/fliegwerk/fliegdoc/compare/v0.4.4...v0.4.5) (2021-01-24)
+
+### Bug Fixes
+
+- Upgrade search-popup to v2 and remove `scroll-behavior: smooth` due to incompatibility ([f6a481e](https://github.com/fliegwerk/fliegdoc/commit/f6a481e72b60a2660a9246815db3f0bb4034d5c9)), closes [#26](https://github.com/fliegwerk/fliegdoc/issues/26)
+
 ### [0.4.4](https://github.com/fliegwerk/fliegdoc/compare/v0.4.3...v0.4.4) (2021-01-21)
 
 ### Bug Fixes
