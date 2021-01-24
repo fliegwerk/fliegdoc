@@ -15,10 +15,6 @@ const {config, modules} = it;
             line-height: inherit;
         }
 
-        :root {
-            scroll-behavior: smooth;
-        }
-
         header {
             display: flex;
             align-items: center;
