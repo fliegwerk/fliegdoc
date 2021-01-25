@@ -8,7 +8,7 @@ const {declaration, md} = it
         <code>
             <%= declaration.isAsync ? 'async' : '' %>
 
-            function <%= declaration.name %>
+            function <%= declaration.name || '' %>
 
             <!-- Type Parameters -->
             <% ~ includeFile('type-params', {typeParameters: declaration.typeParameters}) %>
