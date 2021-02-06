@@ -3,6 +3,7 @@ const {config, modules} = it;
 %>
 <html lang="en">
 <head>
+    <meta charset='UTF-8'>
     <title><%= config.title %></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
     <style>
