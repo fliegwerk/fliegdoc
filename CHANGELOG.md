@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.7](https://github.com/fliegwerk/fliegdoc/compare/v0.4.6...v0.4.7) (2021-02-06)
+
+### Bug Fixes
+
+- **html-theme:** Add support for UTF-8 characters (for non-English documentation) ([#47](https://github.com/fliegwerk/fliegdoc/issues/47)) ([d3159f6](https://github.com/fliegwerk/fliegdoc/commit/d3159f6d8642aadd1098d9a7e8148bcad1ecd8b7))
+
 ### [0.4.6](https://github.com/fliegwerk/fliegdoc/compare/v0.4.5...v0.4.6) (2021-02-05)
 
 ### Bug Fixes
