@@ -3,7 +3,7 @@ import {
 	FunctionDeclaration,
 	Identifier,
 	InterfaceDeclaration,
-	NamespaceDeclaration,
+	ModuleDeclaration,
 	Node,
 	SyntaxKind,
 	TypeAliasDeclaration,
@@ -43,7 +43,7 @@ export function processNode(node: Node): ModuleTreeNode {
 		case SyntaxKind.Identifier:
 			return processIdentifier(node as Identifier);
 		case SyntaxKind.ModuleDeclaration:
-			return processModule(node as NamespaceDeclaration);
+			return processModule(node as ModuleDeclaration);
 		default:
 			return {
 				type: 'unknown::' + node.getKindName(),

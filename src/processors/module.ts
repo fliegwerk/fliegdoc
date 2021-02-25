@@ -1,4 +1,4 @@
-import { NamespaceDeclaration } from 'ts-morph';
+import { ModuleDeclaration } from 'ts-morph';
 import { processNode } from './init';
 import { processJsDocs } from './helpers/processJsDocs';
 import { ModuleTreeNode } from '../model';
@@ -14,7 +14,7 @@ import { ModuleTreeNode } from '../model';
  * ```
  */
 export function processModule(
-	node: NamespaceDeclaration
+	node: ModuleDeclaration
 ): ModuleTreeNode<ModuleTreeNode> {
 	if (node.hasNamespaceKeyword()) {
 		const res: ModuleTreeNode<ModuleTreeNode> = {
