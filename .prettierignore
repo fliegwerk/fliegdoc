@@ -8,3 +8,4 @@ docs
 .vscode
 .idea
 package-lock.json
+CHANGELOG.md
