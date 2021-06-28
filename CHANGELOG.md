@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/fliegwerk/fliegdoc/compare/v0.5.0...v0.5.1) (2021-06-28)
+
+
+### Bug Fixes
+
+* Fix the problem caused by flexsearch quoting cdn without specifying the version. Currently, it is modified to 0.6.32 to ensure that there will be no errors due to the upgrade to 0.7 ([40b6c34](https://github.com/fliegwerk/fliegdoc/commit/40b6c3407e77cc048a49f3d28e6147c0d7640a43))
+
 ## [0.5.0](https://github.com/fliegwerk/fliegdoc/compare/v0.4.7...v0.5.0) (2021-05-05)
 
 
