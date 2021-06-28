@@ -18,9 +18,7 @@ import { handleLocalImageLink } from './handleLocalImageLink';
  * writeStaticFiles(staticFiles);
  * ```
  */
-export function getStaticFileHandler(
-	config: FliegdocConfig
-): {
+export function getStaticFileHandler(config: FliegdocConfig): {
 	staticFiles: Record<string, string>;
 	readmeImageReplacer: (...args: string[]) => string;
 } {

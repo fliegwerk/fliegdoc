@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/fliegwerk/fliegdoc/compare/v0.4.7...v0.5.0) (2021-05-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* To keep other dependencies up to date, fliegdoc no longer supports `node` v10 (as v10 has also reached EOL of being maintained). You now require `node` v12 or higher to use `fliegdoc`
+
+### Features
+
+* Require node >= v12 ([46350c7](https://github.com/fliegwerk/fliegdoc/commit/46350c7105eee44bffa0785e3d8a0a0ee8be4876))
+
+
+### Bug Fixes
+
+* Fix compatibility issues for ts-morph v10 ([0d87d87](https://github.com/fliegwerk/fliegdoc/commit/0d87d879481c878684ff42b874a70c253761403d))
+
+### [0.4.7](https://github.com/fliegwerk/fliegdoc/compare/v0.4.6...v0.4.7) (2021-02-06)
+
+### Bug Fixes
+
+- **html-theme:** Add support for UTF-8 characters (for non-English documentation) ([#47](https://github.com/fliegwerk/fliegdoc/issues/47)) ([d3159f6](https://github.com/fliegwerk/fliegdoc/commit/d3159f6d8642aadd1098d9a7e8148bcad1ecd8b7))
+
 ### [0.4.6](https://github.com/fliegwerk/fliegdoc/compare/v0.4.5...v0.4.6) (2021-02-05)
 
 ### Bug Fixes
