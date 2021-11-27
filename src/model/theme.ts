@@ -35,7 +35,6 @@ export interface Theme {
  * @param path - the absolute path to the output file, must be inside the `config.outDir`.
  * @param content - the file's content
  * @param mimetype - the file's mime type
- *
  * @example
  * ```ts
  * createFile('index.html', 'content', 'text/html')

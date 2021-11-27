@@ -6,9 +6,7 @@ import { handleLocalImageLink } from './handleLocalImageLink';
  *
  * @param config - the config
  * @returns a record of the static files as well as a replacer function for images in the README
- *
  * @see {@link writeStaticFiles}
- *
  * @example
  * ```ts
  * const {staticFiles, readmeImageReplacer} = getStaticFileHandler(config);

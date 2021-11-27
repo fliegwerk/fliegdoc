@@ -8,7 +8,6 @@ import * as fsp from 'fs-extra';
  * @param staticFiles - map of static files, where `staticFiles[original path] = target path`
  * @param createFile - the {@link CreateFileFunction}
  * @param config - the {@link FliegdocConfig}
- *
  * @example
  * ```ts
  * const {staticFiles, readmeImageReplacer} = getStaticFileHandler(config);

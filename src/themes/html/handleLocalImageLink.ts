@@ -12,7 +12,6 @@ import fs from 'fs';
  * @param staticFiles - the static files list. Assets get added here to later get written using {@link writeStaticFiles}
  * @param config - the {@link FliegdocConfig}
  * @returns the new, replaced, markdown section creating the image.
- *
  * @example
  * ```ts
  * const readmeImageReplacer = (orig: string, altText: string, link: string) => {

@@ -15,7 +15,6 @@ import { processJsDocs } from './processJsDocs';
  * @param node - the node from which the docs get extracted
  * @param key - the key to extract the relevant declarations in the `structure`, e.g., `'properties'`
  * @param methodKey - the function name to extract the declarations from the `node`, e.g., `'getProperties'`
- *
  * @example
  * ```ts
  * // structure is an interface declaration structure

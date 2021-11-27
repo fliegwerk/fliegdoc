@@ -10,7 +10,6 @@ import {
  * @param tree - the tree for which the index gets generated
  * @param config - the config that gets used
  * @returns the search index, containing all linked members of the docs
- *
  * @example
  * ```ts
  * console.log(getSearchIndex(tree))
@@ -42,7 +41,6 @@ export function getSearchIndex(
  * @param moduleName - the module's name
  * @param config - the current config with which the search index gets created
  * @returns the search index of the class members
- *
  * @example
  * ```ts
  * const searchIndex = []
@@ -88,7 +86,6 @@ function getSearchIndexForModuleMembers(
  * @param prefix - the prefix of the module, e.g., `[module-name].[member-name]`
  * @param config - the current config with which the search index gets created
  * @returns the search index for all children of the `declarations`
- *
  * @example
  * ```ts
  * index.push(
@@ -127,7 +124,6 @@ function getSearchIndexForModuleMemberChildren(
  * @param prefix - the module for the absolute name
  * @param config - the current config with which the search index gets created
  * @returns the search index of the interface members
- *
  * @example
  * ```ts
  * const searchIndex = []
@@ -169,7 +165,6 @@ function getSearchResultsForInterfaceAndClassMembers(
  * @param typeName - the `node.type` for the type T
  * @typeparam T - the type of `node.declarations[0]`, if `node.type === typeName`
  * @returns does `node.declarations` contain a class declaration?
- *
  * @example
  * ```ts
  * if (isType<ClassDeclarationStructure>(node, 'class')) {

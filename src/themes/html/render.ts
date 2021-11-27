@@ -23,7 +23,6 @@ const md = {
  * @param readmeImageReplacer - the README static content replacer from {@link getStaticFileHandler}
  * @param tree - the file tree, used to create the necessary links
  * @param createFile - the create file function, cf. {@link CreateFileFunction}
- *
  * @example
  * ```ts
  * const {staticFiles, readmeImageReplacer} = getStaticFileHandler(config);
@@ -65,7 +64,6 @@ export async function writeIndexFileFromREADME(
  *
  * @param tree - the tree for which the references get generated
  * @param createFile - the {@link CreateFileFunction}
- *
  * @example
  * ```ts
  * await writeModuleFiles(tree, createFile);

@@ -8,9 +8,7 @@ import path from 'path';
  *
  * @param tree - the tree for which the index gets created.
  * @param createFile - the {@link CreateFileFunction}
- *
  * @see {@link getSearchIndex}
- *
  * @example
  * ```ts
  * await createSearchIndexJSON(tree, createFile);

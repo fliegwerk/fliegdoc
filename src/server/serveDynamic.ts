@@ -13,9 +13,7 @@ import { getConfig } from '../model/config';
  *
  * @param tree - the documentation tree
  * @param port - the port on which the documentation gets served
- *
  * @throws Error - if the theme isn't browser-viewable, i.e., if {@link Theme.isBrowserViewable} is `false`
- *
  * @example
  * ```ts
  * import { buildTreeForConfig, serveDynamic } from 'fliegdoc';

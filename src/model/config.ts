@@ -9,9 +9,7 @@ setConfig(DEFAULT_CONFIG);
  * Returns the current config
  *
  * @returns current config
- *
  * @see {@link setConfig}
- *
  * @example
  * ```ts
  * import { getConfig } from 'fliegdoc';
