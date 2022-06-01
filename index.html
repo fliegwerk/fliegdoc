@@ -108,9 +108,39 @@ module.exports = {
 </code></pre>
 <p>(cf. <a href="https://fliegwerk.github.io/fliegdoc/fliegdoc">docs</a> for a list of exported members)</p>
 <h3>Themes</h3>
-<p><img src="./assets/1652105046408..png" alt="Theme Overview"></p>
+<p><img src="./assets/1654095881059..png" alt="Theme Overview"></p>
 <p>Themes take the doc-ready AST and configuration and write a resulting file structure.</p>
-<p>Detailed guides on creating themes will follow soon.</p>
+<p>In code, themes are implemented as objects that implement the <code>Theme</code> interface. This means that they have both a
+property <code>isBrowserViewable: boolean</code> and a method <code>onBuild()</code>.</p>
+<p>The <code>isBrowserViewable</code> property should be <code>false</code> unless the theme is intended to be used in the browser (e.g.,
+outputting HTML files).</p>
+<p>The <code>onBuild</code> method is called with the doc-ready AST and configuration as arguments. As third argument, it gets passed
+a <code>CreateFileFunction</code> (<code>( path: string, content: Buffer, mimetype: string ) =&gt; Promise&lt;void&gt;</code>), that you <strong>must use</strong>
+to create files in the output folder. You must use that function so that any necessary cleanup can be done by fliegdoc.</p>
+<p>The object then gets passed as <code>theme</code> in the configuration object.</p>
+<p>A simple example theme outputting the raw AST as JSON could look like this:</p>
+<pre><code class="language-ts">// fliegdoc.config.js
+// a theme that outputs the raw AST as JSON files
+const theme = {
+	isBrowserViewable: false, // don't use this in the browser
+	onBuild(ast, config, createFile) {
+		for (const module in ast) {
+			// iterate over modules
+			const { name } = ast[module]; // e.g. 'fliegdoc'
+			const fileName = `${name}.json`; // e.g. 'fliegdoc.json'
+			const content = JSON.stringify(ast[module], null, 2);
+
+			// create the file
+			createFile(fileName, Buffer.from(content), 'application/json');
+		}
+	}
+};
+
+module.exports = { theme /* [...] */ }; // add the theme to the configuration
+</code></pre>
+<p><em>Please note that there may be changes to the doc-ready AST structure with new TypeScript releases,
+so we can't provide detailed documentation on its structure.
+We recommend studying the raw output to get a sense of how the output is structured.</em></p>
 <h2>Author</h2>
 <p>👤 <strong>Pablo Klaschka</strong></p>
 <ul>
@@ -120,7 +150,8 @@ module.exports = {
 </ul>
 <h2>🤝 Contributing</h2>
 <p>Contributions, issues and feature requests are welcome!</p>
-<p>Feel free to check <a href="https://github.com/fliegwerk/fliegdoc/issues">issues page</a>. You can also take a look at the <a href="https://github.com/fliegwerk/fliegdoc/blob/master/CONTRIBUTING.md">contributing guide</a>.</p>
+<p>Feel free to check <a href="https://github.com/fliegwerk/fliegdoc/issues">issues page</a>. You can also take a look at
+the <a href="https://github.com/fliegwerk/fliegdoc/blob/master/CONTRIBUTING.md">contributing guide</a>.</p>
 <h2>Show your support</h2>
 <p>Give a ⭐️ if this project helped you!</p>
 <h2>📝 License</h2>
