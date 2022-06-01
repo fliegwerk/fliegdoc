@@ -83,7 +83,44 @@ import {} from 'fliegdoc';
 
 Themes take the doc-ready AST and configuration and write a resulting file structure.
 
-Detailed guides on creating themes will follow soon.
+In code, themes are implemented as objects that implement the `Theme` interface. This means that they have both a
+property `isBrowserViewable: boolean` and a method `onBuild()`.
+
+The `isBrowserViewable` property should be `false` unless the theme is intended to be used in the browser (e.g.,
+outputting HTML files).
+
+The `onBuild` method is called with the doc-ready AST and configuration as arguments. As third argument, it gets passed
+a `CreateFileFunction` (`( path: string, content: Buffer, mimetype: string ) => Promise<void>`), that you **must use**
+to create files in the output folder. You must use that function so that any necessary cleanup can be done by fliegdoc.
+
+The object then gets passed as `theme` in the configuration object.
+
+A simple example theme outputting the raw AST as JSON could look like this:
+
+```ts
+// fliegdoc.config.js
+// a theme that outputs the raw AST as JSON files
+const theme = {
+	isBrowserViewable: false, // don't use this in the browser
+	onBuild(ast, config, createFile) {
+		for (const module in ast) {
+			// iterate over modules
+			const { name } = ast[module]; // e.g. 'fliegdoc'
+			const fileName = `${name}.json`; // e.g. 'fliegdoc.json'
+			const content = JSON.stringify(ast[module], null, 2);
+
+			// create the file
+			createFile(fileName, Buffer.from(content), 'application/json');
+		}
+	}
+};
+
+module.exports = { theme /* [...] */ }; // add the theme to the configuration
+```
+
+_Please note that there may be changes to the doc-ready AST structure with new TypeScript releases,
+so we can't provide detailed documentation on its structure.
+We recommend studying the raw output to get a sense of how the output is structured._
 
 ## Author
 
@@ -97,7 +134,8 @@ Detailed guides on creating themes will follow soon.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check [issues page](https://github.com/fliegwerk/fliegdoc/issues). You can also take a look at the [contributing guide](https://github.com/fliegwerk/fliegdoc/blob/master/CONTRIBUTING.md).
+Feel free to check [issues page](https://github.com/fliegwerk/fliegdoc/issues). You can also take a look at
+the [contributing guide](https://github.com/fliegwerk/fliegdoc/blob/master/CONTRIBUTING.md).
 
 ## Show your support
 
