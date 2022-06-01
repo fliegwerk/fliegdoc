@@ -6,10 +6,10 @@ import {
 } from 'ts-morph';
 
 /**
- * Extracts tags from JSDocs array
+ * It takes a list of JSDocs and returns a list of JSDocs with the tags and description extracted
  *
- * @param docs - the JSDoc array
- * @returns the doc tags and description
+ * @param docs - The JSDocs to process.
+ * @returns The return value is an array of objects. Each object has a description and an array of tags.
  * @example
  * ```ts
  * processJsDocs(node.getJsDocs())

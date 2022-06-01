@@ -32,10 +32,13 @@ export function buildModuleTree(
 		fs.readFileSync(module.package).toString()
 	);
 
+	/* Getting the source file for the main file. */
 	const indexFile = project.getSourceFileOrThrow(module.mainFile);
 
+	/* Getting all the exported declarations from the index file. */
 	const exportedDeclarations = indexFile.getExportedDeclarations();
 
+	/* Iterating over the exported declarations and extracting the name and the declarations. */
 	for (const [name, declarations] of exportedDeclarations) {
 		moduleTree.push({
 			name: `${name}`,
