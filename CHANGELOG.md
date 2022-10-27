@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/fliegwerk/fliegdoc/compare/v0.5.1...v0.5.2) (2022-10-27)
+
+
+### Features
+
+* Add table of contents to the HTML theme ([0b96e9c](https://github.com/fliegwerk/fliegdoc/commit/0b96e9cb6c785da734894d67bca24cb9bd4a04cc))
+* Improve the HTML theme's scanability by adding `(...)` to function declaration headlines ([f4d677c](https://github.com/fliegwerk/fliegdoc/commit/f4d677c4aa80b6e9f7546731ab01670dd398bf59))
+
 ### [0.5.1](https://github.com/fliegwerk/fliegdoc/compare/v0.5.0...v0.5.1) (2021-06-28)
 
 
