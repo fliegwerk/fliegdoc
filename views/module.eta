@@ -18,12 +18,15 @@
 <!-- Members -->
 <% it.members.forEach(function(member) { %>
     <div class="card fluid">
+        <% member.declarations.forEach(function(declaration) { %>
         <!-- Name with an anchor link -->
         <a id="<%= member.name %>" href="#<%= member.name %>">
-            <h3><code><%~ member.name %></code></h3></a>
+            <h3><code>
+                    <%~ member.name %>
+                    <% if (declaration.type === 'function') { %> (...) <% } %>
+                </code></h3></a>
 
         <!-- Description, based on the type -->
-        <% member.declarations.forEach(function(declaration) { %>
             <% if (declaration.type === 'function') { %>
                 <%~ includeFile('partials/function', {...it, declaration: declaration.declarations[0]}) %>
             <% } else if (declaration.type === 'interface') { %>
