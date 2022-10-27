@@ -18,11 +18,11 @@
 <!-- Members -->
 <% it.members.forEach(function(member) { %>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+        <!-- Name with an anchor link -->
         <a id="<%= member.name %>" href="#<%= member.name %>">
             <h3><code><%~ member.name %></code></h3></a>
 
-        <!-- Description, based on type -->
+        <!-- Description, based on the type -->
         <% member.declarations.forEach(function(declaration) { %>
             <% if (declaration.type === 'function') { %>
                 <%~ includeFile('partials/function', {...it, declaration: declaration.declarations[0]}) %>
