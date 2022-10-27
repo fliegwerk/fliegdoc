@@ -56,14 +56,160 @@
 <p>You can access these members by importing the module:</p>
 <pre><code>import { <i>member</i> } from 'fliegdoc';</code></pre>
 
+<!--Table of contents for members-->
+    <ul>
+                    <li>
+                                <a href="#buildTreeForConfig">
+                    <code>
+                        function                        buildTreeForConfig                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getConfig">
+                    <code>
+                        function                        getConfig                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#setConfig">
+                    <code>
+                        function                        setConfig                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#buildModuleTree">
+                    <code>
+                        function                        buildModuleTree                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Module">
+                    <code>
+                        interface                        Module                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#Module.package"><code>package</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Module.tsconfig"><code>tsconfig</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Module.mainFile"><code>mainFile</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#FliegdocConfig">
+                    <code>
+                        interface                        FliegdocConfig                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#FliegdocConfig.modules"><code>modules</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#FliegdocConfig.readme"><code>readme</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#FliegdocConfig.outDir"><code>outDir</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#FliegdocConfig.baseUrl"><code>baseUrl</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#FliegdocConfig.title"><code>title</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#FliegdocConfig.externalLinks"><code>externalLinks</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#FliegdocConfig.hidePrivateMembers"><code>hidePrivateMembers</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#FliegdocConfig.theme"><code>theme</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#DEFAULT_CONFIG">
+                    <code>
+                        variable                        DEFAULT_CONFIG                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ModuleTree">
+                    <code>
+                        type                        ModuleTree                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ModuleTreeNode">
+                    <code>
+                        type                        ModuleTreeNode                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Tree">
+                    <code>
+                        type                        Tree                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Theme">
+                    <code>
+                        interface                        Theme                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#Theme.isBrowserViewable"><code>isBrowserViewable</code></a>
+                            </li>
+                                                                        <li>
+                            <a href="#Theme.onBuild"><code>onBuild (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#CreateFileFunction">
+                    <code>
+                        type                        CreateFileFunction                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#serveStatic">
+                    <code>
+                        function                        serveStatic                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#serveDynamic">
+                    <code>
+                        function                        serveDynamic                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#buildStatic">
+                    <code>
+                        function                        buildStatic                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#HTMLTheme">
+                    <code>
+                        variable                        HTMLTheme                                            </code>
+                </a>
+                                            </li>
+            </ul>
+
 <!-- Members -->
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="buildTreeForConfig" href="#buildTreeForConfig">
-            <h3><code>buildTreeForConfig</code></h3></a>
+            <h3><code>
+                    buildTreeForConfig                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -116,12 +262,13 @@ const tree = buildTreeForConfig();
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="getConfig" href="#getConfig">
-            <h3><code>getConfig</code></h3></a>
+            <h3><code>
+                    getConfig                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -182,12 +329,13 @@ console.log('current config:', getConfig());
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="setConfig" href="#setConfig">
-            <h3><code>setConfig</code></h3></a>
+            <h3><code>
+                    setConfig                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -281,12 +429,13 @@ setConfig(config, path.dirname(filepath));
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="buildModuleTree" href="#buildModuleTree">
-            <h3><code>buildModuleTree</code></h3></a>
+            <h3><code>
+                    buildModuleTree                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -366,12 +515,13 @@ buildModuleTree({
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Module" href="#Module">
-            <h3><code>Module</code></h3></a>
+            <h3><code>
+                    Module                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -473,12 +623,13 @@ buildModuleTree({
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="FliegdocConfig" href="#FliegdocConfig">
-            <h3><code>FliegdocConfig</code></h3></a>
+            <h3><code>
+                    FliegdocConfig                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -672,12 +823,13 @@ buildModuleTree({
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="DEFAULT_CONFIG" href="#DEFAULT_CONFIG">
-            <h3><code>DEFAULT_CONFIG</code></h3></a>
+            <h3><code>
+                    DEFAULT_CONFIG                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -701,12 +853,13 @@ in the <code>tsconfig.json</code></p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ModuleTree" href="#ModuleTree">
-            <h3><code>ModuleTree</code></h3></a>
+            <h3><code>
+                    ModuleTree                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -738,12 +891,13 @@ in the <code>tsconfig.json</code></p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ModuleTreeNode" href="#ModuleTreeNode">
-            <h3><code>ModuleTreeNode</code></h3></a>
+            <h3><code>
+                    ModuleTreeNode                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -791,12 +945,13 @@ in the <code>tsconfig.json</code></p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Tree" href="#Tree">
-            <h3><code>Tree</code></h3></a>
+            <h3><code>
+                    Tree                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -827,12 +982,13 @@ in the <code>tsconfig.json</code></p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Theme" href="#Theme">
-            <h3><code>Theme</code></h3></a>
+            <h3><code>
+                    Theme                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -991,12 +1147,13 @@ in the <code>tsconfig.json</code></p>
             </div>
                             </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="CreateFileFunction" href="#CreateFileFunction">
-            <h3><code>CreateFileFunction</code></h3></a>
+            <h3><code>
+                    CreateFileFunction                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1070,12 +1227,13 @@ in the <code>tsconfig.json</code></p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="serveStatic" href="#serveStatic">
-            <h3><code>serveStatic</code></h3></a>
+            <h3><code>
+                    serveStatic                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1153,12 +1311,13 @@ serveStatic(port);
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="serveDynamic" href="#serveDynamic">
-            <h3><code>serveDynamic</code></h3></a>
+            <h3><code>
+                    serveDynamic                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1262,12 +1421,13 @@ serveDynamic(tree, port);
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="buildStatic" href="#buildStatic">
-            <h3><code>buildStatic</code></h3></a>
+            <h3><code>
+                    buildStatic                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1334,12 +1494,13 @@ await buildStatic(tree);
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="HTMLTheme" href="#HTMLTheme">
-            <h3><code>HTMLTheme</code></h3></a>
+            <h3><code>
+                    HTMLTheme                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
