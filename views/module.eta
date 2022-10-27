@@ -15,6 +15,8 @@
 <p>You can access these members by importing the module:</p>
 <pre><code>import { <i>member</i> } from '<%~ it.moduleName %>';</code></pre>
 
+<%~ includeFile('partials/toc', {...it}) %>
+
 <!-- Members -->
 <% it.members.forEach(function(member) { %>
     <div class="card fluid">

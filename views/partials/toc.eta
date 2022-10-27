@@ -1,0 +1,46 @@
+<%
+/**
+ * @param it
+ */
+%>
+<!--Table of contents for members-->
+<%
+if (it.members != null && it.members.length > 0) {
+%>
+    <ul>
+        <% it.members.forEach(function(member) { %>
+            <li>
+                <% member.declarations.forEach(function (declaration) {%>
+                <a href="#<%= member.name %>">
+                    <code>
+                        <%= declaration.type %>
+                        <%= member.name %>
+                        <%if (declaration.type === 'function') { %> (...) <% } %>
+                    </code>
+                </a>
+                <% if (declaration.type === 'class' || declaration.type === 'interface') { %>
+                <ul>
+                        <% declaration.declarations[0].ctors?.forEach(function (property) { %>
+                        <li>
+                            <a href="#<%=member.name%>.<%= property.name %>"><code>constructor</code></a>
+                        </li>
+                        <% }); %>
+                        <% declaration.declarations[0].properties.forEach(function (property) { %>
+                            <li>
+                                <a href="#<%=member.name%>.<%= property.name %>"><code><%= property.name %></code></a>
+                            </li>
+                        <% }); %>
+                        <% declaration.declarations[0].methods.forEach(function (property) { %>
+                        <li>
+                            <a href="#<%=member.name%>.<%= property.name %>"><code><%= property.name %> (...)</code></a>
+                        </li>
+                        <% }); %>
+                    </ul>
+                <% } %>
+                <% }) %>
+            </li>
+        <% }); %>
+    </ul>
+<%
+}
+%>
